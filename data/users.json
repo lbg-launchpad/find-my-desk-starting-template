@@ -1,3065 +1,1518 @@
 [
   {
-    "id": "e85edeaf-9ef1-4ff5-9418-e2ee5f2821b5",
-    "employeeId": "EMP26165",
-    "fullName": "Hendrix Finley",
-    "email": "hendrix.finley@thebank.com",
-    "location": "London",
-    "team": "Cyber Security",
-    "role": "Analyst",
-    "manager": "Harper Spence",
-    "anchorDays": [
-      "Tuesday",
-      "Wednesday",
-      "Thursday"
-    ],
-    "defaultWorkingPattern": {
-      "monday": "remote",
-      "tuesday": "office",
-      "wednesday": "office",
-      "thursday": "office",
-      "friday": "office"
-    },
-    "preferredNeighbourhood": "Collaboration Zone",
-    "deskPreferences": [
-      "standing-desk"
-    ],
-    "bookingWindowDays": 9,
-    "accessibilityNeeds": null,
-    "status": "active",
-    "createdAt": "2024-07-28"
-  },
-  {
-    "id": "86ad5597-8b55-4f03-a770-c750c2b9a862",
-    "employeeId": "EMP74073",
-    "fullName": "Georgette Warner",
-    "email": "georgette.warner@thebank.com",
-    "location": "Edinburgh",
-    "team": "HR",
-    "role": "Product Manager",
-    "manager": "Haney Cherry",
-    "anchorDays": [
-      "Tuesday",
-      "Thursday"
-    ],
-    "defaultWorkingPattern": {
-      "monday": "remote",
-      "tuesday": "office",
-      "wednesday": "office",
-      "thursday": "office",
-      "friday": "office"
-    },
-    "preferredNeighbourhood": "Quiet Zone",
-    "deskPreferences": [
-      "window-seat",
-      "accessible-desk",
-      "window-seat"
-    ],
-    "bookingWindowDays": 22,
-    "accessibilityNeeds": null,
-    "status": "onboarding",
-    "createdAt": "2025-10-28"
-  },
-  {
-    "id": "7800237a-f602-4ee0-86e8-d82bbc5ec3b5",
-    "employeeId": "EMP43987",
-    "fullName": "Dillard Leonard",
-    "email": "dillard.leonard@thebank.com",
-    "location": "London",
-    "team": "Risk",
-    "role": "Engineer",
-    "manager": "Cooke Figueroa",
-    "anchorDays": [
-      "Tuesday",
-      "Wednesday",
-      "Thursday"
-    ],
-    "defaultWorkingPattern": {
-      "monday": "office",
-      "tuesday": "office",
-      "wednesday": "office",
-      "thursday": "remote",
-      "friday": "office"
-    },
-    "preferredNeighbourhood": "Core Desk Area",
-    "deskPreferences": [
-      "window-seat",
-      "accessible-desk"
-    ],
-    "bookingWindowDays": 10,
-    "accessibilityNeeds": null,
-    "status": "active",
-    "createdAt": "2025-10-01"
-  },
-  {
-    "id": "9e776887-e622-4302-a07d-5f75c7f25fc7",
-    "employeeId": "EMP92100",
-    "fullName": "Jean Rich",
-    "email": "jean.rich@thebank.com",
+    "id": "bc8c2dd5-9501-4961-bd84-639fc4422151",
+    "employeeId": 80124,
+    "fullName": "Brandi Holloway",
+    "email": "brandi.holloway@thebank.com",
     "location": "Leeds",
-    "team": "Finance",
-    "role": "Director",
-    "manager": "Haley Robertson",
-    "anchorDays": [
-      "Monday",
-      "Tuesday",
-      "Wednesday"
-    ],
-    "defaultWorkingPattern": {
-      "monday": "remote",
-      "tuesday": "office",
-      "wednesday": "office",
-      "thursday": "office",
-      "friday": "office"
+    "team": "Security",
+    "role": "Analyst",
+    "lineManager": {
+      "name": "Olivia Johnson",
+      "email": "olivia.johnson@thebank.com"
     },
-    "preferredNeighbourhood": "Window Bank",
-    "deskPreferences": [
-      "standing-desk",
-      "dual-monitor",
-      "quiet-area"
-    ],
-    "bookingWindowDays": 12,
-    "accessibilityNeeds": null,
-    "status": "onboarding",
-    "createdAt": "2024-06-27"
-  },
-  {
-    "id": "a0abe1ac-2c5a-4781-90f5-ee267caa47bb",
-    "employeeId": "EMP98404",
-    "fullName": "Bertie Nunez",
-    "email": "bertie.nunez@thebank.com",
-    "location": "London",
-    "team": "Operations",
-    "role": "Manager",
-    "manager": "Hebert Hinton",
     "anchorDays": [
-      "Tuesday",
-      "Wednesday",
-      "Thursday"
+      "Monday"
     ],
     "defaultWorkingPattern": {
       "monday": "office",
-      "tuesday": "office",
+      "tuesday": "remote",
       "wednesday": "office",
       "thursday": "remote",
       "friday": "office"
     },
     "preferredNeighbourhood": "Window Bank",
     "deskPreferences": [
+      "quiet-area",
       "standing-desk",
-      "accessible-desk"
+      "dual-monitor"
     ],
-    "bookingWindowDays": 8,
-    "accessibilityNeeds": "screen-reader-support",
-    "status": "onboarding",
-    "createdAt": "2024-02-11"
+    "bookingWindowDays": 16,
+    "accessibilityNeeds": "ergonomic-chair"
   },
   {
-    "id": "20acea12-669b-4ba8-8712-f6e94c46d60c",
-    "employeeId": "EMP77774",
-    "fullName": "Bridget Church",
-    "email": "bridget.church@thebank.com",
+    "id": "69948abc-8e02-4ab1-b0c8-c92b0513c7bc",
+    "employeeId": 48899,
+    "fullName": "Shana Baird",
+    "email": "shana.baird@thebank.com",
     "location": "Edinburgh",
     "team": "Platform Engineering",
-    "role": "Engineer",
-    "manager": "Desiree Atkins",
+    "role": "Senior Engineer",
+    "lineManager": {
+      "name": "Alice Smith",
+      "email": "alice.smith@thebank.com"
+    },
     "anchorDays": [
-      "Tuesday",
-      "Thursday"
+      "Monday"
     ],
     "defaultWorkingPattern": {
-      "monday": "remote",
-      "tuesday": "office",
+      "monday": "office",
+      "tuesday": "remote",
+      "wednesday": "office",
+      "thursday": "office",
+      "friday": "office"
+    },
+    "preferredNeighbourhood": "Quiet Zone",
+    "deskPreferences": [
+      "dual-monitor",
+      "standing-desk"
+    ],
+    "bookingWindowDays": 7,
+    "accessibilityNeeds": "ergonomic-chair"
+  },
+  {
+    "id": "1c0b3f97-92b4-4269-b8ec-2aba48797603",
+    "employeeId": 23876,
+    "fullName": "Clarissa Terry",
+    "email": "clarissa.terry@thebank.com",
+    "location": "Leeds",
+    "team": "Mac",
+    "role": "Engineer",
+    "lineManager": {
+      "name": "Olivia Johnson",
+      "email": "olivia.johnson@thebank.com"
+    },
+    "anchorDays": [
+      "Monday"
+    ],
+    "defaultWorkingPattern": {
+      "monday": "office",
+      "tuesday": "remote",
       "wednesday": "office",
       "thursday": "remote",
+      "friday": "office"
+    },
+    "preferredNeighbourhood": "Quiet Zone",
+    "deskPreferences": [
+      "near-team",
+      "near-team"
+    ],
+    "bookingWindowDays": 26,
+    "accessibilityNeeds": "ergonomic-chair"
+  },
+  {
+    "id": "b381819e-d00b-4798-a4b5-ab4fef210bf4",
+    "employeeId": 67541,
+    "fullName": "Farley Nichols",
+    "email": "farley.nichols@thebank.com",
+    "location": "London",
+    "team": "Mac",
+    "role": "Lead Engineer",
+    "lineManager": {
+      "name": "James Brown",
+      "email": "james.brown@thebank.com"
+    },
+    "anchorDays": [
+      "Monday",
+      "Wednesday"
+    ],
+    "defaultWorkingPattern": {
+      "monday": "office",
+      "tuesday": "remote",
+      "wednesday": "office",
+      "thursday": "office",
+      "friday": "remote"
+    },
+    "preferredNeighbourhood": "Collaboration Zone",
+    "deskPreferences": [
+      "dual-monitor",
+      "accessible-desk"
+    ],
+    "bookingWindowDays": 10,
+    "accessibilityNeeds": null
+  },
+  {
+    "id": "53695775-df3c-424e-91f2-8222f2ad69c1",
+    "employeeId": 89390,
+    "fullName": "Burnett Donovan",
+    "email": "burnett.donovan@thebank.com",
+    "location": "Leeds",
+    "team": "Directory Services",
+    "role": "Senior Engineer",
+    "lineManager": {
+      "name": "Olivia Johnson",
+      "email": "olivia.johnson@thebank.com"
+    },
+    "anchorDays": [
+      "Monday"
+    ],
+    "defaultWorkingPattern": {
+      "monday": "office",
+      "tuesday": "remote",
+      "wednesday": "office",
+      "thursday": "remote",
+      "friday": "remote"
+    },
+    "preferredNeighbourhood": "Quiet Zone",
+    "deskPreferences": [
+      "window-seat",
+      "standing-desk",
+      "standing-desk"
+    ],
+    "bookingWindowDays": 11,
+    "accessibilityNeeds": null
+  },
+  {
+    "id": "3486f2c2-fc3a-47d4-8520-f6b349071405",
+    "employeeId": 71740,
+    "fullName": "Stella Briggs",
+    "email": "stella.briggs@thebank.com",
+    "location": "London",
+    "team": "Platform Engineering",
+    "role": "Senior Engineer",
+    "lineManager": {
+      "name": "Daniel Wilson",
+      "email": "daniel.wilson@thebank.com"
+    },
+    "anchorDays": [
+      "Monday",
+      "Wednesday"
+    ],
+    "defaultWorkingPattern": {
+      "monday": "office",
+      "tuesday": "remote",
+      "wednesday": "office",
+      "thursday": "remote",
+      "friday": "office"
+    },
+    "preferredNeighbourhood": "Collaboration Zone",
+    "deskPreferences": [
+      "window-seat",
+      "dual-monitor"
+    ],
+    "bookingWindowDays": 24,
+    "accessibilityNeeds": null
+  },
+  {
+    "id": "8c8946bf-cdd5-4026-bbe1-e8fcfac05665",
+    "employeeId": 11123,
+    "fullName": "Dillon Hodges",
+    "email": "dillon.hodges@thebank.com",
+    "location": "London",
+    "team": "Security",
+    "role": "Analyst",
+    "lineManager": {
+      "name": "Daniel Wilson",
+      "email": "daniel.wilson@thebank.com"
+    },
+    "anchorDays": [
+      "Monday",
+      "Wednesday"
+    ],
+    "defaultWorkingPattern": {
+      "monday": "office",
+      "tuesday": "remote",
+      "wednesday": "office",
+      "thursday": "office",
       "friday": "remote"
     },
     "preferredNeighbourhood": "Core Desk Area",
-    "deskPreferences": [
-      "near-team"
-    ],
-    "bookingWindowDays": 8,
-    "accessibilityNeeds": null,
-    "status": "active",
-    "createdAt": "2024-04-21"
-  },
-  {
-    "id": "79e24f62-327c-4665-ba16-de0fc189a550",
-    "employeeId": "EMP51898",
-    "fullName": "Hansen Baird",
-    "email": "hansen.baird@thebank.com",
-    "location": "London",
-    "team": "Data",
-    "role": "Manager",
-    "manager": "Tanisha Mcgee",
-    "anchorDays": [
-      "Tuesday",
-      "Wednesday",
-      "Thursday"
-    ],
-    "defaultWorkingPattern": {
-      "monday": "remote",
-      "tuesday": "office",
-      "wednesday": "office",
-      "thursday": "remote",
-      "friday": "office"
-    },
-    "preferredNeighbourhood": "Window Bank",
-    "deskPreferences": [
-      "accessible-desk",
-      "accessible-desk"
-    ],
-    "bookingWindowDays": 18,
-    "accessibilityNeeds": null,
-    "status": "active",
-    "createdAt": "2025-04-04"
-  },
-  {
-    "id": "69bb0f4c-49c9-4252-9a29-9fc4b34e6b12",
-    "employeeId": "EMP21767",
-    "fullName": "Jefferson Adkins",
-    "email": "jefferson.adkins@thebank.com",
-    "location": "Edinburgh",
-    "team": "Risk",
-    "role": "Manager",
-    "manager": "Ryan Melendez",
-    "anchorDays": [
-      "Tuesday",
-      "Thursday"
-    ],
-    "defaultWorkingPattern": {
-      "monday": "office",
-      "tuesday": "office",
-      "wednesday": "office",
-      "thursday": "remote",
-      "friday": "office"
-    },
-    "preferredNeighbourhood": "Quiet Zone",
-    "deskPreferences": [
-      "standing-desk",
-      "dual-monitor"
-    ],
-    "bookingWindowDays": 7,
-    "accessibilityNeeds": "ergonomic-chair",
-    "status": "active",
-    "createdAt": "2024-10-22"
-  },
-  {
-    "id": "e5c16fb6-4033-405b-aa18-dc608829d021",
-    "employeeId": "EMP74711",
-    "fullName": "April Macdonald",
-    "email": "april.macdonald@thebank.com",
-    "location": "Leeds",
-    "team": "Retail Banking",
-    "role": "Analyst",
-    "manager": "Ava Singleton",
-    "anchorDays": [
-      "Monday",
-      "Tuesday",
-      "Wednesday"
-    ],
-    "defaultWorkingPattern": {
-      "monday": "office",
-      "tuesday": "office",
-      "wednesday": "office",
-      "thursday": "remote",
-      "friday": "remote"
-    },
-    "preferredNeighbourhood": "Window Bank",
-    "deskPreferences": [
-      "accessible-desk",
-      "standing-desk",
-      "dual-monitor"
-    ],
-    "bookingWindowDays": 19,
-    "accessibilityNeeds": null,
-    "status": "onboarding",
-    "createdAt": "2025-11-27"
-  },
-  {
-    "id": "111f3c08-138c-46f6-8f38-30dce31e36ad",
-    "employeeId": "EMP49103",
-    "fullName": "Peters Trevino",
-    "email": "peters.trevino@thebank.com",
-    "location": "Leeds",
-    "team": "Data",
-    "role": "Manager",
-    "manager": "Navarro Horton",
-    "anchorDays": [
-      "Monday",
-      "Tuesday",
-      "Wednesday"
-    ],
-    "defaultWorkingPattern": {
-      "monday": "office",
-      "tuesday": "office",
-      "wednesday": "office",
-      "thursday": "remote",
-      "friday": "office"
-    },
-    "preferredNeighbourhood": "Quiet Zone",
     "deskPreferences": [
       "dual-monitor"
     ],
     "bookingWindowDays": 10,
-    "accessibilityNeeds": null,
-    "status": "active",
-    "createdAt": "2024-04-11"
+    "accessibilityNeeds": null
   },
   {
-    "id": "e28946cb-5e44-4b91-9526-4fc8adc80019",
-    "employeeId": "EMP76652",
-    "fullName": "Lindsay Galloway",
-    "email": "lindsay.galloway@thebank.com",
-    "location": "Edinburgh",
-    "team": "HR",
-    "role": "Manager",
-    "manager": "Elba Sosa",
-    "anchorDays": [
-      "Tuesday",
-      "Thursday"
-    ],
-    "defaultWorkingPattern": {
-      "monday": "remote",
-      "tuesday": "office",
-      "wednesday": "office",
-      "thursday": "remote",
-      "friday": "remote"
-    },
-    "preferredNeighbourhood": "Quiet Zone",
-    "deskPreferences": [
-      "dual-monitor",
-      "quiet-area",
-      "window-seat"
-    ],
-    "bookingWindowDays": 11,
-    "accessibilityNeeds": "screen-reader-support",
-    "status": "onboarding",
-    "createdAt": "2024-10-29"
-  },
-  {
-    "id": "60b4a52a-a095-4ea4-82b1-5b906b8cff6c",
-    "employeeId": "EMP48218",
-    "fullName": "Newman Webster",
-    "email": "newman.webster@thebank.com",
+    "id": "78784aec-1cd2-4eec-8c51-d6a543bceb2a",
+    "employeeId": 77013,
+    "fullName": "Welch Bowers",
+    "email": "welch.bowers@thebank.com",
     "location": "London",
-    "team": "Operations",
-    "role": "Product Manager",
-    "manager": "Williams Fisher",
-    "anchorDays": [
-      "Tuesday",
-      "Wednesday",
-      "Thursday"
-    ],
-    "defaultWorkingPattern": {
-      "monday": "remote",
-      "tuesday": "office",
-      "wednesday": "office",
-      "thursday": "remote",
-      "friday": "office"
+    "team": "Security",
+    "role": "Lead",
+    "lineManager": {
+      "name": "Daniel Wilson",
+      "email": "daniel.wilson@thebank.com"
     },
-    "preferredNeighbourhood": "Collaboration Zone",
-    "deskPreferences": [
-      "window-seat",
-      "near-team",
-      "accessible-desk"
-    ],
-    "bookingWindowDays": 19,
-    "accessibilityNeeds": "screen-reader-support",
-    "status": "active",
-    "createdAt": "2025-05-02"
-  },
-  {
-    "id": "166d20a2-09bd-4203-ab69-e3c8a2e6f88d",
-    "employeeId": "EMP96783",
-    "fullName": "Gay Hewitt",
-    "email": "gay.hewitt@thebank.com",
-    "location": "London",
-    "team": "Cyber Security",
-    "role": "Engineer",
-    "manager": "Rhonda Gates",
-    "anchorDays": [
-      "Tuesday",
-      "Wednesday",
-      "Thursday"
-    ],
-    "defaultWorkingPattern": {
-      "monday": "office",
-      "tuesday": "office",
-      "wednesday": "office",
-      "thursday": "office",
-      "friday": "remote"
-    },
-    "preferredNeighbourhood": "Core Desk Area",
-    "deskPreferences": [
-      "near-team",
-      "standing-desk",
-      "window-seat"
-    ],
-    "bookingWindowDays": 20,
-    "accessibilityNeeds": "step-free-access",
-    "status": "onboarding",
-    "createdAt": "2024-07-23"
-  },
-  {
-    "id": "16892ac8-f3da-4cb6-b3ef-05c7ef880387",
-    "employeeId": "EMP14938",
-    "fullName": "Lacey Haley",
-    "email": "lacey.haley@thebank.com",
-    "location": "London",
-    "team": "Risk",
-    "role": "Director",
-    "manager": "Deirdre Vaughan",
-    "anchorDays": [
-      "Tuesday",
-      "Wednesday",
-      "Thursday"
-    ],
-    "defaultWorkingPattern": {
-      "monday": "office",
-      "tuesday": "office",
-      "wednesday": "office",
-      "thursday": "remote",
-      "friday": "office"
-    },
-    "preferredNeighbourhood": "Window Bank",
-    "deskPreferences": [
-      "quiet-area"
-    ],
-    "bookingWindowDays": 28,
-    "accessibilityNeeds": null,
-    "status": "active",
-    "createdAt": "2024-12-18"
-  },
-  {
-    "id": "53b97966-c73a-4497-b646-5618f53999d9",
-    "employeeId": "EMP60504",
-    "fullName": "Marks Wiggins",
-    "email": "marks.wiggins@thebank.com",
-    "location": "Leeds",
-    "team": "Operations",
-    "role": "Analyst",
-    "manager": "Kelley Duffy",
     "anchorDays": [
       "Monday",
-      "Tuesday",
       "Wednesday"
     ],
     "defaultWorkingPattern": {
       "monday": "office",
-      "tuesday": "office",
-      "wednesday": "office",
-      "thursday": "office",
-      "friday": "remote"
-    },
-    "preferredNeighbourhood": "Collaboration Zone",
-    "deskPreferences": [
-      "dual-monitor",
-      "dual-monitor",
-      "quiet-area"
-    ],
-    "bookingWindowDays": 20,
-    "accessibilityNeeds": null,
-    "status": "contractor",
-    "createdAt": "2025-11-11"
-  },
-  {
-    "id": "d05f49ac-520a-469e-99da-e83acd2be529",
-    "employeeId": "EMP81288",
-    "fullName": "Tisha Gilmore",
-    "email": "tisha.gilmore@thebank.com",
-    "location": "Edinburgh",
-    "team": "Retail Banking",
-    "role": "Engineer",
-    "manager": "Elnora Ayala",
-    "anchorDays": [
-      "Tuesday",
-      "Thursday"
-    ],
-    "defaultWorkingPattern": {
-      "monday": "remote",
-      "tuesday": "office",
-      "wednesday": "office",
-      "thursday": "office",
-      "friday": "office"
-    },
-    "preferredNeighbourhood": "Window Bank",
-    "deskPreferences": [
-      "standing-desk",
-      "near-team",
-      "dual-monitor"
-    ],
-    "bookingWindowDays": 25,
-    "accessibilityNeeds": "ergonomic-chair",
-    "status": "active",
-    "createdAt": "2025-04-01"
-  },
-  {
-    "id": "720d8c45-ad8d-4a56-a967-048fbfb331d5",
-    "employeeId": "EMP24453",
-    "fullName": "Smith Huff",
-    "email": "smith.huff@thebank.com",
-    "location": "London",
-    "team": "Data",
-    "role": "Lead Engineer",
-    "manager": "Jordan Humphrey",
-    "anchorDays": [
-      "Tuesday",
-      "Wednesday",
-      "Thursday"
-    ],
-    "defaultWorkingPattern": {
-      "monday": "office",
-      "tuesday": "office",
-      "wednesday": "office",
-      "thursday": "remote",
-      "friday": "office"
-    },
-    "preferredNeighbourhood": "Quiet Zone",
-    "deskPreferences": [
-      "dual-monitor"
-    ],
-    "bookingWindowDays": 18,
-    "accessibilityNeeds": null,
-    "status": "active",
-    "createdAt": "2025-12-16"
-  },
-  {
-    "id": "c2237699-7195-45cf-ac05-15e12fe253d2",
-    "employeeId": "EMP56987",
-    "fullName": "Puckett Sharp",
-    "email": "puckett.sharp@thebank.com",
-    "location": "Edinburgh",
-    "team": "Retail Banking",
-    "role": "Director",
-    "manager": "Jacquelyn Kirk",
-    "anchorDays": [
-      "Tuesday",
-      "Thursday"
-    ],
-    "defaultWorkingPattern": {
-      "monday": "office",
-      "tuesday": "office",
-      "wednesday": "office",
-      "thursday": "office",
-      "friday": "remote"
-    },
-    "preferredNeighbourhood": "Collaboration Zone",
-    "deskPreferences": [
-      "near-team"
-    ],
-    "bookingWindowDays": 25,
-    "accessibilityNeeds": "step-free-access",
-    "status": "active",
-    "createdAt": "2025-04-09"
-  },
-  {
-    "id": "259a9baf-a46c-429e-8b1e-47370513f736",
-    "employeeId": "EMP11193",
-    "fullName": "Pena Leach",
-    "email": "pena.leach@thebank.com",
-    "location": "Leeds",
-    "team": "HR",
-    "role": "Manager",
-    "manager": "Stout Hendrix",
-    "anchorDays": [
-      "Monday",
-      "Tuesday",
-      "Wednesday"
-    ],
-    "defaultWorkingPattern": {
-      "monday": "office",
-      "tuesday": "office",
-      "wednesday": "office",
-      "thursday": "office",
-      "friday": "office"
-    },
-    "preferredNeighbourhood": "Quiet Zone",
-    "deskPreferences": [
-      "accessible-desk",
-      "quiet-area",
-      "dual-monitor"
-    ],
-    "bookingWindowDays": 20,
-    "accessibilityNeeds": "step-free-access",
-    "status": "active",
-    "createdAt": "2024-05-15"
-  },
-  {
-    "id": "4c8af5c4-1fb8-4ad9-a85a-79b4c61ae7b0",
-    "employeeId": "EMP91271",
-    "fullName": "Carey House",
-    "email": "carey.house@thebank.com",
-    "location": "Leeds",
-    "team": "Retail Banking",
-    "role": "Product Manager",
-    "manager": "Guerrero Goodman",
-    "anchorDays": [
-      "Monday",
-      "Tuesday",
-      "Wednesday"
-    ],
-    "defaultWorkingPattern": {
-      "monday": "remote",
-      "tuesday": "office",
-      "wednesday": "office",
-      "thursday": "remote",
-      "friday": "remote"
-    },
-    "preferredNeighbourhood": "Window Bank",
-    "deskPreferences": [
-      "window-seat",
-      "window-seat",
-      "near-team"
-    ],
-    "bookingWindowDays": 22,
-    "accessibilityNeeds": "screen-reader-support",
-    "status": "onboarding",
-    "createdAt": "2025-02-17"
-  },
-  {
-    "id": "687e460a-de44-4dd0-bd53-204fc27da54e",
-    "employeeId": "EMP95947",
-    "fullName": "Elaine Manning",
-    "email": "elaine.manning@thebank.com",
-    "location": "Edinburgh",
-    "team": "HR",
-    "role": "Engineer",
-    "manager": "Ferguson Wall",
-    "anchorDays": [
-      "Tuesday",
-      "Thursday"
-    ],
-    "defaultWorkingPattern": {
-      "monday": "office",
-      "tuesday": "office",
-      "wednesday": "office",
-      "thursday": "remote",
-      "friday": "office"
-    },
-    "preferredNeighbourhood": "Collaboration Zone",
-    "deskPreferences": [
-      "dual-monitor"
-    ],
-    "bookingWindowDays": 8,
-    "accessibilityNeeds": "ergonomic-chair",
-    "status": "active",
-    "createdAt": "2025-09-10"
-  },
-  {
-    "id": "c98714af-41d0-448a-923a-f87c142a5072",
-    "employeeId": "EMP50682",
-    "fullName": "Snyder Mcconnell",
-    "email": "snyder.mcconnell@thebank.com",
-    "location": "Edinburgh",
-    "team": "Finance",
-    "role": "Engineer",
-    "manager": "Henry Pollard",
-    "anchorDays": [
-      "Tuesday",
-      "Thursday"
-    ],
-    "defaultWorkingPattern": {
-      "monday": "remote",
-      "tuesday": "office",
-      "wednesday": "office",
-      "thursday": "remote",
-      "friday": "remote"
-    },
-    "preferredNeighbourhood": "Window Bank",
-    "deskPreferences": [
-      "dual-monitor",
-      "accessible-desk",
-      "window-seat"
-    ],
-    "bookingWindowDays": 17,
-    "accessibilityNeeds": null,
-    "status": "active",
-    "createdAt": "2025-03-31"
-  },
-  {
-    "id": "ec1eae97-9b43-4c99-a1db-e035f7d8176b",
-    "employeeId": "EMP21200",
-    "fullName": "Margret Berger",
-    "email": "margret.berger@thebank.com",
-    "location": "Leeds",
-    "team": "Risk",
-    "role": "Lead Engineer",
-    "manager": "Schmidt Rios",
-    "anchorDays": [
-      "Monday",
-      "Tuesday",
-      "Wednesday"
-    ],
-    "defaultWorkingPattern": {
-      "monday": "office",
-      "tuesday": "office",
+      "tuesday": "remote",
       "wednesday": "office",
       "thursday": "remote",
       "friday": "remote"
     },
     "preferredNeighbourhood": "Core Desk Area",
     "deskPreferences": [
-      "accessible-desk",
-      "standing-desk"
-    ],
-    "bookingWindowDays": 26,
-    "accessibilityNeeds": null,
-    "status": "contractor",
-    "createdAt": "2026-01-04"
-  },
-  {
-    "id": "da3f1d86-6a48-419c-a35d-ecbe0257e118",
-    "employeeId": "EMP63262",
-    "fullName": "Julie Wood",
-    "email": "julie.wood@thebank.com",
-    "location": "Leeds",
-    "team": "Cyber Security",
-    "role": "Lead Engineer",
-    "manager": "Margie Bonner",
-    "anchorDays": [
-      "Monday",
-      "Tuesday",
-      "Wednesday"
-    ],
-    "defaultWorkingPattern": {
-      "monday": "remote",
-      "tuesday": "office",
-      "wednesday": "office",
-      "thursday": "office",
-      "friday": "office"
-    },
-    "preferredNeighbourhood": "Collaboration Zone",
-    "deskPreferences": [
-      "standing-desk"
+      "standing-desk",
+      "quiet-area"
     ],
     "bookingWindowDays": 28,
-    "accessibilityNeeds": "screen-reader-support",
-    "status": "active",
-    "createdAt": "2024-09-19"
+    "accessibilityNeeds": null
   },
   {
-    "id": "80c772d1-92d4-495e-8e9d-10da3fcd54e0",
-    "employeeId": "EMP70147",
-    "fullName": "Shepherd Tate",
-    "email": "shepherd.tate@thebank.com",
-    "location": "Leeds",
-    "team": "Retail Banking",
-    "role": "Engineer",
-    "manager": "Angel Garrison",
+    "id": "ce2bbc48-63e8-4090-990a-039f0ec34a34",
+    "employeeId": 40647,
+    "fullName": "Brandy Sargent",
+    "email": "brandy.sargent@thebank.com",
+    "location": "London",
+    "team": "Mac",
+    "role": "Product Manager",
+    "lineManager": {
+      "name": "Sophie Taylor",
+      "email": "sophie.taylor@thebank.com"
+    },
     "anchorDays": [
       "Monday",
-      "Tuesday",
       "Wednesday"
     ],
     "defaultWorkingPattern": {
-      "monday": "remote",
-      "tuesday": "office",
+      "monday": "office",
+      "tuesday": "remote",
       "wednesday": "office",
-      "thursday": "remote",
+      "thursday": "office",
       "friday": "remote"
     },
     "preferredNeighbourhood": "Quiet Zone",
     "deskPreferences": [
-      "quiet-area"
-    ],
-    "bookingWindowDays": 8,
-    "accessibilityNeeds": null,
-    "status": "onboarding",
-    "createdAt": "2025-08-11"
-  },
-  {
-    "id": "3e6f0836-5a2d-4cf8-aab8-e87a3631e914",
-    "employeeId": "EMP77550",
-    "fullName": "Madeline Hampton",
-    "email": "madeline.hampton@thebank.com",
-    "location": "London",
-    "team": "Operations",
-    "role": "Director",
-    "manager": "Kelly Frederick",
-    "anchorDays": [
-      "Tuesday",
-      "Wednesday",
-      "Thursday"
-    ],
-    "defaultWorkingPattern": {
-      "monday": "remote",
-      "tuesday": "office",
-      "wednesday": "office",
-      "thursday": "office",
-      "friday": "remote"
-    },
-    "preferredNeighbourhood": "Collaboration Zone",
-    "deskPreferences": [
-      "standing-desk",
+      "near-team",
       "near-team"
     ],
     "bookingWindowDays": 15,
-    "accessibilityNeeds": null,
-    "status": "onboarding",
-    "createdAt": "2025-03-10"
+    "accessibilityNeeds": null
   },
   {
-    "id": "a9da0b9a-c2af-4773-b152-ea44648423e2",
-    "employeeId": "EMP33401",
-    "fullName": "Lidia Woods",
-    "email": "lidia.woods@thebank.com",
+    "id": "391511bb-b582-449d-96c2-3231a8160b39",
+    "employeeId": 30368,
+    "fullName": "Rebekah Robinson",
+    "email": "rebekah.robinson@thebank.com",
     "location": "London",
-    "team": "Finance",
-    "role": "Analyst",
-    "manager": "Carney Melton",
+    "team": "Security",
+    "role": "Senior Engineer",
+    "lineManager": {
+      "name": "Daniel Wilson",
+      "email": "daniel.wilson@thebank.com"
+    },
     "anchorDays": [
-      "Tuesday",
-      "Wednesday",
-      "Thursday"
+      "Monday",
+      "Wednesday"
     ],
     "defaultWorkingPattern": {
-      "monday": "remote",
-      "tuesday": "office",
+      "monday": "office",
+      "tuesday": "remote",
       "wednesday": "office",
       "thursday": "office",
       "friday": "office"
     },
-    "preferredNeighbourhood": "Quiet Zone",
+    "preferredNeighbourhood": "Core Desk Area",
     "deskPreferences": [
-      "window-seat"
+      "dual-monitor"
     ],
-    "bookingWindowDays": 9,
-    "accessibilityNeeds": "screen-reader-support",
-    "status": "onboarding",
-    "createdAt": "2025-02-10"
+    "bookingWindowDays": 24,
+    "accessibilityNeeds": "ergonomic-chair"
   },
   {
-    "id": "2d4146a6-fdb7-4db4-a786-b4e8d1773e44",
-    "employeeId": "EMP43594",
-    "fullName": "Cristina Charles",
-    "email": "cristina.charles@thebank.com",
+    "id": "7b490075-4e45-4c0e-ab34-1852752041b9",
+    "employeeId": 75391,
+    "fullName": "Kristi Hart",
+    "email": "kristi.hart@thebank.com",
     "location": "London",
     "team": "Data",
-    "role": "Manager",
-    "manager": "Moran Price",
-    "anchorDays": [
-      "Tuesday",
-      "Wednesday",
-      "Thursday"
-    ],
-    "defaultWorkingPattern": {
-      "monday": "remote",
-      "tuesday": "office",
-      "wednesday": "office",
-      "thursday": "remote",
-      "friday": "office"
+    "role": "Lead",
+    "lineManager": {
+      "name": "James Brown",
+      "email": "james.brown@thebank.com"
     },
-    "preferredNeighbourhood": "Core Desk Area",
-    "deskPreferences": [
-      "accessible-desk",
-      "near-team"
-    ],
-    "bookingWindowDays": 21,
-    "accessibilityNeeds": "screen-reader-support",
-    "status": "active",
-    "createdAt": "2024-11-29"
-  },
-  {
-    "id": "e77faffd-3bd2-49bf-9212-1ef04a0d75fd",
-    "employeeId": "EMP87373",
-    "fullName": "Jimmie Donovan",
-    "email": "jimmie.donovan@thebank.com",
-    "location": "Edinburgh",
-    "team": "Retail Banking",
-    "role": "Senior Engineer",
-    "manager": "Mosley Espinoza",
     "anchorDays": [
-      "Tuesday",
-      "Thursday"
+      "Monday",
+      "Wednesday"
     ],
     "defaultWorkingPattern": {
       "monday": "office",
-      "tuesday": "office",
+      "tuesday": "remote",
       "wednesday": "office",
-      "thursday": "remote",
+      "thursday": "office",
       "friday": "remote"
     },
-    "preferredNeighbourhood": "Window Bank",
+    "preferredNeighbourhood": "Core Desk Area",
     "deskPreferences": [
       "standing-desk",
-      "near-team"
-    ],
-    "bookingWindowDays": 26,
-    "accessibilityNeeds": null,
-    "status": "active",
-    "createdAt": "2024-04-02"
-  },
-  {
-    "id": "6e3be764-86f1-4434-bc50-42b691d1955e",
-    "employeeId": "EMP60313",
-    "fullName": "Morales Dixon",
-    "email": "morales.dixon@thebank.com",
-    "location": "Edinburgh",
-    "team": "Risk",
-    "role": "Lead Engineer",
-    "manager": "Rhea Kline",
-    "anchorDays": [
-      "Tuesday",
-      "Thursday"
-    ],
-    "defaultWorkingPattern": {
-      "monday": "remote",
-      "tuesday": "office",
-      "wednesday": "office",
-      "thursday": "remote",
-      "friday": "office"
-    },
-    "preferredNeighbourhood": "Window Bank",
-    "deskPreferences": [
       "quiet-area",
-      "quiet-area",
-      "window-seat"
-    ],
-    "bookingWindowDays": 9,
-    "accessibilityNeeds": null,
-    "status": "contractor",
-    "createdAt": "2026-04-19"
-  },
-  {
-    "id": "209ddeac-0406-4e36-9a86-983b43105f36",
-    "employeeId": "EMP81803",
-    "fullName": "Dorthy Emerson",
-    "email": "dorthy.emerson@thebank.com",
-    "location": "Edinburgh",
-    "team": "Retail Banking",
-    "role": "Engineer",
-    "manager": "Schroeder Brennan",
-    "anchorDays": [
-      "Tuesday",
-      "Thursday"
-    ],
-    "defaultWorkingPattern": {
-      "monday": "office",
-      "tuesday": "office",
-      "wednesday": "office",
-      "thursday": "remote",
-      "friday": "remote"
-    },
-    "preferredNeighbourhood": "Core Desk Area",
-    "deskPreferences": [
-      "accessible-desk",
-      "accessible-desk",
-      "dual-monitor"
-    ],
-    "bookingWindowDays": 17,
-    "accessibilityNeeds": "ergonomic-chair",
-    "status": "active",
-    "createdAt": "2026-04-04"
-  },
-  {
-    "id": "c6a29607-d13b-47e3-95ba-e085998f5fb0",
-    "employeeId": "EMP50156",
-    "fullName": "Wade Clayton",
-    "email": "wade.clayton@thebank.com",
-    "location": "Edinburgh",
-    "team": "Operations",
-    "role": "Lead Engineer",
-    "manager": "Shelby Parker",
-    "anchorDays": [
-      "Tuesday",
-      "Thursday"
-    ],
-    "defaultWorkingPattern": {
-      "monday": "office",
-      "tuesday": "office",
-      "wednesday": "office",
-      "thursday": "remote",
-      "friday": "office"
-    },
-    "preferredNeighbourhood": "Window Bank",
-    "deskPreferences": [
-      "dual-monitor",
-      "dual-monitor"
-    ],
-    "bookingWindowDays": 17,
-    "accessibilityNeeds": "screen-reader-support",
-    "status": "onboarding",
-    "createdAt": "2025-11-24"
-  },
-  {
-    "id": "47147fb1-81dc-494c-bb86-2b6bfd7ae2ed",
-    "employeeId": "EMP28791",
-    "fullName": "Annmarie Brooks",
-    "email": "annmarie.brooks@thebank.com",
-    "location": "Leeds",
-    "team": "Cyber Security",
-    "role": "Engineer",
-    "manager": "Graves Holder",
-    "anchorDays": [
-      "Monday",
-      "Tuesday",
-      "Wednesday"
-    ],
-    "defaultWorkingPattern": {
-      "monday": "remote",
-      "tuesday": "office",
-      "wednesday": "office",
-      "thursday": "remote",
-      "friday": "remote"
-    },
-    "preferredNeighbourhood": "Quiet Zone",
-    "deskPreferences": [
-      "quiet-area"
-    ],
-    "bookingWindowDays": 11,
-    "accessibilityNeeds": null,
-    "status": "onboarding",
-    "createdAt": "2026-01-13"
-  },
-  {
-    "id": "ae3ab7d6-9a50-44a5-af63-38cec04099b9",
-    "employeeId": "EMP78560",
-    "fullName": "Hopkins Richards",
-    "email": "hopkins.richards@thebank.com",
-    "location": "Leeds",
-    "team": "Operations",
-    "role": "Lead Engineer",
-    "manager": "Maura Herman",
-    "anchorDays": [
-      "Monday",
-      "Tuesday",
-      "Wednesday"
-    ],
-    "defaultWorkingPattern": {
-      "monday": "office",
-      "tuesday": "office",
-      "wednesday": "office",
-      "thursday": "office",
-      "friday": "remote"
-    },
-    "preferredNeighbourhood": "Collaboration Zone",
-    "deskPreferences": [
-      "accessible-desk",
-      "accessible-desk"
-    ],
-    "bookingWindowDays": 7,
-    "accessibilityNeeds": "screen-reader-support",
-    "status": "active",
-    "createdAt": "2025-12-25"
-  },
-  {
-    "id": "c6788592-04f2-40a2-b223-94d3fec4644c",
-    "employeeId": "EMP15027",
-    "fullName": "Houston Hines",
-    "email": "houston.hines@thebank.com",
-    "location": "Edinburgh",
-    "team": "Platform Engineering",
-    "role": "Senior Engineer",
-    "manager": "Ingrid Branch",
-    "anchorDays": [
-      "Tuesday",
-      "Thursday"
-    ],
-    "defaultWorkingPattern": {
-      "monday": "remote",
-      "tuesday": "office",
-      "wednesday": "office",
-      "thursday": "office",
-      "friday": "remote"
-    },
-    "preferredNeighbourhood": "Core Desk Area",
-    "deskPreferences": [
       "standing-desk"
     ],
-    "bookingWindowDays": 7,
-    "accessibilityNeeds": null,
-    "status": "active",
-    "createdAt": "2024-05-01"
+    "bookingWindowDays": 15,
+    "accessibilityNeeds": null
   },
   {
-    "id": "cf432b38-e0d0-4618-a497-6d56bc255d10",
-    "employeeId": "EMP83957",
-    "fullName": "Boyer Pope",
-    "email": "boyer.pope@thebank.com",
-    "location": "Leeds",
-    "team": "Finance",
-    "role": "Senior Engineer",
-    "manager": "Sykes Kane",
-    "anchorDays": [
-      "Monday",
-      "Tuesday",
-      "Wednesday"
-    ],
-    "defaultWorkingPattern": {
-      "monday": "remote",
-      "tuesday": "office",
-      "wednesday": "office",
-      "thursday": "remote",
-      "friday": "office"
-    },
-    "preferredNeighbourhood": "Collaboration Zone",
-    "deskPreferences": [
-      "accessible-desk"
-    ],
-    "bookingWindowDays": 17,
-    "accessibilityNeeds": null,
-    "status": "active",
-    "createdAt": "2025-10-22"
-  },
-  {
-    "id": "bb19ecd6-3b68-4959-8cbd-bef0a7f4cc4b",
-    "employeeId": "EMP55819",
-    "fullName": "Leach Bradshaw",
-    "email": "leach.bradshaw@thebank.com",
-    "location": "London",
-    "team": "Platform Engineering",
-    "role": "Engineer",
-    "manager": "Estela Harris",
-    "anchorDays": [
-      "Tuesday",
-      "Wednesday",
-      "Thursday"
-    ],
-    "defaultWorkingPattern": {
-      "monday": "office",
-      "tuesday": "office",
-      "wednesday": "office",
-      "thursday": "remote",
-      "friday": "remote"
-    },
-    "preferredNeighbourhood": "Collaboration Zone",
-    "deskPreferences": [
-      "window-seat"
-    ],
-    "bookingWindowDays": 23,
-    "accessibilityNeeds": "ergonomic-chair",
-    "status": "active",
-    "createdAt": "2025-02-17"
-  },
-  {
-    "id": "3ff95190-4c39-4099-858c-d1a7bac88f1a",
-    "employeeId": "EMP33947",
-    "fullName": "Hobbs Puckett",
-    "email": "hobbs.puckett@thebank.com",
-    "location": "Leeds",
-    "team": "Risk",
-    "role": "Engineer",
-    "manager": "Herring Ramsey",
-    "anchorDays": [
-      "Monday",
-      "Tuesday",
-      "Wednesday"
-    ],
-    "defaultWorkingPattern": {
-      "monday": "remote",
-      "tuesday": "office",
-      "wednesday": "office",
-      "thursday": "remote",
-      "friday": "office"
-    },
-    "preferredNeighbourhood": "Collaboration Zone",
-    "deskPreferences": [
-      "standing-desk",
-      "accessible-desk",
-      "window-seat"
-    ],
-    "bookingWindowDays": 28,
-    "accessibilityNeeds": "step-free-access",
-    "status": "onboarding",
-    "createdAt": "2024-09-01"
-  },
-  {
-    "id": "74ef5e00-f356-47a5-9cba-def5b90a3fe9",
-    "employeeId": "EMP30891",
-    "fullName": "Lela Faulkner",
-    "email": "lela.faulkner@thebank.com",
-    "location": "London",
-    "team": "Retail Banking",
-    "role": "Senior Engineer",
-    "manager": "Potter Romero",
-    "anchorDays": [
-      "Tuesday",
-      "Wednesday",
-      "Thursday"
-    ],
-    "defaultWorkingPattern": {
-      "monday": "remote",
-      "tuesday": "office",
-      "wednesday": "office",
-      "thursday": "office",
-      "friday": "office"
-    },
-    "preferredNeighbourhood": "Quiet Zone",
-    "deskPreferences": [
-      "accessible-desk",
-      "quiet-area"
-    ],
-    "bookingWindowDays": 18,
-    "accessibilityNeeds": null,
-    "status": "active",
-    "createdAt": "2025-07-15"
-  },
-  {
-    "id": "8078f0bf-e11e-405d-b6c2-f11230136919",
-    "employeeId": "EMP26905",
-    "fullName": "Rosemary Mendoza",
-    "email": "rosemary.mendoza@thebank.com",
-    "location": "Leeds",
-    "team": "Retail Banking",
-    "role": "Engineer",
-    "manager": "Frieda Anderson",
-    "anchorDays": [
-      "Monday",
-      "Tuesday",
-      "Wednesday"
-    ],
-    "defaultWorkingPattern": {
-      "monday": "office",
-      "tuesday": "office",
-      "wednesday": "office",
-      "thursday": "remote",
-      "friday": "remote"
-    },
-    "preferredNeighbourhood": "Collaboration Zone",
-    "deskPreferences": [
-      "accessible-desk",
-      "dual-monitor"
-    ],
-    "bookingWindowDays": 22,
-    "accessibilityNeeds": null,
-    "status": "active",
-    "createdAt": "2025-06-17"
-  },
-  {
-    "id": "8f5f106f-a4ee-4542-b2d7-db0e107f3410",
-    "employeeId": "EMP38582",
-    "fullName": "Tonia Dickson",
-    "email": "tonia.dickson@thebank.com",
-    "location": "Leeds",
-    "team": "Retail Banking",
-    "role": "Senior Engineer",
-    "manager": "Lacy Parks",
-    "anchorDays": [
-      "Monday",
-      "Tuesday",
-      "Wednesday"
-    ],
-    "defaultWorkingPattern": {
-      "monday": "office",
-      "tuesday": "office",
-      "wednesday": "office",
-      "thursday": "remote",
-      "friday": "office"
-    },
-    "preferredNeighbourhood": "Quiet Zone",
-    "deskPreferences": [
-      "dual-monitor",
-      "dual-monitor"
-    ],
-    "bookingWindowDays": 10,
-    "accessibilityNeeds": null,
-    "status": "onboarding",
-    "createdAt": "2025-09-17"
-  },
-  {
-    "id": "cfc6d8a2-3746-4ff7-9560-bfa12b25a1c9",
-    "employeeId": "EMP87871",
-    "fullName": "Anastasia Navarro",
-    "email": "anastasia.navarro@thebank.com",
+    "id": "3124576a-2a78-4a72-a49a-4fd826b772f3",
+    "employeeId": 86923,
+    "fullName": "Abigail Livingston",
+    "email": "abigail.livingston@thebank.com",
     "location": "Edinburgh",
-    "team": "Operations",
-    "role": "Engineer",
-    "manager": "Horn Giles",
+    "team": "Data",
+    "role": "Lead",
+    "lineManager": {
+      "name": "Daniel Wilson",
+      "email": "daniel.wilson@thebank.com"
+    },
     "anchorDays": [
-      "Tuesday",
-      "Thursday"
+      "Monday"
     ],
     "defaultWorkingPattern": {
       "monday": "office",
-      "tuesday": "office",
+      "tuesday": "remote",
       "wednesday": "office",
       "thursday": "office",
-      "friday": "remote"
+      "friday": "office"
     },
-    "preferredNeighbourhood": "Quiet Zone",
+    "preferredNeighbourhood": "Collaboration Zone",
     "deskPreferences": [
-      "quiet-area"
+      "near-team",
+      "dual-monitor"
     ],
-    "bookingWindowDays": 19,
-    "accessibilityNeeds": null,
-    "status": "onboarding",
-    "createdAt": "2024-08-13"
+    "bookingWindowDays": 16,
+    "accessibilityNeeds": null
   },
   {
-    "id": "2881e3a0-a8ef-4f7d-9612-24c9e41d446e",
-    "employeeId": "EMP10748",
-    "fullName": "Tonya Raymond",
-    "email": "tonya.raymond@thebank.com",
+    "id": "a92c6a10-de70-4536-b032-34a344053691",
+    "employeeId": 15170,
+    "fullName": "Josefina Koch",
+    "email": "josefina.koch@thebank.com",
     "location": "Leeds",
-    "team": "Cyber Security",
+    "team": "Directory Services",
     "role": "Product Manager",
-    "manager": "Candy Cline",
+    "lineManager": {
+      "name": "Olivia Johnson",
+      "email": "olivia.johnson@thebank.com"
+    },
     "anchorDays": [
-      "Monday",
-      "Tuesday",
-      "Wednesday"
+      "Monday"
     ],
     "defaultWorkingPattern": {
-      "monday": "remote",
-      "tuesday": "office",
+      "monday": "office",
+      "tuesday": "remote",
       "wednesday": "office",
-      "thursday": "remote",
+      "thursday": "office",
       "friday": "office"
     },
     "preferredNeighbourhood": "Core Desk Area",
     "deskPreferences": [
-      "near-team",
-      "accessible-desk"
-    ],
-    "bookingWindowDays": 7,
-    "accessibilityNeeds": "screen-reader-support",
-    "status": "active",
-    "createdAt": "2024-04-29"
-  },
-  {
-    "id": "df5225c9-7a24-4fc1-bbd1-7b454b95b2fa",
-    "employeeId": "EMP38280",
-    "fullName": "Opal Santiago",
-    "email": "opal.santiago@thebank.com",
-    "location": "Edinburgh",
-    "team": "Platform Engineering",
-    "role": "Senior Engineer",
-    "manager": "Lily Boyer",
-    "anchorDays": [
-      "Tuesday",
-      "Thursday"
-    ],
-    "defaultWorkingPattern": {
-      "monday": "remote",
-      "tuesday": "office",
-      "wednesday": "office",
-      "thursday": "office",
-      "friday": "remote"
-    },
-    "preferredNeighbourhood": "Collaboration Zone",
-    "deskPreferences": [
-      "dual-monitor",
-      "quiet-area"
-    ],
-    "bookingWindowDays": 21,
-    "accessibilityNeeds": null,
-    "status": "onboarding",
-    "createdAt": "2025-08-07"
-  },
-  {
-    "id": "2a8bad43-214b-4f77-8a6e-71a47153505a",
-    "employeeId": "EMP78630",
-    "fullName": "Massey Mcclure",
-    "email": "massey.mcclure@thebank.com",
-    "location": "Edinburgh",
-    "team": "Operations",
-    "role": "Director",
-    "manager": "Jillian Washington",
-    "anchorDays": [
-      "Tuesday",
-      "Thursday"
-    ],
-    "defaultWorkingPattern": {
-      "monday": "remote",
-      "tuesday": "office",
-      "wednesday": "office",
-      "thursday": "office",
-      "friday": "office"
-    },
-    "preferredNeighbourhood": "Quiet Zone",
-    "deskPreferences": [
-      "window-seat",
-      "quiet-area",
-      "quiet-area"
-    ],
-    "bookingWindowDays": 9,
-    "accessibilityNeeds": "step-free-access",
-    "status": "active",
-    "createdAt": "2024-01-14"
-  },
-  {
-    "id": "995e723f-bedc-4d9f-8e46-67c2e0c40966",
-    "employeeId": "EMP81836",
-    "fullName": "Mcintyre Quinn",
-    "email": "mcintyre.quinn@thebank.com",
-    "location": "Leeds",
-    "team": "Retail Banking",
-    "role": "Director",
-    "manager": "Megan White",
-    "anchorDays": [
-      "Monday",
-      "Tuesday",
-      "Wednesday"
-    ],
-    "defaultWorkingPattern": {
-      "monday": "remote",
-      "tuesday": "office",
-      "wednesday": "office",
-      "thursday": "office",
-      "friday": "office"
-    },
-    "preferredNeighbourhood": "Collaboration Zone",
-    "deskPreferences": [
-      "quiet-area",
       "dual-monitor"
     ],
-    "bookingWindowDays": 22,
-    "accessibilityNeeds": "ergonomic-chair",
-    "status": "onboarding",
-    "createdAt": "2025-04-29"
+    "bookingWindowDays": 27,
+    "accessibilityNeeds": null
   },
   {
-    "id": "86319a07-bff5-49ed-9e7e-69358d824916",
-    "employeeId": "EMP44632",
-    "fullName": "Mildred Hayes",
-    "email": "mildred.hayes@thebank.com",
+    "id": "b865fb44-0227-4b72-bb74-b254e1477f83",
+    "employeeId": 34468,
+    "fullName": "Margarita Mosley",
+    "email": "margarita.mosley@thebank.com",
     "location": "Leeds",
-    "team": "Finance",
-    "role": "Lead Engineer",
-    "manager": "Cathy Osborne",
+    "team": "Mac",
+    "role": "Product Manager",
+    "lineManager": {
+      "name": "Alice Smith",
+      "email": "alice.smith@thebank.com"
+    },
     "anchorDays": [
-      "Monday",
-      "Tuesday",
-      "Wednesday"
+      "Monday"
     ],
     "defaultWorkingPattern": {
       "monday": "office",
-      "tuesday": "office",
+      "tuesday": "remote",
+      "wednesday": "office",
+      "thursday": "office",
+      "friday": "office"
+    },
+    "preferredNeighbourhood": "Collaboration Zone",
+    "deskPreferences": [
+      "quiet-area",
+      "near-team"
+    ],
+    "bookingWindowDays": 17,
+    "accessibilityNeeds": null
+  },
+  {
+    "id": "114704a0-7439-4eca-a1b4-dd58c84ef2d2",
+    "employeeId": 20481,
+    "fullName": "Tracy Richards",
+    "email": "tracy.richards@thebank.com",
+    "location": "Edinburgh",
+    "team": "Directory Services",
+    "role": "Lead Engineer",
+    "lineManager": {
+      "name": "James Brown",
+      "email": "james.brown@thebank.com"
+    },
+    "anchorDays": [
+      "Monday"
+    ],
+    "defaultWorkingPattern": {
+      "monday": "office",
+      "tuesday": "remote",
       "wednesday": "office",
       "thursday": "remote",
       "friday": "remote"
     },
+    "preferredNeighbourhood": "Core Desk Area",
+    "deskPreferences": [
+      "window-seat"
+    ],
+    "bookingWindowDays": 26,
+    "accessibilityNeeds": null
+  },
+  {
+    "id": "172cbed6-5315-4a79-802f-058cfeb1588d",
+    "employeeId": 58780,
+    "fullName": "Joan Nieves",
+    "email": "joan.nieves@thebank.com",
+    "location": "London",
+    "team": "Security",
+    "role": "Product Manager",
+    "lineManager": {
+      "name": "Sophie Taylor",
+      "email": "sophie.taylor@thebank.com"
+    },
+    "anchorDays": [
+      "Monday",
+      "Wednesday"
+    ],
+    "defaultWorkingPattern": {
+      "monday": "office",
+      "tuesday": "remote",
+      "wednesday": "office",
+      "thursday": "remote",
+      "friday": "office"
+    },
     "preferredNeighbourhood": "Window Bank",
     "deskPreferences": [
-      "window-seat",
-      "standing-desk",
       "standing-desk"
     ],
     "bookingWindowDays": 27,
-    "accessibilityNeeds": "ergonomic-chair",
-    "status": "active",
-    "createdAt": "2026-03-17"
+    "accessibilityNeeds": null
   },
   {
-    "id": "7a46ee3b-daa6-4b12-8e91-5afeeefd13ac",
-    "employeeId": "EMP22770",
-    "fullName": "Addie Edwards",
-    "email": "addie.edwards@thebank.com",
+    "id": "2bf99494-a78d-4b18-b6ed-822c74941d6a",
+    "employeeId": 20120,
+    "fullName": "Sheree Sheppard",
+    "email": "sheree.sheppard@thebank.com",
     "location": "Edinburgh",
-    "team": "Platform Engineering",
-    "role": "Analyst",
-    "manager": "Phelps Walsh",
-    "anchorDays": [
-      "Tuesday",
-      "Thursday"
-    ],
-    "defaultWorkingPattern": {
-      "monday": "office",
-      "tuesday": "office",
-      "wednesday": "office",
-      "thursday": "remote",
-      "friday": "office"
-    },
-    "preferredNeighbourhood": "Collaboration Zone",
-    "deskPreferences": [
-      "standing-desk",
-      "standing-desk"
-    ],
-    "bookingWindowDays": 20,
-    "accessibilityNeeds": null,
-    "status": "active",
-    "createdAt": "2025-10-07"
-  },
-  {
-    "id": "7a70d0a0-7f10-4ac8-b20d-08bbb3116f31",
-    "employeeId": "EMP45425",
-    "fullName": "Estrada Hoover",
-    "email": "estrada.hoover@thebank.com",
-    "location": "Edinburgh",
-    "team": "Operations",
-    "role": "Director",
-    "manager": "Shaffer Tucker",
-    "anchorDays": [
-      "Tuesday",
-      "Thursday"
-    ],
-    "defaultWorkingPattern": {
-      "monday": "office",
-      "tuesday": "office",
-      "wednesday": "office",
-      "thursday": "remote",
-      "friday": "remote"
-    },
-    "preferredNeighbourhood": "Core Desk Area",
-    "deskPreferences": [
-      "standing-desk",
-      "accessible-desk",
-      "quiet-area"
-    ],
-    "bookingWindowDays": 22,
-    "accessibilityNeeds": null,
-    "status": "onboarding",
-    "createdAt": "2024-07-24"
-  },
-  {
-    "id": "3d54f945-60c5-4c18-9983-2f8d59de63bc",
-    "employeeId": "EMP44753",
-    "fullName": "Rosie Castaneda",
-    "email": "rosie.castaneda@thebank.com",
-    "location": "Edinburgh",
-    "team": "Risk",
-    "role": "Lead Engineer",
-    "manager": "Barnett Briggs",
-    "anchorDays": [
-      "Tuesday",
-      "Thursday"
-    ],
-    "defaultWorkingPattern": {
-      "monday": "office",
-      "tuesday": "office",
-      "wednesday": "office",
-      "thursday": "office",
-      "friday": "remote"
-    },
-    "preferredNeighbourhood": "Window Bank",
-    "deskPreferences": [
-      "window-seat"
-    ],
-    "bookingWindowDays": 17,
-    "accessibilityNeeds": null,
-    "status": "onboarding",
-    "createdAt": "2025-02-09"
-  },
-  {
-    "id": "629a4c8b-bc0a-48cb-9400-f63d6995daf4",
-    "employeeId": "EMP56528",
-    "fullName": "Carmen Reese",
-    "email": "carmen.reese@thebank.com",
-    "location": "Leeds",
-    "team": "HR",
-    "role": "Analyst",
-    "manager": "Jessie Bruce",
-    "anchorDays": [
-      "Monday",
-      "Tuesday",
-      "Wednesday"
-    ],
-    "defaultWorkingPattern": {
-      "monday": "office",
-      "tuesday": "office",
-      "wednesday": "office",
-      "thursday": "office",
-      "friday": "remote"
-    },
-    "preferredNeighbourhood": "Collaboration Zone",
-    "deskPreferences": [
-      "quiet-area"
-    ],
-    "bookingWindowDays": 9,
-    "accessibilityNeeds": null,
-    "status": "onboarding",
-    "createdAt": "2025-09-27"
-  },
-  {
-    "id": "e1e6a362-1baf-474d-a035-bbe4af88ffe5",
-    "employeeId": "EMP85880",
-    "fullName": "Pitts Hester",
-    "email": "pitts.hester@thebank.com",
-    "location": "London",
-    "team": "HR",
-    "role": "Manager",
-    "manager": "Dale Richmond",
-    "anchorDays": [
-      "Tuesday",
-      "Wednesday",
-      "Thursday"
-    ],
-    "defaultWorkingPattern": {
-      "monday": "remote",
-      "tuesday": "office",
-      "wednesday": "office",
-      "thursday": "remote",
-      "friday": "remote"
-    },
-    "preferredNeighbourhood": "Window Bank",
-    "deskPreferences": [
-      "standing-desk",
-      "dual-monitor"
-    ],
-    "bookingWindowDays": 11,
-    "accessibilityNeeds": null,
-    "status": "onboarding",
-    "createdAt": "2025-04-24"
-  },
-  {
-    "id": "7c72516b-0f2e-4c8c-ae35-81fc8d9d0176",
-    "employeeId": "EMP12252",
-    "fullName": "Terry Riddle",
-    "email": "terry.riddle@thebank.com",
-    "location": "Edinburgh",
-    "team": "Cyber Security",
-    "role": "Engineer",
-    "manager": "Garrett Sexton",
-    "anchorDays": [
-      "Tuesday",
-      "Thursday"
-    ],
-    "defaultWorkingPattern": {
-      "monday": "office",
-      "tuesday": "office",
-      "wednesday": "office",
-      "thursday": "office",
-      "friday": "remote"
-    },
-    "preferredNeighbourhood": "Window Bank",
-    "deskPreferences": [
-      "dual-monitor",
-      "near-team",
-      "window-seat"
-    ],
-    "bookingWindowDays": 21,
-    "accessibilityNeeds": null,
-    "status": "active",
-    "createdAt": "2024-07-09"
-  },
-  {
-    "id": "2852b17f-ce21-42e6-b9ca-f575c42b9dd6",
-    "employeeId": "EMP55249",
-    "fullName": "Hayden Tyson",
-    "email": "hayden.tyson@thebank.com",
-    "location": "Leeds",
-    "team": "Operations",
-    "role": "Lead Engineer",
-    "manager": "Cox Nelson",
-    "anchorDays": [
-      "Monday",
-      "Tuesday",
-      "Wednesday"
-    ],
-    "defaultWorkingPattern": {
-      "monday": "remote",
-      "tuesday": "office",
-      "wednesday": "office",
-      "thursday": "remote",
-      "friday": "office"
-    },
-    "preferredNeighbourhood": "Core Desk Area",
-    "deskPreferences": [
-      "accessible-desk"
-    ],
-    "bookingWindowDays": 22,
-    "accessibilityNeeds": null,
-    "status": "active",
-    "createdAt": "2025-11-03"
-  },
-  {
-    "id": "c6811c0d-10a2-492a-b357-2f4bff5e71c3",
-    "employeeId": "EMP58071",
-    "fullName": "Olson Perez",
-    "email": "olson.perez@thebank.com",
-    "location": "London",
-    "team": "Finance",
-    "role": "Manager",
-    "manager": "Wanda Benjamin",
-    "anchorDays": [
-      "Tuesday",
-      "Wednesday",
-      "Thursday"
-    ],
-    "defaultWorkingPattern": {
-      "monday": "office",
-      "tuesday": "office",
-      "wednesday": "office",
-      "thursday": "office",
-      "friday": "remote"
-    },
-    "preferredNeighbourhood": "Window Bank",
-    "deskPreferences": [
-      "near-team",
-      "window-seat"
-    ],
-    "bookingWindowDays": 24,
-    "accessibilityNeeds": "ergonomic-chair",
-    "status": "onboarding",
-    "createdAt": "2024-07-04"
-  },
-  {
-    "id": "7cfd0ced-eb61-4cb2-a351-8d7f044c7952",
-    "employeeId": "EMP97602",
-    "fullName": "Lessie Arnold",
-    "email": "lessie.arnold@thebank.com",
-    "location": "Leeds",
-    "team": "Retail Banking",
-    "role": "Lead Engineer",
-    "manager": "Humphrey England",
-    "anchorDays": [
-      "Monday",
-      "Tuesday",
-      "Wednesday"
-    ],
-    "defaultWorkingPattern": {
-      "monday": "office",
-      "tuesday": "office",
-      "wednesday": "office",
-      "thursday": "remote",
-      "friday": "remote"
-    },
-    "preferredNeighbourhood": "Window Bank",
-    "deskPreferences": [
-      "quiet-area"
-    ],
-    "bookingWindowDays": 15,
-    "accessibilityNeeds": "ergonomic-chair",
-    "status": "contractor",
-    "createdAt": "2025-10-27"
-  },
-  {
-    "id": "99cc75d5-4401-475f-87c9-60c06cf0b130",
-    "employeeId": "EMP31305",
-    "fullName": "Odonnell Holden",
-    "email": "odonnell.holden@thebank.com",
-    "location": "Edinburgh",
-    "team": "Retail Banking",
-    "role": "Product Manager",
-    "manager": "Ellis Lewis",
-    "anchorDays": [
-      "Tuesday",
-      "Thursday"
-    ],
-    "defaultWorkingPattern": {
-      "monday": "office",
-      "tuesday": "office",
-      "wednesday": "office",
-      "thursday": "office",
-      "friday": "remote"
-    },
-    "preferredNeighbourhood": "Core Desk Area",
-    "deskPreferences": [
-      "accessible-desk",
-      "quiet-area"
-    ],
-    "bookingWindowDays": 22,
-    "accessibilityNeeds": null,
-    "status": "active",
-    "createdAt": "2024-08-18"
-  },
-  {
-    "id": "ab59f9ab-7503-4f76-be0c-a6d9286eed8c",
-    "employeeId": "EMP39788",
-    "fullName": "Bridges Vang",
-    "email": "bridges.vang@thebank.com",
-    "location": "London",
-    "team": "HR",
-    "role": "Product Manager",
-    "manager": "Valencia Frost",
-    "anchorDays": [
-      "Tuesday",
-      "Wednesday",
-      "Thursday"
-    ],
-    "defaultWorkingPattern": {
-      "monday": "office",
-      "tuesday": "office",
-      "wednesday": "office",
-      "thursday": "office",
-      "friday": "remote"
-    },
-    "preferredNeighbourhood": "Collaboration Zone",
-    "deskPreferences": [
-      "quiet-area"
-    ],
-    "bookingWindowDays": 15,
-    "accessibilityNeeds": null,
-    "status": "active",
-    "createdAt": "2026-04-01"
-  },
-  {
-    "id": "fc5e4521-96be-4884-a090-abde5eb81dff",
-    "employeeId": "EMP51091",
-    "fullName": "Thelma Mathis",
-    "email": "thelma.mathis@thebank.com",
-    "location": "Edinburgh",
-    "team": "Cyber Security",
-    "role": "Product Manager",
-    "manager": "Melody Gardner",
-    "anchorDays": [
-      "Tuesday",
-      "Thursday"
-    ],
-    "defaultWorkingPattern": {
-      "monday": "office",
-      "tuesday": "office",
-      "wednesday": "office",
-      "thursday": "office",
-      "friday": "remote"
-    },
-    "preferredNeighbourhood": "Core Desk Area",
-    "deskPreferences": [
-      "window-seat",
-      "standing-desk",
-      "dual-monitor"
-    ],
-    "bookingWindowDays": 12,
-    "accessibilityNeeds": null,
-    "status": "active",
-    "createdAt": "2025-02-18"
-  },
-  {
-    "id": "05484c49-3708-4e3f-944b-fc4012efa1c3",
-    "employeeId": "EMP52821",
-    "fullName": "Harriet Henson",
-    "email": "harriet.henson@thebank.com",
-    "location": "London",
-    "team": "Operations",
-    "role": "Manager",
-    "manager": "Marcie Sanders",
-    "anchorDays": [
-      "Tuesday",
-      "Wednesday",
-      "Thursday"
-    ],
-    "defaultWorkingPattern": {
-      "monday": "remote",
-      "tuesday": "office",
-      "wednesday": "office",
-      "thursday": "remote",
-      "friday": "remote"
-    },
-    "preferredNeighbourhood": "Quiet Zone",
-    "deskPreferences": [
-      "window-seat",
-      "quiet-area",
-      "standing-desk"
-    ],
-    "bookingWindowDays": 21,
-    "accessibilityNeeds": "step-free-access",
-    "status": "active",
-    "createdAt": "2024-08-08"
-  },
-  {
-    "id": "8a8ea5f3-e1f4-4e2b-8035-9a6c7adbb255",
-    "employeeId": "EMP88010",
-    "fullName": "Lynn Snow",
-    "email": "lynn.snow@thebank.com",
-    "location": "Leeds",
-    "team": "HR",
-    "role": "Product Manager",
-    "manager": "Kaitlin Ray",
-    "anchorDays": [
-      "Monday",
-      "Tuesday",
-      "Wednesday"
-    ],
-    "defaultWorkingPattern": {
-      "monday": "office",
-      "tuesday": "office",
-      "wednesday": "office",
-      "thursday": "office",
-      "friday": "office"
-    },
-    "preferredNeighbourhood": "Quiet Zone",
-    "deskPreferences": [
-      "window-seat",
-      "accessible-desk"
-    ],
-    "bookingWindowDays": 19,
-    "accessibilityNeeds": null,
-    "status": "active",
-    "createdAt": "2024-01-28"
-  },
-  {
-    "id": "c5fc4cfc-c41d-4b80-acb8-3f29167d93eb",
-    "employeeId": "EMP23027",
-    "fullName": "Vivian Stevenson",
-    "email": "vivian.stevenson@thebank.com",
-    "location": "Edinburgh",
-    "team": "Retail Banking",
-    "role": "Product Manager",
-    "manager": "Gwen Wheeler",
-    "anchorDays": [
-      "Tuesday",
-      "Thursday"
-    ],
-    "defaultWorkingPattern": {
-      "monday": "remote",
-      "tuesday": "office",
-      "wednesday": "office",
-      "thursday": "office",
-      "friday": "office"
-    },
-    "preferredNeighbourhood": "Window Bank",
-    "deskPreferences": [
-      "quiet-area"
-    ],
-    "bookingWindowDays": 16,
-    "accessibilityNeeds": "ergonomic-chair",
-    "status": "active",
-    "createdAt": "2024-07-30"
-  },
-  {
-    "id": "2d617bd0-4242-4e30-83d5-ace0b546f1fa",
-    "employeeId": "EMP62266",
-    "fullName": "Pratt Rush",
-    "email": "pratt.rush@thebank.com",
-    "location": "Edinburgh",
-    "team": "Retail Banking",
-    "role": "Lead Engineer",
-    "manager": "Cecelia Brown",
-    "anchorDays": [
-      "Tuesday",
-      "Thursday"
-    ],
-    "defaultWorkingPattern": {
-      "monday": "remote",
-      "tuesday": "office",
-      "wednesday": "office",
-      "thursday": "office",
-      "friday": "remote"
-    },
-    "preferredNeighbourhood": "Quiet Zone",
-    "deskPreferences": [
-      "accessible-desk",
-      "dual-monitor",
-      "accessible-desk"
-    ],
-    "bookingWindowDays": 9,
-    "accessibilityNeeds": "step-free-access",
-    "status": "active",
-    "createdAt": "2024-04-13"
-  },
-  {
-    "id": "5ef677dd-caae-4099-872d-92819df06524",
-    "employeeId": "EMP82447",
-    "fullName": "Atkins Jordan",
-    "email": "atkins.jordan@thebank.com",
-    "location": "Edinburgh",
-    "team": "Retail Banking",
+    "team": "Directory Services",
     "role": "Senior Engineer",
-    "manager": "Matthews Sharpe",
+    "lineManager": {
+      "name": "Sophie Taylor",
+      "email": "sophie.taylor@thebank.com"
+    },
     "anchorDays": [
-      "Tuesday",
-      "Thursday"
+      "Monday"
     ],
     "defaultWorkingPattern": {
       "monday": "office",
-      "tuesday": "office",
-      "wednesday": "office",
-      "thursday": "office",
-      "friday": "remote"
-    },
-    "preferredNeighbourhood": "Core Desk Area",
-    "deskPreferences": [
-      "dual-monitor",
-      "standing-desk",
-      "accessible-desk"
-    ],
-    "bookingWindowDays": 28,
-    "accessibilityNeeds": null,
-    "status": "active",
-    "createdAt": "2026-02-28"
-  },
-  {
-    "id": "f3239602-02ec-4c72-80de-9d29cdd8200c",
-    "employeeId": "EMP28483",
-    "fullName": "Tabitha West",
-    "email": "tabitha.west@thebank.com",
-    "location": "Edinburgh",
-    "team": "Platform Engineering",
-    "role": "Senior Engineer",
-    "manager": "Odessa Oliver",
-    "anchorDays": [
-      "Tuesday",
-      "Thursday"
-    ],
-    "defaultWorkingPattern": {
-      "monday": "office",
-      "tuesday": "office",
-      "wednesday": "office",
-      "thursday": "office",
-      "friday": "office"
-    },
-    "preferredNeighbourhood": "Collaboration Zone",
-    "deskPreferences": [
-      "window-seat"
-    ],
-    "bookingWindowDays": 11,
-    "accessibilityNeeds": null,
-    "status": "active",
-    "createdAt": "2024-03-31"
-  },
-  {
-    "id": "1f51e052-debb-40ef-bb58-bff16d375a7a",
-    "employeeId": "EMP57710",
-    "fullName": "Watkins Little",
-    "email": "watkins.little@thebank.com",
-    "location": "Leeds",
-    "team": "Operations",
-    "role": "Engineer",
-    "manager": "Flossie Rojas",
-    "anchorDays": [
-      "Monday",
-      "Tuesday",
-      "Wednesday"
-    ],
-    "defaultWorkingPattern": {
-      "monday": "remote",
-      "tuesday": "office",
-      "wednesday": "office",
-      "thursday": "office",
-      "friday": "remote"
-    },
-    "preferredNeighbourhood": "Window Bank",
-    "deskPreferences": [
-      "dual-monitor",
-      "window-seat",
-      "quiet-area"
-    ],
-    "bookingWindowDays": 22,
-    "accessibilityNeeds": "screen-reader-support",
-    "status": "active",
-    "createdAt": "2024-08-12"
-  },
-  {
-    "id": "1fee4696-1f37-4d35-b556-50d9d9b5b941",
-    "employeeId": "EMP29921",
-    "fullName": "Millicent Fox",
-    "email": "millicent.fox@thebank.com",
-    "location": "Leeds",
-    "team": "Cyber Security",
-    "role": "Manager",
-    "manager": "Nolan Wise",
-    "anchorDays": [
-      "Monday",
-      "Tuesday",
-      "Wednesday"
-    ],
-    "defaultWorkingPattern": {
-      "monday": "office",
-      "tuesday": "office",
+      "tuesday": "remote",
       "wednesday": "office",
       "thursday": "remote",
       "friday": "remote"
-    },
-    "preferredNeighbourhood": "Core Desk Area",
-    "deskPreferences": [
-      "accessible-desk",
-      "standing-desk"
-    ],
-    "bookingWindowDays": 17,
-    "accessibilityNeeds": "screen-reader-support",
-    "status": "active",
-    "createdAt": "2025-09-14"
-  },
-  {
-    "id": "5ee0ca2d-b259-402a-b69b-ce66a2f32c78",
-    "employeeId": "EMP73374",
-    "fullName": "Aline Nichols",
-    "email": "aline.nichols@thebank.com",
-    "location": "London",
-    "team": "Platform Engineering",
-    "role": "Analyst",
-    "manager": "Ola Boyle",
-    "anchorDays": [
-      "Tuesday",
-      "Wednesday",
-      "Thursday"
-    ],
-    "defaultWorkingPattern": {
-      "monday": "office",
-      "tuesday": "office",
-      "wednesday": "office",
-      "thursday": "remote",
-      "friday": "remote"
-    },
-    "preferredNeighbourhood": "Collaboration Zone",
-    "deskPreferences": [
-      "quiet-area",
-      "dual-monitor"
-    ],
-    "bookingWindowDays": 13,
-    "accessibilityNeeds": null,
-    "status": "active",
-    "createdAt": "2026-03-21"
-  },
-  {
-    "id": "140b1a16-e440-478d-9a57-83047e6c1f92",
-    "employeeId": "EMP99014",
-    "fullName": "Bessie Fields",
-    "email": "bessie.fields@thebank.com",
-    "location": "Leeds",
-    "team": "HR",
-    "role": "Engineer",
-    "manager": "Belinda Chandler",
-    "anchorDays": [
-      "Monday",
-      "Tuesday",
-      "Wednesday"
-    ],
-    "defaultWorkingPattern": {
-      "monday": "office",
-      "tuesday": "office",
-      "wednesday": "office",
-      "thursday": "remote",
-      "friday": "remote"
-    },
-    "preferredNeighbourhood": "Window Bank",
-    "deskPreferences": [
-      "quiet-area",
-      "accessible-desk",
-      "window-seat"
-    ],
-    "bookingWindowDays": 21,
-    "accessibilityNeeds": "screen-reader-support",
-    "status": "onboarding",
-    "createdAt": "2026-04-14"
-  },
-  {
-    "id": "d9fbfa9c-5e7e-43d8-9760-3cc88d5bfedb",
-    "employeeId": "EMP16295",
-    "fullName": "Marlene Lowery",
-    "email": "marlene.lowery@thebank.com",
-    "location": "Edinburgh",
-    "team": "Finance",
-    "role": "Product Manager",
-    "manager": "Jarvis Hill",
-    "anchorDays": [
-      "Tuesday",
-      "Thursday"
-    ],
-    "defaultWorkingPattern": {
-      "monday": "office",
-      "tuesday": "office",
-      "wednesday": "office",
-      "thursday": "remote",
-      "friday": "office"
-    },
-    "preferredNeighbourhood": "Collaboration Zone",
-    "deskPreferences": [
-      "near-team",
-      "near-team"
-    ],
-    "bookingWindowDays": 25,
-    "accessibilityNeeds": null,
-    "status": "active",
-    "createdAt": "2024-12-26"
-  },
-  {
-    "id": "e63a4a41-458a-457a-a73a-5225a1422c16",
-    "employeeId": "EMP57893",
-    "fullName": "Zimmerman Mcdowell",
-    "email": "zimmerman.mcdowell@thebank.com",
-    "location": "Leeds",
-    "team": "Risk",
-    "role": "Product Manager",
-    "manager": "Cash Myers",
-    "anchorDays": [
-      "Monday",
-      "Tuesday",
-      "Wednesday"
-    ],
-    "defaultWorkingPattern": {
-      "monday": "office",
-      "tuesday": "office",
-      "wednesday": "office",
-      "thursday": "remote",
-      "friday": "remote"
-    },
-    "preferredNeighbourhood": "Collaboration Zone",
-    "deskPreferences": [
-      "window-seat",
-      "standing-desk"
-    ],
-    "bookingWindowDays": 19,
-    "accessibilityNeeds": "screen-reader-support",
-    "status": "active",
-    "createdAt": "2025-12-31"
-  },
-  {
-    "id": "15221857-f987-488e-8a21-93511af1a7e2",
-    "employeeId": "EMP28067",
-    "fullName": "Cara Burnett",
-    "email": "cara.burnett@thebank.com",
-    "location": "Edinburgh",
-    "team": "Cyber Security",
-    "role": "Engineer",
-    "manager": "Freida Watts",
-    "anchorDays": [
-      "Tuesday",
-      "Thursday"
-    ],
-    "defaultWorkingPattern": {
-      "monday": "remote",
-      "tuesday": "office",
-      "wednesday": "office",
-      "thursday": "office",
-      "friday": "office"
-    },
-    "preferredNeighbourhood": "Window Bank",
-    "deskPreferences": [
-      "accessible-desk",
-      "near-team"
-    ],
-    "bookingWindowDays": 11,
-    "accessibilityNeeds": null,
-    "status": "active",
-    "createdAt": "2024-09-01"
-  },
-  {
-    "id": "5f7ab9db-9aa4-4c34-b971-f56452291fd0",
-    "employeeId": "EMP80562",
-    "fullName": "Toni Barber",
-    "email": "toni.barber@thebank.com",
-    "location": "Leeds",
-    "team": "Platform Engineering",
-    "role": "Lead Engineer",
-    "manager": "Allen Gallegos",
-    "anchorDays": [
-      "Monday",
-      "Tuesday",
-      "Wednesday"
-    ],
-    "defaultWorkingPattern": {
-      "monday": "office",
-      "tuesday": "office",
-      "wednesday": "office",
-      "thursday": "remote",
-      "friday": "office"
-    },
-    "preferredNeighbourhood": "Window Bank",
-    "deskPreferences": [
-      "near-team",
-      "dual-monitor"
-    ],
-    "bookingWindowDays": 24,
-    "accessibilityNeeds": "screen-reader-support",
-    "status": "active",
-    "createdAt": "2025-05-13"
-  },
-  {
-    "id": "f0ef0397-a324-4664-9b2c-3d4c7babd11b",
-    "employeeId": "EMP90348",
-    "fullName": "Black Mercer",
-    "email": "black.mercer@thebank.com",
-    "location": "Edinburgh",
-    "team": "Retail Banking",
-    "role": "Lead Engineer",
-    "manager": "Luella Beasley",
-    "anchorDays": [
-      "Tuesday",
-      "Thursday"
-    ],
-    "defaultWorkingPattern": {
-      "monday": "remote",
-      "tuesday": "office",
-      "wednesday": "office",
-      "thursday": "office",
-      "friday": "office"
-    },
-    "preferredNeighbourhood": "Window Bank",
-    "deskPreferences": [
-      "near-team",
-      "accessible-desk",
-      "accessible-desk"
-    ],
-    "bookingWindowDays": 9,
-    "accessibilityNeeds": "ergonomic-chair",
-    "status": "active",
-    "createdAt": "2025-10-04"
-  },
-  {
-    "id": "ee35a7d7-6898-482b-aa56-2924ab4d2abc",
-    "employeeId": "EMP81633",
-    "fullName": "Bishop Lucas",
-    "email": "bishop.lucas@thebank.com",
-    "location": "Edinburgh",
-    "team": "Retail Banking",
-    "role": "Director",
-    "manager": "Tania Ware",
-    "anchorDays": [
-      "Tuesday",
-      "Thursday"
-    ],
-    "defaultWorkingPattern": {
-      "monday": "office",
-      "tuesday": "office",
-      "wednesday": "office",
-      "thursday": "office",
-      "friday": "remote"
-    },
-    "preferredNeighbourhood": "Window Bank",
-    "deskPreferences": [
-      "accessible-desk",
-      "standing-desk",
-      "quiet-area"
-    ],
-    "bookingWindowDays": 16,
-    "accessibilityNeeds": null,
-    "status": "active",
-    "createdAt": "2025-09-11"
-  },
-  {
-    "id": "cda60750-10d3-4be3-a8c7-ae1017bb348f",
-    "employeeId": "EMP49851",
-    "fullName": "Polly Mack",
-    "email": "polly.mack@thebank.com",
-    "location": "Leeds",
-    "team": "Cyber Security",
-    "role": "Analyst",
-    "manager": "Clare Chavez",
-    "anchorDays": [
-      "Monday",
-      "Tuesday",
-      "Wednesday"
-    ],
-    "defaultWorkingPattern": {
-      "monday": "remote",
-      "tuesday": "office",
-      "wednesday": "office",
-      "thursday": "office",
-      "friday": "office"
-    },
-    "preferredNeighbourhood": "Collaboration Zone",
-    "deskPreferences": [
-      "accessible-desk",
-      "dual-monitor",
-      "dual-monitor"
-    ],
-    "bookingWindowDays": 15,
-    "accessibilityNeeds": "screen-reader-support",
-    "status": "active",
-    "createdAt": "2024-06-05"
-  },
-  {
-    "id": "aab3b77e-dc2f-466b-a773-af79f8d4965b",
-    "employeeId": "EMP49591",
-    "fullName": "Briana Jenkins",
-    "email": "briana.jenkins@thebank.com",
-    "location": "London",
-    "team": "Data",
-    "role": "Director",
-    "manager": "Bullock Juarez",
-    "anchorDays": [
-      "Tuesday",
-      "Wednesday",
-      "Thursday"
-    ],
-    "defaultWorkingPattern": {
-      "monday": "office",
-      "tuesday": "office",
-      "wednesday": "office",
-      "thursday": "office",
-      "friday": "office"
-    },
-    "preferredNeighbourhood": "Window Bank",
-    "deskPreferences": [
-      "accessible-desk",
-      "dual-monitor"
-    ],
-    "bookingWindowDays": 28,
-    "accessibilityNeeds": "step-free-access",
-    "status": "onboarding",
-    "createdAt": "2024-07-06"
-  },
-  {
-    "id": "37ffef31-3c98-4e93-9ba8-459d679c7918",
-    "employeeId": "EMP34774",
-    "fullName": "Shana Craig",
-    "email": "shana.craig@thebank.com",
-    "location": "London",
-    "team": "HR",
-    "role": "Product Manager",
-    "manager": "Darla Fuller",
-    "anchorDays": [
-      "Tuesday",
-      "Wednesday",
-      "Thursday"
-    ],
-    "defaultWorkingPattern": {
-      "monday": "office",
-      "tuesday": "office",
-      "wednesday": "office",
-      "thursday": "remote",
-      "friday": "office"
     },
     "preferredNeighbourhood": "Quiet Zone",
     "deskPreferences": [
-      "accessible-desk",
+      "standing-desk",
       "quiet-area",
       "near-team"
-    ],
-    "bookingWindowDays": 15,
-    "accessibilityNeeds": null,
-    "status": "contractor",
-    "createdAt": "2026-01-31"
-  },
-  {
-    "id": "866bd804-e27c-40ab-a1a5-c1ab7e2ab2fa",
-    "employeeId": "EMP69239",
-    "fullName": "Hurley Ford",
-    "email": "hurley.ford@thebank.com",
-    "location": "London",
-    "team": "HR",
-    "role": "Director",
-    "manager": "Vasquez Mills",
-    "anchorDays": [
-      "Tuesday",
-      "Wednesday",
-      "Thursday"
-    ],
-    "defaultWorkingPattern": {
-      "monday": "remote",
-      "tuesday": "office",
-      "wednesday": "office",
-      "thursday": "office",
-      "friday": "office"
-    },
-    "preferredNeighbourhood": "Core Desk Area",
-    "deskPreferences": [
-      "quiet-area",
-      "standing-desk",
-      "near-team"
-    ],
-    "bookingWindowDays": 25,
-    "accessibilityNeeds": "screen-reader-support",
-    "status": "active",
-    "createdAt": "2024-03-26"
-  },
-  {
-    "id": "d2eeb641-b9d2-494b-a2c9-6b318cb6cb86",
-    "employeeId": "EMP98570",
-    "fullName": "Pearson Pratt",
-    "email": "pearson.pratt@thebank.com",
-    "location": "Leeds",
-    "team": "Finance",
-    "role": "Product Manager",
-    "manager": "Janell Alston",
-    "anchorDays": [
-      "Monday",
-      "Tuesday",
-      "Wednesday"
-    ],
-    "defaultWorkingPattern": {
-      "monday": "office",
-      "tuesday": "office",
-      "wednesday": "office",
-      "thursday": "remote",
-      "friday": "remote"
-    },
-    "preferredNeighbourhood": "Collaboration Zone",
-    "deskPreferences": [
-      "standing-desk",
-      "near-team"
-    ],
-    "bookingWindowDays": 25,
-    "accessibilityNeeds": "ergonomic-chair",
-    "status": "active",
-    "createdAt": "2024-05-07"
-  },
-  {
-    "id": "d7624cff-d9fd-4c84-b5f4-9f3ddb6a4a4a",
-    "employeeId": "EMP77260",
-    "fullName": "Marian Lowe",
-    "email": "marian.lowe@thebank.com",
-    "location": "London",
-    "team": "Platform Engineering",
-    "role": "Manager",
-    "manager": "Emerson Douglas",
-    "anchorDays": [
-      "Tuesday",
-      "Wednesday",
-      "Thursday"
-    ],
-    "defaultWorkingPattern": {
-      "monday": "office",
-      "tuesday": "office",
-      "wednesday": "office",
-      "thursday": "office",
-      "friday": "office"
-    },
-    "preferredNeighbourhood": "Collaboration Zone",
-    "deskPreferences": [
-      "dual-monitor",
-      "standing-desk"
-    ],
-    "bookingWindowDays": 12,
-    "accessibilityNeeds": null,
-    "status": "active",
-    "createdAt": "2026-04-20"
-  },
-  {
-    "id": "ff7c3492-baa8-4701-af89-0ed9a72e1913",
-    "employeeId": "EMP42066",
-    "fullName": "Bridgette Carpenter",
-    "email": "bridgette.carpenter@thebank.com",
-    "location": "Edinburgh",
-    "team": "Retail Banking",
-    "role": "Senior Engineer",
-    "manager": "Delgado Hughes",
-    "anchorDays": [
-      "Tuesday",
-      "Thursday"
-    ],
-    "defaultWorkingPattern": {
-      "monday": "office",
-      "tuesday": "office",
-      "wednesday": "office",
-      "thursday": "remote",
-      "friday": "remote"
-    },
-    "preferredNeighbourhood": "Quiet Zone",
-    "deskPreferences": [
-      "standing-desk",
-      "standing-desk"
-    ],
-    "bookingWindowDays": 26,
-    "accessibilityNeeds": "ergonomic-chair",
-    "status": "onboarding",
-    "createdAt": "2025-01-30"
-  },
-  {
-    "id": "08d4fa1d-4ff0-4462-9794-de9c53c9be44",
-    "employeeId": "EMP12643",
-    "fullName": "Georgina Combs",
-    "email": "georgina.combs@thebank.com",
-    "location": "London",
-    "team": "Platform Engineering",
-    "role": "Analyst",
-    "manager": "Buchanan Talley",
-    "anchorDays": [
-      "Tuesday",
-      "Wednesday",
-      "Thursday"
-    ],
-    "defaultWorkingPattern": {
-      "monday": "office",
-      "tuesday": "office",
-      "wednesday": "office",
-      "thursday": "office",
-      "friday": "remote"
-    },
-    "preferredNeighbourhood": "Quiet Zone",
-    "deskPreferences": [
-      "quiet-area",
-      "standing-desk"
-    ],
-    "bookingWindowDays": 25,
-    "accessibilityNeeds": "ergonomic-chair",
-    "status": "active",
-    "createdAt": "2024-11-03"
-  },
-  {
-    "id": "b5a2e491-ddfd-40f7-88ee-b22c1918f543",
-    "employeeId": "EMP72331",
-    "fullName": "Wood Salinas",
-    "email": "wood.salinas@thebank.com",
-    "location": "Edinburgh",
-    "team": "Retail Banking",
-    "role": "Senior Engineer",
-    "manager": "Sloan Higgins",
-    "anchorDays": [
-      "Tuesday",
-      "Thursday"
-    ],
-    "defaultWorkingPattern": {
-      "monday": "office",
-      "tuesday": "office",
-      "wednesday": "office",
-      "thursday": "office",
-      "friday": "remote"
-    },
-    "preferredNeighbourhood": "Core Desk Area",
-    "deskPreferences": [
-      "quiet-area"
-    ],
-    "bookingWindowDays": 9,
-    "accessibilityNeeds": null,
-    "status": "contractor",
-    "createdAt": "2025-07-19"
-  },
-  {
-    "id": "37034d22-aae9-482b-a471-e29a098809b4",
-    "employeeId": "EMP16572",
-    "fullName": "Booker Wyatt",
-    "email": "booker.wyatt@thebank.com",
-    "location": "London",
-    "team": "Operations",
-    "role": "Director",
-    "manager": "Decker Deleon",
-    "anchorDays": [
-      "Tuesday",
-      "Wednesday",
-      "Thursday"
-    ],
-    "defaultWorkingPattern": {
-      "monday": "remote",
-      "tuesday": "office",
-      "wednesday": "office",
-      "thursday": "remote",
-      "friday": "office"
-    },
-    "preferredNeighbourhood": "Core Desk Area",
-    "deskPreferences": [
-      "quiet-area",
-      "quiet-area",
-      "window-seat"
-    ],
-    "bookingWindowDays": 28,
-    "accessibilityNeeds": "step-free-access",
-    "status": "contractor",
-    "createdAt": "2024-04-17"
-  },
-  {
-    "id": "6cb78cb3-5652-4a0c-a523-1909e4266842",
-    "employeeId": "EMP25253",
-    "fullName": "Gregory Camacho",
-    "email": "gregory.camacho@thebank.com",
-    "location": "Edinburgh",
-    "team": "Finance",
-    "role": "Analyst",
-    "manager": "Andrea Pearson",
-    "anchorDays": [
-      "Tuesday",
-      "Thursday"
-    ],
-    "defaultWorkingPattern": {
-      "monday": "remote",
-      "tuesday": "office",
-      "wednesday": "office",
-      "thursday": "office",
-      "friday": "office"
-    },
-    "preferredNeighbourhood": "Collaboration Zone",
-    "deskPreferences": [
-      "quiet-area"
-    ],
-    "bookingWindowDays": 23,
-    "accessibilityNeeds": null,
-    "status": "onboarding",
-    "createdAt": "2025-03-02"
-  },
-  {
-    "id": "0c609bc5-a524-4b2d-865d-7d0a888328a4",
-    "employeeId": "EMP31373",
-    "fullName": "Wiley Guerrero",
-    "email": "wiley.guerrero@thebank.com",
-    "location": "Leeds",
-    "team": "Platform Engineering",
-    "role": "Engineer",
-    "manager": "Allison Townsend",
-    "anchorDays": [
-      "Monday",
-      "Tuesday",
-      "Wednesday"
-    ],
-    "defaultWorkingPattern": {
-      "monday": "office",
-      "tuesday": "office",
-      "wednesday": "office",
-      "thursday": "office",
-      "friday": "office"
-    },
-    "preferredNeighbourhood": "Quiet Zone",
-    "deskPreferences": [
-      "standing-desk"
-    ],
-    "bookingWindowDays": 10,
-    "accessibilityNeeds": "ergonomic-chair",
-    "status": "onboarding",
-    "createdAt": "2026-02-18"
-  },
-  {
-    "id": "fd97649d-b209-4244-895c-873561edaa1b",
-    "employeeId": "EMP55881",
-    "fullName": "Kerri Head",
-    "email": "kerri.head@thebank.com",
-    "location": "Leeds",
-    "team": "Risk",
-    "role": "Lead Engineer",
-    "manager": "Martin Hamilton",
-    "anchorDays": [
-      "Monday",
-      "Tuesday",
-      "Wednesday"
-    ],
-    "defaultWorkingPattern": {
-      "monday": "remote",
-      "tuesday": "office",
-      "wednesday": "office",
-      "thursday": "remote",
-      "friday": "remote"
-    },
-    "preferredNeighbourhood": "Core Desk Area",
-    "deskPreferences": [
-      "standing-desk"
-    ],
-    "bookingWindowDays": 12,
-    "accessibilityNeeds": null,
-    "status": "onboarding",
-    "createdAt": "2025-02-25"
-  },
-  {
-    "id": "5799cdb5-7d68-490c-9a36-2655e04665d0",
-    "employeeId": "EMP34891",
-    "fullName": "Violet Leon",
-    "email": "violet.leon@thebank.com",
-    "location": "Leeds",
-    "team": "Finance",
-    "role": "Senior Engineer",
-    "manager": "Keith Allison",
-    "anchorDays": [
-      "Monday",
-      "Tuesday",
-      "Wednesday"
-    ],
-    "defaultWorkingPattern": {
-      "monday": "remote",
-      "tuesday": "office",
-      "wednesday": "office",
-      "thursday": "remote",
-      "friday": "office"
-    },
-    "preferredNeighbourhood": "Collaboration Zone",
-    "deskPreferences": [
-      "quiet-area",
-      "standing-desk",
-      "window-seat"
-    ],
-    "bookingWindowDays": 11,
-    "accessibilityNeeds": null,
-    "status": "contractor",
-    "createdAt": "2024-12-26"
-  },
-  {
-    "id": "e51f334b-43c4-44a9-95ab-97c9bb487429",
-    "employeeId": "EMP57540",
-    "fullName": "Saundra Taylor",
-    "email": "saundra.taylor@thebank.com",
-    "location": "London",
-    "team": "Cyber Security",
-    "role": "Lead Engineer",
-    "manager": "Latisha Wagner",
-    "anchorDays": [
-      "Tuesday",
-      "Wednesday",
-      "Thursday"
-    ],
-    "defaultWorkingPattern": {
-      "monday": "office",
-      "tuesday": "office",
-      "wednesday": "office",
-      "thursday": "office",
-      "friday": "remote"
-    },
-    "preferredNeighbourhood": "Collaboration Zone",
-    "deskPreferences": [
-      "standing-desk",
-      "quiet-area"
-    ],
-    "bookingWindowDays": 27,
-    "accessibilityNeeds": null,
-    "status": "active",
-    "createdAt": "2026-04-11"
-  },
-  {
-    "id": "5bcefa4a-31cf-4a96-a506-d6673d8a66d0",
-    "employeeId": "EMP22473",
-    "fullName": "Rita Duran",
-    "email": "rita.duran@thebank.com",
-    "location": "Edinburgh",
-    "team": "Finance",
-    "role": "Lead Engineer",
-    "manager": "Travis Hanson",
-    "anchorDays": [
-      "Tuesday",
-      "Thursday"
-    ],
-    "defaultWorkingPattern": {
-      "monday": "office",
-      "tuesday": "office",
-      "wednesday": "office",
-      "thursday": "office",
-      "friday": "remote"
-    },
-    "preferredNeighbourhood": "Core Desk Area",
-    "deskPreferences": [
-      "quiet-area",
-      "accessible-desk"
-    ],
-    "bookingWindowDays": 13,
-    "accessibilityNeeds": "ergonomic-chair",
-    "status": "active",
-    "createdAt": "2025-11-10"
-  },
-  {
-    "id": "3b5a7d16-0b27-4496-9752-253af6c977eb",
-    "employeeId": "EMP13108",
-    "fullName": "Jennifer Schultz",
-    "email": "jennifer.schultz@thebank.com",
-    "location": "Leeds",
-    "team": "Operations",
-    "role": "Senior Engineer",
-    "manager": "Stacey Moran",
-    "anchorDays": [
-      "Monday",
-      "Tuesday",
-      "Wednesday"
-    ],
-    "defaultWorkingPattern": {
-      "monday": "remote",
-      "tuesday": "office",
-      "wednesday": "office",
-      "thursday": "remote",
-      "friday": "remote"
-    },
-    "preferredNeighbourhood": "Collaboration Zone",
-    "deskPreferences": [
-      "accessible-desk"
-    ],
-    "bookingWindowDays": 24,
-    "accessibilityNeeds": null,
-    "status": "contractor",
-    "createdAt": "2024-03-29"
-  },
-  {
-    "id": "9f656257-c39b-438d-96cb-24eda04fcd4c",
-    "employeeId": "EMP44803",
-    "fullName": "Joann Haynes",
-    "email": "joann.haynes@thebank.com",
-    "location": "Edinburgh",
-    "team": "Finance",
-    "role": "Lead Engineer",
-    "manager": "Perez Bates",
-    "anchorDays": [
-      "Tuesday",
-      "Thursday"
-    ],
-    "defaultWorkingPattern": {
-      "monday": "office",
-      "tuesday": "office",
-      "wednesday": "office",
-      "thursday": "office",
-      "friday": "office"
-    },
-    "preferredNeighbourhood": "Quiet Zone",
-    "deskPreferences": [
-      "dual-monitor",
-      "accessible-desk"
     ],
     "bookingWindowDays": 7,
-    "accessibilityNeeds": null,
-    "status": "onboarding",
-    "createdAt": "2024-10-04"
+    "accessibilityNeeds": null
   },
   {
-    "id": "494dbf73-9933-4ab1-b494-f1ea02061ec1",
-    "employeeId": "EMP46005",
-    "fullName": "Benjamin Roy",
-    "email": "benjamin.roy@thebank.com",
-    "location": "Edinburgh",
-    "team": "Cyber Security",
-    "role": "Director",
-    "manager": "Rasmussen Hood",
+    "id": "3ed2e075-20b2-4eac-887d-0e73e404f415",
+    "employeeId": 99450,
+    "fullName": "Estella Paul",
+    "email": "estella.paul@thebank.com",
+    "location": "Leeds",
+    "team": "Directory Services",
+    "role": "Senior Engineer",
+    "lineManager": {
+      "name": "James Brown",
+      "email": "james.brown@thebank.com"
+    },
     "anchorDays": [
-      "Tuesday",
-      "Thursday"
+      "Monday"
     ],
     "defaultWorkingPattern": {
-      "monday": "remote",
-      "tuesday": "office",
+      "monday": "office",
+      "tuesday": "remote",
       "wednesday": "office",
-      "thursday": "office",
+      "thursday": "remote",
+      "friday": "office"
+    },
+    "preferredNeighbourhood": "Quiet Zone",
+    "deskPreferences": [
+      "quiet-area",
+      "standing-desk",
+      "near-team"
+    ],
+    "bookingWindowDays": 19,
+    "accessibilityNeeds": "ergonomic-chair"
+  },
+  {
+    "id": "9226ec2f-e87b-4b2b-96c7-340bcd6ff8f7",
+    "employeeId": 80128,
+    "fullName": "Elizabeth Simmons",
+    "email": "elizabeth.simmons@thebank.com",
+    "location": "Leeds",
+    "team": "Data",
+    "role": "Engineer",
+    "lineManager": {
+      "name": "Daniel Wilson",
+      "email": "daniel.wilson@thebank.com"
+    },
+    "anchorDays": [
+      "Monday"
+    ],
+    "defaultWorkingPattern": {
+      "monday": "office",
+      "tuesday": "remote",
+      "wednesday": "office",
+      "thursday": "remote",
       "friday": "remote"
     },
     "preferredNeighbourhood": "Core Desk Area",
     "deskPreferences": [
-      "standing-desk",
       "near-team",
+      "dual-monitor"
+    ],
+    "bookingWindowDays": 18,
+    "accessibilityNeeds": null
+  },
+  {
+    "id": "df338238-5bd5-48ed-bbdb-d5e95856100e",
+    "employeeId": 74006,
+    "fullName": "Billie Maldonado",
+    "email": "billie.maldonado@thebank.com",
+    "location": "Edinburgh",
+    "team": "Data",
+    "role": "Analyst",
+    "lineManager": {
+      "name": "James Brown",
+      "email": "james.brown@thebank.com"
+    },
+    "anchorDays": [
+      "Monday"
+    ],
+    "defaultWorkingPattern": {
+      "monday": "office",
+      "tuesday": "remote",
+      "wednesday": "office",
+      "thursday": "office",
+      "friday": "remote"
+    },
+    "preferredNeighbourhood": "Window Bank",
+    "deskPreferences": [
+      "dual-monitor"
+    ],
+    "bookingWindowDays": 7,
+    "accessibilityNeeds": null
+  },
+  {
+    "id": "fd99a3ad-4872-4e16-bbde-64d782042de3",
+    "employeeId": 74972,
+    "fullName": "Potts Le",
+    "email": "potts.le@thebank.com",
+    "location": "London",
+    "team": "Security",
+    "role": "Lead",
+    "lineManager": {
+      "name": "Daniel Wilson",
+      "email": "daniel.wilson@thebank.com"
+    },
+    "anchorDays": [
+      "Monday",
+      "Wednesday"
+    ],
+    "defaultWorkingPattern": {
+      "monday": "office",
+      "tuesday": "remote",
+      "wednesday": "office",
+      "thursday": "office",
+      "friday": "remote"
+    },
+    "preferredNeighbourhood": "Collaboration Zone",
+    "deskPreferences": [
+      "window-seat",
+      "near-team",
+      "near-team"
+    ],
+    "bookingWindowDays": 9,
+    "accessibilityNeeds": "ergonomic-chair"
+  },
+  {
+    "id": "f08d7227-dbfb-4902-bed3-52680828181e",
+    "employeeId": 30727,
+    "fullName": "Inez Houston",
+    "email": "inez.houston@thebank.com",
+    "location": "London",
+    "team": "Specialist Support",
+    "role": "Engineer",
+    "lineManager": {
+      "name": "Alice Smith",
+      "email": "alice.smith@thebank.com"
+    },
+    "anchorDays": [
+      "Monday",
+      "Wednesday"
+    ],
+    "defaultWorkingPattern": {
+      "monday": "office",
+      "tuesday": "remote",
+      "wednesday": "office",
+      "thursday": "remote",
+      "friday": "remote"
+    },
+    "preferredNeighbourhood": "Quiet Zone",
+    "deskPreferences": [
+      "near-team",
+      "near-team"
+    ],
+    "bookingWindowDays": 27,
+    "accessibilityNeeds": null
+  },
+  {
+    "id": "8e7aee3b-5237-426f-9184-15e391f65e4d",
+    "employeeId": 85836,
+    "fullName": "Wyatt Cherry",
+    "email": "wyatt.cherry@thebank.com",
+    "location": "Leeds",
+    "team": "Mac",
+    "role": "Senior Engineer",
+    "lineManager": {
+      "name": "Daniel Wilson",
+      "email": "daniel.wilson@thebank.com"
+    },
+    "anchorDays": [
+      "Monday"
+    ],
+    "defaultWorkingPattern": {
+      "monday": "office",
+      "tuesday": "remote",
+      "wednesday": "office",
+      "thursday": "office",
+      "friday": "office"
+    },
+    "preferredNeighbourhood": "Core Desk Area",
+    "deskPreferences": [
+      "standing-desk",
+      "quiet-area",
+      "standing-desk"
+    ],
+    "bookingWindowDays": 12,
+    "accessibilityNeeds": null
+  },
+  {
+    "id": "89e112ab-59eb-49ee-9196-f80cb476477d",
+    "employeeId": 94326,
+    "fullName": "Ferguson Castro",
+    "email": "ferguson.castro@thebank.com",
+    "location": "Leeds",
+    "team": "Platform Engineering",
+    "role": "Product Manager",
+    "lineManager": {
+      "name": "Olivia Johnson",
+      "email": "olivia.johnson@thebank.com"
+    },
+    "anchorDays": [
+      "Monday"
+    ],
+    "defaultWorkingPattern": {
+      "monday": "office",
+      "tuesday": "remote",
+      "wednesday": "office",
+      "thursday": "remote",
+      "friday": "remote"
+    },
+    "preferredNeighbourhood": "Quiet Zone",
+    "deskPreferences": [
+      "window-seat",
+      "dual-monitor"
+    ],
+    "bookingWindowDays": 24,
+    "accessibilityNeeds": "ergonomic-chair"
+  },
+  {
+    "id": "b7770170-5bc9-4d9c-885e-a31a941b046f",
+    "employeeId": 37304,
+    "fullName": "Liza Barber",
+    "email": "liza.barber@thebank.com",
+    "location": "Leeds",
+    "team": "Security",
+    "role": "Analyst",
+    "lineManager": {
+      "name": "Sophie Taylor",
+      "email": "sophie.taylor@thebank.com"
+    },
+    "anchorDays": [
+      "Monday"
+    ],
+    "defaultWorkingPattern": {
+      "monday": "office",
+      "tuesday": "remote",
+      "wednesday": "office",
+      "thursday": "remote",
+      "friday": "office"
+    },
+    "preferredNeighbourhood": "Window Bank",
+    "deskPreferences": [
+      "window-seat",
+      "standing-desk",
+      "dual-monitor"
+    ],
+    "bookingWindowDays": 20,
+    "accessibilityNeeds": null
+  },
+  {
+    "id": "1eb152fd-8784-47fc-8cd1-efe1da3c92c0",
+    "employeeId": 43879,
+    "fullName": "Dunn Kennedy",
+    "email": "dunn.kennedy@thebank.com",
+    "location": "Edinburgh",
+    "team": "Specialist Support",
+    "role": "Lead",
+    "lineManager": {
+      "name": "Sophie Taylor",
+      "email": "sophie.taylor@thebank.com"
+    },
+    "anchorDays": [
+      "Monday"
+    ],
+    "defaultWorkingPattern": {
+      "monday": "office",
+      "tuesday": "remote",
+      "wednesday": "office",
+      "thursday": "remote",
+      "friday": "remote"
+    },
+    "preferredNeighbourhood": "Collaboration Zone",
+    "deskPreferences": [
+      "dual-monitor"
+    ],
+    "bookingWindowDays": 11,
+    "accessibilityNeeds": null
+  },
+  {
+    "id": "34274c9d-f3bf-4902-af9e-88d1df82daa5",
+    "employeeId": 18622,
+    "fullName": "Tamara Snider",
+    "email": "tamara.snider@thebank.com",
+    "location": "London",
+    "team": "Directory Services",
+    "role": "Engineer",
+    "lineManager": {
+      "name": "Alice Smith",
+      "email": "alice.smith@thebank.com"
+    },
+    "anchorDays": [
+      "Monday",
+      "Wednesday"
+    ],
+    "defaultWorkingPattern": {
+      "monday": "office",
+      "tuesday": "remote",
+      "wednesday": "office",
+      "thursday": "office",
+      "friday": "remote"
+    },
+    "preferredNeighbourhood": "Collaboration Zone",
+    "deskPreferences": [
+      "window-seat",
+      "quiet-area",
+      "dual-monitor"
+    ],
+    "bookingWindowDays": 10,
+    "accessibilityNeeds": null
+  },
+  {
+    "id": "bb635ecb-759e-4030-ba6d-d114f594920a",
+    "employeeId": 19195,
+    "fullName": "Eva Hatfield",
+    "email": "eva.hatfield@thebank.com",
+    "location": "London",
+    "team": "Specialist Support",
+    "role": "Analyst",
+    "lineManager": {
+      "name": "Daniel Wilson",
+      "email": "daniel.wilson@thebank.com"
+    },
+    "anchorDays": [
+      "Monday",
+      "Wednesday"
+    ],
+    "defaultWorkingPattern": {
+      "monday": "office",
+      "tuesday": "remote",
+      "wednesday": "office",
+      "thursday": "office",
+      "friday": "office"
+    },
+    "preferredNeighbourhood": "Collaboration Zone",
+    "deskPreferences": [
+      "window-seat",
+      "quiet-area"
+    ],
+    "bookingWindowDays": 7,
+    "accessibilityNeeds": null
+  },
+  {
+    "id": "aa044d44-8e20-472e-bcf9-5e8688d3967e",
+    "employeeId": 70761,
+    "fullName": "Gretchen Poole",
+    "email": "gretchen.poole@thebank.com",
+    "location": "London",
+    "team": "Directory Services",
+    "role": "Senior Engineer",
+    "lineManager": {
+      "name": "Olivia Johnson",
+      "email": "olivia.johnson@thebank.com"
+    },
+    "anchorDays": [
+      "Monday",
+      "Wednesday"
+    ],
+    "defaultWorkingPattern": {
+      "monday": "office",
+      "tuesday": "remote",
+      "wednesday": "office",
+      "thursday": "office",
+      "friday": "remote"
+    },
+    "preferredNeighbourhood": "Quiet Zone",
+    "deskPreferences": [
       "window-seat"
+    ],
+    "bookingWindowDays": 26,
+    "accessibilityNeeds": null
+  },
+  {
+    "id": "6e3bd5e6-8999-47b5-8dcb-7084538a4ec5",
+    "employeeId": 43319,
+    "fullName": "Leigh Todd",
+    "email": "leigh.todd@thebank.com",
+    "location": "London",
+    "team": "Mac",
+    "role": "Analyst",
+    "lineManager": {
+      "name": "Olivia Johnson",
+      "email": "olivia.johnson@thebank.com"
+    },
+    "anchorDays": [
+      "Monday",
+      "Wednesday"
+    ],
+    "defaultWorkingPattern": {
+      "monday": "office",
+      "tuesday": "remote",
+      "wednesday": "office",
+      "thursday": "remote",
+      "friday": "office"
+    },
+    "preferredNeighbourhood": "Quiet Zone",
+    "deskPreferences": [
+      "near-team",
+      "dual-monitor"
+    ],
+    "bookingWindowDays": 24,
+    "accessibilityNeeds": null
+  },
+  {
+    "id": "7eb6c1d7-5142-4e3c-ab72-1a510bd6dfd3",
+    "employeeId": 97895,
+    "fullName": "Ramos Mcmahon",
+    "email": "ramos.mcmahon@thebank.com",
+    "location": "Leeds",
+    "team": "Mac",
+    "role": "Senior Engineer",
+    "lineManager": {
+      "name": "Daniel Wilson",
+      "email": "daniel.wilson@thebank.com"
+    },
+    "anchorDays": [
+      "Monday"
+    ],
+    "defaultWorkingPattern": {
+      "monday": "office",
+      "tuesday": "remote",
+      "wednesday": "office",
+      "thursday": "remote",
+      "friday": "remote"
+    },
+    "preferredNeighbourhood": "Core Desk Area",
+    "deskPreferences": [
+      "dual-monitor",
+      "accessible-desk",
+      "standing-desk"
+    ],
+    "bookingWindowDays": 13,
+    "accessibilityNeeds": null
+  },
+  {
+    "id": "a60ae143-becc-4ae5-b3a6-a64e42e7e5ba",
+    "employeeId": 74551,
+    "fullName": "Faye Crawford",
+    "email": "faye.crawford@thebank.com",
+    "location": "Leeds",
+    "team": "Platform Engineering",
+    "role": "Engineer",
+    "lineManager": {
+      "name": "Sophie Taylor",
+      "email": "sophie.taylor@thebank.com"
+    },
+    "anchorDays": [
+      "Monday"
+    ],
+    "defaultWorkingPattern": {
+      "monday": "office",
+      "tuesday": "remote",
+      "wednesday": "office",
+      "thursday": "remote",
+      "friday": "remote"
+    },
+    "preferredNeighbourhood": "Core Desk Area",
+    "deskPreferences": [
+      "accessible-desk"
+    ],
+    "bookingWindowDays": 25,
+    "accessibilityNeeds": null
+  },
+  {
+    "id": "be2a521d-cc65-4460-b397-130f2e1d4791",
+    "employeeId": 13490,
+    "fullName": "Maryann Wilson",
+    "email": "maryann.wilson@thebank.com",
+    "location": "Edinburgh",
+    "team": "Security",
+    "role": "Product Manager",
+    "lineManager": {
+      "name": "James Brown",
+      "email": "james.brown@thebank.com"
+    },
+    "anchorDays": [
+      "Monday"
+    ],
+    "defaultWorkingPattern": {
+      "monday": "office",
+      "tuesday": "remote",
+      "wednesday": "office",
+      "thursday": "remote",
+      "friday": "remote"
+    },
+    "preferredNeighbourhood": "Window Bank",
+    "deskPreferences": [
+      "window-seat"
+    ],
+    "bookingWindowDays": 11,
+    "accessibilityNeeds": null
+  },
+  {
+    "id": "95aae8cb-9a02-46ac-8c28-0758c337a65e",
+    "employeeId": 54864,
+    "fullName": "Delores Nolan",
+    "email": "delores.nolan@thebank.com",
+    "location": "Edinburgh",
+    "team": "Security",
+    "role": "Analyst",
+    "lineManager": {
+      "name": "Olivia Johnson",
+      "email": "olivia.johnson@thebank.com"
+    },
+    "anchorDays": [
+      "Monday"
+    ],
+    "defaultWorkingPattern": {
+      "monday": "office",
+      "tuesday": "remote",
+      "wednesday": "office",
+      "thursday": "office",
+      "friday": "remote"
+    },
+    "preferredNeighbourhood": "Quiet Zone",
+    "deskPreferences": [
+      "window-seat",
+      "accessible-desk"
     ],
     "bookingWindowDays": 14,
-    "accessibilityNeeds": null,
-    "status": "onboarding",
-    "createdAt": "2025-03-03"
+    "accessibilityNeeds": "ergonomic-chair"
   },
   {
-    "id": "e22d6cef-9d16-488f-a1ca-02db29840131",
-    "employeeId": "EMP16403",
-    "fullName": "Morris Clemons",
-    "email": "morris.clemons@thebank.com",
+    "id": "febf449e-f002-4507-a9b0-eb46ab472f7e",
+    "employeeId": 60380,
+    "fullName": "Esmeralda Dotson",
+    "email": "esmeralda.dotson@thebank.com",
     "location": "Edinburgh",
-    "team": "Cyber Security",
-    "role": "Manager",
-    "manager": "Lorena Bernard",
+    "team": "Mac",
+    "role": "Engineer",
+    "lineManager": {
+      "name": "Alice Smith",
+      "email": "alice.smith@thebank.com"
+    },
     "anchorDays": [
-      "Tuesday",
-      "Thursday"
+      "Monday"
     ],
     "defaultWorkingPattern": {
-      "monday": "remote",
-      "tuesday": "office",
+      "monday": "office",
+      "tuesday": "remote",
+      "wednesday": "office",
+      "thursday": "remote",
+      "friday": "office"
+    },
+    "preferredNeighbourhood": "Quiet Zone",
+    "deskPreferences": [
+      "near-team",
+      "standing-desk",
+      "standing-desk"
+    ],
+    "bookingWindowDays": 19,
+    "accessibilityNeeds": null
+  },
+  {
+    "id": "6107b4c1-740c-42d9-90eb-0a5209ebc954",
+    "employeeId": 55064,
+    "fullName": "Mccormick Barker",
+    "email": "mccormick.barker@thebank.com",
+    "location": "Edinburgh",
+    "team": "Security",
+    "role": "Senior Engineer",
+    "lineManager": {
+      "name": "Sophie Taylor",
+      "email": "sophie.taylor@thebank.com"
+    },
+    "anchorDays": [
+      "Monday"
+    ],
+    "defaultWorkingPattern": {
+      "monday": "office",
+      "tuesday": "remote",
+      "wednesday": "office",
+      "thursday": "remote",
+      "friday": "remote"
+    },
+    "preferredNeighbourhood": "Collaboration Zone",
+    "deskPreferences": [
+      "dual-monitor",
+      "standing-desk",
+      "near-team"
+    ],
+    "bookingWindowDays": 21,
+    "accessibilityNeeds": null
+  },
+  {
+    "id": "df0e2b03-30bf-44dd-ae39-4eaf2b68118f",
+    "employeeId": 42369,
+    "fullName": "Keller Herman",
+    "email": "keller.herman@thebank.com",
+    "location": "Leeds",
+    "team": "Platform Engineering",
+    "role": "Engineer",
+    "lineManager": {
+      "name": "Olivia Johnson",
+      "email": "olivia.johnson@thebank.com"
+    },
+    "anchorDays": [
+      "Monday"
+    ],
+    "defaultWorkingPattern": {
+      "monday": "office",
+      "tuesday": "remote",
+      "wednesday": "office",
+      "thursday": "office",
+      "friday": "office"
+    },
+    "preferredNeighbourhood": "Core Desk Area",
+    "deskPreferences": [
+      "accessible-desk"
+    ],
+    "bookingWindowDays": 13,
+    "accessibilityNeeds": null
+  },
+  {
+    "id": "0679fdc4-5904-449e-874c-a70437248486",
+    "employeeId": 35684,
+    "fullName": "Hodges Glass",
+    "email": "hodges.glass@thebank.com",
+    "location": "Leeds",
+    "team": "Security",
+    "role": "Lead Engineer",
+    "lineManager": {
+      "name": "James Brown",
+      "email": "james.brown@thebank.com"
+    },
+    "anchorDays": [
+      "Monday"
+    ],
+    "defaultWorkingPattern": {
+      "monday": "office",
+      "tuesday": "remote",
+      "wednesday": "office",
+      "thursday": "office",
+      "friday": "remote"
+    },
+    "preferredNeighbourhood": "Quiet Zone",
+    "deskPreferences": [
+      "quiet-area"
+    ],
+    "bookingWindowDays": 14,
+    "accessibilityNeeds": null
+  },
+  {
+    "id": "cb25ace6-fe48-41ce-bc85-ce299c7f1479",
+    "employeeId": 90360,
+    "fullName": "Kendra Sandoval",
+    "email": "kendra.sandoval@thebank.com",
+    "location": "London",
+    "team": "Mac",
+    "role": "Engineer",
+    "lineManager": {
+      "name": "Sophie Taylor",
+      "email": "sophie.taylor@thebank.com"
+    },
+    "anchorDays": [
+      "Monday",
+      "Wednesday"
+    ],
+    "defaultWorkingPattern": {
+      "monday": "office",
+      "tuesday": "remote",
+      "wednesday": "office",
+      "thursday": "office",
+      "friday": "remote"
+    },
+    "preferredNeighbourhood": "Window Bank",
+    "deskPreferences": [
+      "quiet-area"
+    ],
+    "bookingWindowDays": 16,
+    "accessibilityNeeds": null
+  },
+  {
+    "id": "c26ee549-423c-4c1a-bcde-5bf720bc1501",
+    "employeeId": 21427,
+    "fullName": "Jill Stewart",
+    "email": "jill.stewart@thebank.com",
+    "location": "Edinburgh",
+    "team": "Specialist Support",
+    "role": "Senior Engineer",
+    "lineManager": {
+      "name": "Olivia Johnson",
+      "email": "olivia.johnson@thebank.com"
+    },
+    "anchorDays": [
+      "Monday"
+    ],
+    "defaultWorkingPattern": {
+      "monday": "office",
+      "tuesday": "remote",
       "wednesday": "office",
       "thursday": "office",
       "friday": "office"
     },
     "preferredNeighbourhood": "Quiet Zone",
     "deskPreferences": [
-      "near-team"
-    ],
-    "bookingWindowDays": 27,
-    "accessibilityNeeds": "screen-reader-support",
-    "status": "contractor",
-    "createdAt": "2026-03-21"
-  },
-  {
-    "id": "f1f23afa-f47b-4527-bff7-ff9360b27ad0",
-    "employeeId": "EMP61268",
-    "fullName": "Velazquez Mcknight",
-    "email": "velazquez.mcknight@thebank.com",
-    "location": "Leeds",
-    "team": "Risk",
-    "role": "Analyst",
-    "manager": "Graham Nixon",
-    "anchorDays": [
-      "Monday",
-      "Tuesday",
-      "Wednesday"
-    ],
-    "defaultWorkingPattern": {
-      "monday": "remote",
-      "tuesday": "office",
-      "wednesday": "office",
-      "thursday": "remote",
-      "friday": "office"
-    },
-    "preferredNeighbourhood": "Window Bank",
-    "deskPreferences": [
       "accessible-desk",
-      "dual-monitor"
-    ],
-    "bookingWindowDays": 26,
-    "accessibilityNeeds": "ergonomic-chair",
-    "status": "onboarding",
-    "createdAt": "2025-09-16"
-  },
-  {
-    "id": "e8319e75-0191-429c-9905-9a74fdb8544e",
-    "employeeId": "EMP89273",
-    "fullName": "Gilliam Ellison",
-    "email": "gilliam.ellison@thebank.com",
-    "location": "Edinburgh",
-    "team": "Operations",
-    "role": "Analyst",
-    "manager": "Alexandria Mitchell",
-    "anchorDays": [
-      "Tuesday",
-      "Thursday"
-    ],
-    "defaultWorkingPattern": {
-      "monday": "office",
-      "tuesday": "office",
-      "wednesday": "office",
-      "thursday": "remote",
-      "friday": "office"
-    },
-    "preferredNeighbourhood": "Window Bank",
-    "deskPreferences": [
       "quiet-area"
     ],
-    "bookingWindowDays": 7,
-    "accessibilityNeeds": "screen-reader-support",
-    "status": "active",
-    "createdAt": "2024-01-28"
+    "bookingWindowDays": 13,
+    "accessibilityNeeds": null
   },
   {
-    "id": "d2dfc52b-a7f2-4622-88d4-ccd371908163",
-    "employeeId": "EMP86173",
-    "fullName": "Bauer Peck",
-    "email": "bauer.peck@thebank.com",
-    "location": "London",
-    "team": "Operations",
-    "role": "Analyst",
-    "manager": "Loretta Frank",
+    "id": "d9d5c4a4-e807-41e3-a209-63d1400efe4c",
+    "employeeId": 57812,
+    "fullName": "Lana Buck",
+    "email": "lana.buck@thebank.com",
+    "location": "Leeds",
+    "team": "Directory Services",
+    "role": "Product Manager",
+    "lineManager": {
+      "name": "Daniel Wilson",
+      "email": "daniel.wilson@thebank.com"
+    },
     "anchorDays": [
-      "Tuesday",
-      "Wednesday",
-      "Thursday"
+      "Monday"
     ],
     "defaultWorkingPattern": {
       "monday": "office",
-      "tuesday": "office",
+      "tuesday": "remote",
+      "wednesday": "office",
+      "thursday": "office",
+      "friday": "remote"
+    },
+    "preferredNeighbourhood": "Core Desk Area",
+    "deskPreferences": [
+      "dual-monitor",
+      "accessible-desk"
+    ],
+    "bookingWindowDays": 19,
+    "accessibilityNeeds": null
+  },
+  {
+    "id": "5c90d288-1429-4749-a636-3cf6fff1d986",
+    "employeeId": 31450,
+    "fullName": "Joseph Conley",
+    "email": "joseph.conley@thebank.com",
+    "location": "Leeds",
+    "team": "Directory Services",
+    "role": "Lead",
+    "lineManager": {
+      "name": "Sophie Taylor",
+      "email": "sophie.taylor@thebank.com"
+    },
+    "anchorDays": [
+      "Monday"
+    ],
+    "defaultWorkingPattern": {
+      "monday": "office",
+      "tuesday": "remote",
+      "wednesday": "office",
+      "thursday": "office",
+      "friday": "remote"
+    },
+    "preferredNeighbourhood": "Core Desk Area",
+    "deskPreferences": [
+      "near-team",
+      "accessible-desk"
+    ],
+    "bookingWindowDays": 22,
+    "accessibilityNeeds": null
+  },
+  {
+    "id": "f35488d1-ab5d-4521-a949-7cfa99efae91",
+    "employeeId": 53349,
+    "fullName": "Carlson Phelps",
+    "email": "carlson.phelps@thebank.com",
+    "location": "Edinburgh",
+    "team": "Specialist Support",
+    "role": "Analyst",
+    "lineManager": {
+      "name": "Alice Smith",
+      "email": "alice.smith@thebank.com"
+    },
+    "anchorDays": [
+      "Monday"
+    ],
+    "defaultWorkingPattern": {
+      "monday": "office",
+      "tuesday": "remote",
       "wednesday": "office",
       "thursday": "remote",
       "friday": "remote"
     },
-    "preferredNeighbourhood": "Collaboration Zone",
+    "preferredNeighbourhood": "Quiet Zone",
     "deskPreferences": [
       "quiet-area",
-      "dual-monitor"
+      "near-team"
     ],
-    "bookingWindowDays": 22,
-    "accessibilityNeeds": null,
-    "status": "active",
-    "createdAt": "2024-01-13"
+    "bookingWindowDays": 13,
+    "accessibilityNeeds": "ergonomic-chair"
   },
   {
-    "id": "390fe63e-9447-4ea9-ae83-12b899b3b645",
-    "employeeId": "EMP24524",
-    "fullName": "Beatriz Morse",
-    "email": "beatriz.morse@thebank.com",
-    "location": "Leeds",
-    "team": "Finance",
-    "role": "Lead Engineer",
-    "manager": "Romero Walker",
+    "id": "c3ae80c3-5579-4154-a251-29ad8f5eb179",
+    "employeeId": 78672,
+    "fullName": "Hanson Mckay",
+    "email": "hanson.mckay@thebank.com",
+    "location": "London",
+    "team": "Mac",
+    "role": "Lead",
+    "lineManager": {
+      "name": "Sophie Taylor",
+      "email": "sophie.taylor@thebank.com"
+    },
     "anchorDays": [
       "Monday",
-      "Tuesday",
       "Wednesday"
     ],
     "defaultWorkingPattern": {
       "monday": "office",
-      "tuesday": "office",
+      "tuesday": "remote",
+      "wednesday": "office",
+      "thursday": "office",
+      "friday": "office"
+    },
+    "preferredNeighbourhood": "Window Bank",
+    "deskPreferences": [
+      "standing-desk"
+    ],
+    "bookingWindowDays": 11,
+    "accessibilityNeeds": null
+  },
+  {
+    "id": "8b12210b-f499-4bcf-b144-8ef2fe3722c0",
+    "employeeId": 60841,
+    "fullName": "Angela Butler",
+    "email": "angela.butler@thebank.com",
+    "location": "Edinburgh",
+    "team": "Directory Services",
+    "role": "Analyst",
+    "lineManager": {
+      "name": "Olivia Johnson",
+      "email": "olivia.johnson@thebank.com"
+    },
+    "anchorDays": [
+      "Monday"
+    ],
+    "defaultWorkingPattern": {
+      "monday": "office",
+      "tuesday": "remote",
+      "wednesday": "office",
+      "thursday": "office",
+      "friday": "remote"
+    },
+    "preferredNeighbourhood": "Quiet Zone",
+    "deskPreferences": [
+      "accessible-desk",
+      "window-seat",
+      "dual-monitor"
+    ],
+    "bookingWindowDays": 22,
+    "accessibilityNeeds": null
+  },
+  {
+    "id": "5df11a9e-516c-462d-bc42-b7fcfc40853d",
+    "employeeId": 57086,
+    "fullName": "Day Jordan",
+    "email": "day.jordan@thebank.com",
+    "location": "Leeds",
+    "team": "Specialist Support",
+    "role": "Senior Engineer",
+    "lineManager": {
+      "name": "Olivia Johnson",
+      "email": "olivia.johnson@thebank.com"
+    },
+    "anchorDays": [
+      "Monday"
+    ],
+    "defaultWorkingPattern": {
+      "monday": "office",
+      "tuesday": "remote",
       "wednesday": "office",
       "thursday": "office",
       "friday": "office"
     },
     "preferredNeighbourhood": "Collaboration Zone",
     "deskPreferences": [
+      "window-seat",
+      "accessible-desk",
+      "dual-monitor"
+    ],
+    "bookingWindowDays": 9,
+    "accessibilityNeeds": null
+  },
+  {
+    "id": "e2107c95-c8b5-4db7-af79-fe6e87e0463a",
+    "employeeId": 33163,
+    "fullName": "Keri Wilkins",
+    "email": "keri.wilkins@thebank.com",
+    "location": "Leeds",
+    "team": "Specialist Support",
+    "role": "Product Manager",
+    "lineManager": {
+      "name": "Sophie Taylor",
+      "email": "sophie.taylor@thebank.com"
+    },
+    "anchorDays": [
+      "Monday"
+    ],
+    "defaultWorkingPattern": {
+      "monday": "office",
+      "tuesday": "remote",
+      "wednesday": "office",
+      "thursday": "office",
+      "friday": "remote"
+    },
+    "preferredNeighbourhood": "Collaboration Zone",
+    "deskPreferences": [
+      "dual-monitor"
+    ],
+    "bookingWindowDays": 14,
+    "accessibilityNeeds": null
+  },
+  {
+    "id": "4f079b51-dbd3-44cc-af2a-8ce020d51d7a",
+    "employeeId": 83718,
+    "fullName": "Quinn Soto",
+    "email": "quinn.soto@thebank.com",
+    "location": "Leeds",
+    "team": "Security",
+    "role": "Lead Engineer",
+    "lineManager": {
+      "name": "James Brown",
+      "email": "james.brown@thebank.com"
+    },
+    "anchorDays": [
+      "Monday"
+    ],
+    "defaultWorkingPattern": {
+      "monday": "office",
+      "tuesday": "remote",
+      "wednesday": "office",
+      "thursday": "remote",
+      "friday": "office"
+    },
+    "preferredNeighbourhood": "Core Desk Area",
+    "deskPreferences": [
+      "standing-desk",
+      "dual-monitor"
+    ],
+    "bookingWindowDays": 24,
+    "accessibilityNeeds": null
+  },
+  {
+    "id": "0d46ba1c-03cf-4531-b3be-651ec7a51da2",
+    "employeeId": 92322,
+    "fullName": "Clarice Cortez",
+    "email": "clarice.cortez@thebank.com",
+    "location": "Leeds",
+    "team": "Platform Engineering",
+    "role": "Engineer",
+    "lineManager": {
+      "name": "Olivia Johnson",
+      "email": "olivia.johnson@thebank.com"
+    },
+    "anchorDays": [
+      "Monday"
+    ],
+    "defaultWorkingPattern": {
+      "monday": "office",
+      "tuesday": "remote",
+      "wednesday": "office",
+      "thursday": "office",
+      "friday": "office"
+    },
+    "preferredNeighbourhood": "Quiet Zone",
+    "deskPreferences": [
+      "quiet-area",
+      "accessible-desk",
+      "accessible-desk"
+    ],
+    "bookingWindowDays": 22,
+    "accessibilityNeeds": "ergonomic-chair"
+  },
+  {
+    "id": "38b9219c-b2fd-4e8c-b8ce-fb7aaa3094f1",
+    "employeeId": 79998,
+    "fullName": "Cherie Riley",
+    "email": "cherie.riley@thebank.com",
+    "location": "Leeds",
+    "team": "Data",
+    "role": "Lead",
+    "lineManager": {
+      "name": "Olivia Johnson",
+      "email": "olivia.johnson@thebank.com"
+    },
+    "anchorDays": [
+      "Monday"
+    ],
+    "defaultWorkingPattern": {
+      "monday": "office",
+      "tuesday": "remote",
+      "wednesday": "office",
+      "thursday": "office",
+      "friday": "office"
+    },
+    "preferredNeighbourhood": "Collaboration Zone",
+    "deskPreferences": [
+      "accessible-desk",
       "window-seat"
     ],
     "bookingWindowDays": 13,
-    "accessibilityNeeds": null,
-    "status": "onboarding",
-    "createdAt": "2025-08-02"
-  },
-  {
-    "id": "7e82c893-b34d-41da-ae8d-aaba2eeff123",
-    "employeeId": "EMP39486",
-    "fullName": "Lucile Bean",
-    "email": "lucile.bean@thebank.com",
-    "location": "Edinburgh",
-    "team": "Risk",
-    "role": "Manager",
-    "manager": "Teresa Scott",
-    "anchorDays": [
-      "Tuesday",
-      "Thursday"
-    ],
-    "defaultWorkingPattern": {
-      "monday": "remote",
-      "tuesday": "office",
-      "wednesday": "office",
-      "thursday": "remote",
-      "friday": "remote"
-    },
-    "preferredNeighbourhood": "Window Bank",
-    "deskPreferences": [
-      "near-team",
-      "quiet-area"
-    ],
-    "bookingWindowDays": 12,
-    "accessibilityNeeds": "screen-reader-support",
-    "status": "active",
-    "createdAt": "2024-03-07"
+    "accessibilityNeeds": null
   }
 ]
