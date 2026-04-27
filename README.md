@@ -29,22 +29,20 @@ The `data/` directory contains seed data to build against.
 
 ### `data/users.json`
 
-100 fictional employee records for a bank. Each record includes:
+50 fictional employee records for a bank. Each record includes:
 
 | Field | Description |
 |---|---|
 | `id` | UUID |
-| `employeeId` | e.g. `EMP12345` |
+| `employeeId` | Integer, e.g. `80124` |
 | `fullName` / `email` | Identity fields |
 | `location` | `London`, `Edinburgh`, or `Leeds` |
-| `team` | One of: Cyber Security, Data, Finance, HR, Operations, Platform Engineering, Retail Banking, Risk |
-| `role` | Analyst, Engineer, Senior Engineer, Lead Engineer, Manager, Product Manager, Director |
-| `manager` | Manager's full name |
+| `team` | One of: Security, Data, Platform Engineering, Mac, Directory Services, Specialist Support |
+| `role` | Analyst, Engineer, Senior Engineer, Lead Engineer, Lead, Product Manager |
+| `lineManager` | Object with `name` and `email` fields |
 | `anchorDays` | Days the employee is expected in the office |
 | `defaultWorkingPattern` | Per-day `office` or `remote` schedule |
-| `preferredNeighbourhood` | Desk zone preference (e.g. Quiet Zone, Collaboration Zone) |
-| `deskPreferences` | Array of preferences e.g. `standing-desk`, `window-seat`, `accessible-desk` |
+| `preferredNeighbourhood` | Desk zone preference: Quiet Zone, Collaboration Zone, Core Desk Area, Window Bank |
+| `deskPreferences` | Array of preferences e.g. `standing-desk`, `window-seat`, `accessible-desk`, `dual-monitor`, `near-team`, `quiet-area` |
 | `bookingWindowDays` | How far ahead they can book a desk |
-| `accessibilityNeeds` | String or `null` |
-| `status` | `active`, `onboarding`, or `contractor` |
-| `createdAt` | ISO date string |
+| `accessibilityNeeds` | String (e.g. `ergonomic-chair`) or `null` |
