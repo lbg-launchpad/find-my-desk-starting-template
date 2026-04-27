@@ -21,6 +21,15 @@ We're building with **Claude Code** — Anthropic's AI coding assistant. If you 
 - [MCP (Model Context Protocol)](https://docs.anthropic.com/en/claude-code/mcp) — extend Claude with external tools and data sources
 - [Claude API reference](https://docs.anthropic.com/en/api/getting-started) — if you're building on top of the API directly
 
+### Prompting Claude
+
+- [Prompt engineering overview](https://docs.anthropic.com/en/docs/build-with-claude/prompt-engineering/overview)
+- [Be clear and direct](https://docs.anthropic.com/en/docs/build-with-claude/prompt-engineering/be-clear-and-direct)
+- [Use examples (few-shot)](https://docs.anthropic.com/en/docs/build-with-claude/prompt-engineering/use-examples)
+- [Chain of thought](https://docs.anthropic.com/en/docs/build-with-claude/prompt-engineering/chain-of-thought)
+- [Extended thinking](https://docs.anthropic.com/en/docs/build-with-claude/extended-thinking)
+- [Prompt library](https://docs.anthropic.com/en/prompt-library/library) — ready-made prompts for common tasks
+
 ---
 
 ## Dummy Data
