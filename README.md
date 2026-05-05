@@ -22,7 +22,7 @@ We're building with **Claude Code** — Anthropic's AI coding assistant.
 
 ### Prompting Claude
 
-- [Prompting Guidelines](https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/overviews)
+- [Prompting Guidelines](https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/overview)
 
 
 ### Tokens and Limits
