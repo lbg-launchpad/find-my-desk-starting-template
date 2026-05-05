@@ -17,7 +17,7 @@ We're building with **Claude Code** — Anthropic's AI coding assistant.
 - [How Claude Code Works](https://code.claude.com/docs/en/how-claude-code-works)
 - [Claude Code Best Practices](https://code.claude.com/docs/en/best-practices)
 - [Claude Code Common Workflows](https://code.claude.com/docs/en/common-workflows)
-- [Choosing a Model][https://platform.claude.com/docs/en/about-claude/models/choosing-a-model]
+- [Choosing a Model](https://platform.claude.com/docs/en/about-claude/models/choosing-a-model)
 
 
 ### Prompting Claude
