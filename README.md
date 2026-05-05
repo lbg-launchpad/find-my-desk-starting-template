@@ -14,17 +14,13 @@ See [CLAUDE_CODE_SETUP.md](./CLAUDE_CODE_SETUP.md) for installation instructions
 
 We're building with **Claude Code** — Anthropic's AI coding assistant.
 
-- [Claude Code overview](https://platform.claude.com/docs/en/claude-code/overview) — what it is and how it works
-- [Quickstart guide](https://platform.claude.com/docs/en/claude-code/quickstart) — installation and first steps
-- [CLAUDE.md files](https://platform.claude.com/docs/en/claude-code/memory#claudemd-files) — give Claude persistent instructions for your project
-- [MCP (Model Context Protocol)](https://platform.claude.com/docs/en/claude-code/mcp) — extend Claude with external tools and data sources
-- [Claude API reference](https://platform.claude.com/docs/en/api/getting-started) — if you're building directly on the API
+- [How Claude Code Works](https://code.claude.com/docs/en/how-claude-code-works)
+- [Claude Code Best Practices](https://code.claude.com/docs/en/best-practices)
+- [Claude Code Common Workflows](https://code.claude.com/docs/en/common-workflows)
+
 
 ### Prompting Claude
 
-- [Prompt engineering overview](https://platform.claude.com/docs/en/docs/build-with-claude/prompt-engineering/overview)
-- [Extended thinking](https://platform.claude.com/docs/en/docs/build-with-claude/extended-thinking)
-- [Prompt library](https://platform.claude.com/docs/en/prompt-library/library) — ready-made prompts for common tasks
 
 ---
 
