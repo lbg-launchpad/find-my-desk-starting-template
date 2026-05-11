@@ -70,9 +70,7 @@ function enrichBooking(b) {
 // ── Data access ────────────────────────────────────────────────────────────
 
 async function fetchUsers() {
-  const r = await fetch('../data/users.json');
-  if (!r.ok) throw new Error('Could not load users.json');
-  return r.json();
+  return USERS_DATA;
 }
 
 function getBookings({ userId, date, upcoming } = {}) {
