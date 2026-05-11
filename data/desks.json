@@ -1,0 +1,146 @@
+[
+  {
+    "deskNumber": "G-01",
+    "floor": "ground",
+    "attributes": ["dual-monitor", "quiet-area"],
+    "nearWindow": true,
+    "location": {
+      "zone": "Window Bank",
+      "xPercent": 14,
+      "yPercent": 18,
+      "floorplanImage": "ground.png"
+    }
+  },
+  {
+    "deskNumber": "G-02",
+    "floor": "ground",
+    "attributes": ["standing-desk", "quiet-area"],
+    "nearWindow": true,
+    "location": {
+      "zone": "Window Bank",
+      "xPercent": 26,
+      "yPercent": 22,
+      "floorplanImage": "ground.png"
+    }
+  },
+  {
+    "deskNumber": "G-03",
+    "floor": "ground",
+    "attributes": ["near-team", "dual-monitor"],
+    "nearWindow": false,
+    "location": {
+      "zone": "Collaboration Zone",
+      "xPercent": 39,
+      "yPercent": 29,
+      "floorplanImage": "ground.png"
+    }
+  },
+  {
+    "deskNumber": "G-04",
+    "floor": "ground",
+    "attributes": ["accessible-desk", "dual-monitor"],
+    "nearWindow": false,
+    "location": {
+      "zone": "Collaboration Zone",
+      "xPercent": 52,
+      "yPercent": 34,
+      "floorplanImage": "ground.png"
+    }
+  },
+  {
+    "deskNumber": "G-05",
+    "floor": "ground",
+    "attributes": ["quiet-area"],
+    "nearWindow": false,
+    "location": {
+      "zone": "Quiet Zone",
+      "xPercent": 66,
+      "yPercent": 20,
+      "floorplanImage": "ground.png"
+    }
+  },
+  {
+    "deskNumber": "G-06",
+    "floor": "ground",
+    "attributes": ["ergonomic-chair", "quiet-area"],
+    "nearWindow": false,
+    "location": {
+      "zone": "Quiet Zone",
+      "xPercent": 79,
+      "yPercent": 25,
+      "floorplanImage": "ground.png"
+    }
+  },
+  {
+    "deskNumber": "F-01",
+    "floor": "first",
+    "attributes": ["dual-monitor", "standing-desk"],
+    "nearWindow": true,
+    "location": {
+      "zone": "Window Bank",
+      "xPercent": 15,
+      "yPercent": 20,
+      "floorplanImage": "first.png"
+    }
+  },
+  {
+    "deskNumber": "F-02",
+    "floor": "first",
+    "attributes": ["quiet-area"],
+    "nearWindow": true,
+    "location": {
+      "zone": "Window Bank",
+      "xPercent": 29,
+      "yPercent": 18,
+      "floorplanImage": "first.png"
+    }
+  },
+  {
+    "deskNumber": "F-03",
+    "floor": "first",
+    "attributes": ["near-team", "dual-monitor"],
+    "nearWindow": false,
+    "location": {
+      "zone": "Collaboration Zone",
+      "xPercent": 42,
+      "yPercent": 33,
+      "floorplanImage": "first.png"
+    }
+  },
+  {
+    "deskNumber": "F-04",
+    "floor": "first",
+    "attributes": ["accessible-desk", "standing-desk"],
+    "nearWindow": false,
+    "location": {
+      "zone": "Collaboration Zone",
+      "xPercent": 57,
+      "yPercent": 30,
+      "floorplanImage": "first.png"
+    }
+  },
+  {
+    "deskNumber": "F-05",
+    "floor": "first",
+    "attributes": ["quiet-area", "ergonomic-chair"],
+    "nearWindow": false,
+    "location": {
+      "zone": "Quiet Zone",
+      "xPercent": 70,
+      "yPercent": 21,
+      "floorplanImage": "first.png"
+    }
+  },
+  {
+    "deskNumber": "F-06",
+    "floor": "first",
+    "attributes": ["dual-monitor", "quiet-area"],
+    "nearWindow": false,
+    "location": {
+      "zone": "Quiet Zone",
+      "xPercent": 83,
+      "yPercent": 26,
+      "floorplanImage": "first.png"
+    }
+  }
+]
