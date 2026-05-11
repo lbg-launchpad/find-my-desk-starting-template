@@ -7,7 +7,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Syne:wght@500;700;800&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href="../static/styles.css" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}" />
 </head>
 <body data-initial-view="{{ initial_view|default('bookings') }}">
     <div class="grain"></div>
@@ -18,8 +18,8 @@
                 <strong>Workday Planner</strong>
             </div>
             <div class="nav-links" role="tablist" aria-label="Main views">
-                <a class="nav-tab {% if initial_view == 'bookings' %}active{% endif %}" href="/" role="tab">Bookings</a>
-                <a class="nav-tab {% if initial_view == 'settings' %}active{% endif %}" href="/settings" target="_blank" rel="noopener" role="tab">User Settings</a>
+                <button class="nav-tab {% if initial_view == 'bookings' %}active{% endif %}" data-view="bookings" role="tab" aria-selected="{% if initial_view == 'bookings' %}true{% else %}false{% endif %}">📋 Bookings</button>
+                <button class="nav-tab {% if initial_view == 'settings' %}active{% endif %}" data-view="settings" role="tab" aria-selected="{% if initial_view == 'settings' %}true{% else %}false{% endif %}">⚙️ User Settings</button>
             </div>
         </nav>
 
@@ -41,9 +41,15 @@
                         <span class="meta-label">Signed In As</span>
                         <p id="userBadge">Loading...</p>
                     </div>
+                    <div class="meta-item">
+                        <span class="meta-label">Switch User</span>
+                        <select id="userSwitchSelect" aria-label="Switch active user">
+                            <option value="">Loading users...</option>
+                        </select>
+                    </div>
                     <div class="hero-actions">
-                        <a class="button outline" href="/auth/login">Sign in with Microsoft</a>
-                        <a class="button subtle" href="/auth/logout">Sign out</a>
+                        <a id="signInButton" class="button outline hidden" href="/auth/login">Sign in with Microsoft</a>
+                        <a id="signOutButton" class="button subtle hidden" href="/auth/logout">Sign out</a>
                     </div>
                 </div>
             </header>
@@ -72,7 +78,14 @@
                 <button id="bookButton" class="button primary" disabled>Book This Desk</button>
                 <button id="cancelButton" class="button ghost" disabled>Cancel Booking</button>
                 <div class="divider"></div>
-                <h3>Today\'s Bookings</h3>
+                <h3>Office Busyness</h3>
+                <p id="officeBusyMeta" class="hint compact-hint">Calculating office busyness...</p>
+                <div class="divider"></div>
+                <h3>Recommended Desks</h3>
+                <p id="recommendationMeta" class="hint compact-hint">Finding your best available desk matches...</p>
+                <ul id="recommendedDeskList" class="recommendation-list"></ul>
+                <div class="divider"></div>
+                <h3>Today's Bookings</h3>
                 <ul id="bookingList" class="booking-list"></ul>
             </aside>
         </section>
@@ -87,13 +100,17 @@
                 <form id="settingsForm" class="settings-form">
                     <fieldset>
                         <legend>Desk Preferences</legend>
+                        <div id="deskPreferencesGrid" class="prefs-grid"></div>
+                    </fieldset>
+
+                    <fieldset>
+                        <legend>Anchor Days</legend>
                         <div class="prefs-grid">
-                            <label><input type="checkbox" name="deskPreferences" value="quiet-area" /> Quiet Area</label>
-                            <label><input type="checkbox" name="deskPreferences" value="standing-desk" /> Standing Desk</label>
-                            <label><input type="checkbox" name="deskPreferences" value="dual-monitor" /> Dual Monitor</label>
-                            <label><input type="checkbox" name="deskPreferences" value="accessible-desk" /> Accessible Desk</label>
-                            <label><input type="checkbox" name="deskPreferences" value="near-team" /> Near Team</label>
-                            <label><input type="checkbox" name="deskPreferences" value="ergonomic-chair" /> Ergonomic Chair</label>
+                            <label><input type="checkbox" name="anchorDays" value="mon" /> Monday</label>
+                            <label><input type="checkbox" name="anchorDays" value="tue" /> Tuesday</label>
+                            <label><input type="checkbox" name="anchorDays" value="wed" /> Wednesday</label>
+                            <label><input type="checkbox" name="anchorDays" value="thu" /> Thursday</label>
+                            <label><input type="checkbox" name="anchorDays" value="fri" /> Friday</label>
                         </div>
                     </fieldset>
 
@@ -120,6 +137,6 @@
         <button class="desk-pin" type="button"></button>
     </template>
 
-    <script src="../static/app.js"></script>
+    <script src="{{ url_for('static', filename='app.js') }}"></script>
 </body>
 </html>

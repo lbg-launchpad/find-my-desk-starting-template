@@ -41,7 +41,7 @@ Office layout images are in the `floorplans/` directory: `ground.png` and `first
 
 ### Employee Directory
 
-`data/users.json` contains 50 fictional bank employee records. Each record includes details such as name, job title, department, and contact information — enough to simulate a realistic internal directory. 
+The app stores employee directory records in `data/users.db` and desk records in `data/desks.db`.
 
 ---
 

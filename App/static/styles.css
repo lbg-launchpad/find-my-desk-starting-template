@@ -165,6 +165,15 @@ input[type="date"] {
   font: inherit;
 }
 
+#userSwitchSelect {
+  width: 100%;
+  border: 1px solid rgba(167, 127, 97, 0.34);
+  border-radius: 10px;
+  padding: 0.5rem;
+  font: inherit;
+  background: #fff;
+}
+
 .hero-actions {
   display: flex;
   gap: 0.55rem;
@@ -182,7 +191,7 @@ input[type="date"] {
 }
 
 .hidden {
-  display: none;
+  display: none !important;
 }
 
 .settings-layout {
@@ -401,14 +410,24 @@ input[type="date"] {
   transform: translate(-50%, -50%);
   border: none;
   border-radius: 999px;
-  background: var(--ok);
+  background: #33cc33;
   color: white;
-  font-size: 0.68rem;
+  font-size: 0.7rem;
   font-weight: 700;
-  padding: 0.28rem 0.55rem;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: 0.01em;
+  white-space: nowrap;
+  min-width: 3rem;
+  padding: 0.28rem 0.45rem;
+  text-align: center;
   cursor: pointer;
-  transition: transform 150ms ease, filter 150ms ease, box-shadow 150ms ease;
-  box-shadow: 0 6px 14px rgba(25, 135, 84, 0.35);
+  transition: transform 150ms ease;
+  box-shadow: none !important;
+}
+
+.desk-pin.available {
+  background: var(--ok) !important;
+  color: white;
 }
 
 .desk-pin:hover {
@@ -416,8 +435,27 @@ input[type="date"] {
 }
 
 .desk-pin.booked {
-  background: var(--warn);
-  box-shadow: 0 6px 14px rgba(156, 62, 46, 0.32);
+  background: #ff1f1f !important;
+  box-shadow: none !important;
+}
+
+.desk-pin.booked.booked-by-teammate {
+  background: #ff69b4 !important;
+  box-shadow: none !important;
+}
+
+.desk-pin.booked.booked-by-preferred {
+  background: #ff8c00 !important;
+  box-shadow: none !important;
+}
+
+.desk-pin.recommended {
+  background: #1e63ff;
+  box-shadow: none !important;
+}
+
+.desk-pin.available.recommended {
+  background: #1e63ff !important;
 }
 
 .desk-pin.selected {
@@ -426,8 +464,17 @@ input[type="date"] {
 }
 
 .desk-pin.pref-mismatch {
-  filter: grayscale(0.45);
-  opacity: 0.7;
+  background: #33cc33;
+}
+
+.desk-pin.booked-by-teammate {
+  background: #ff69b4;
+  box-shadow: 0 6px 14px rgba(255, 105, 180, 0.3);
+}
+
+.desk-pin.booked-by-preferred {
+  background: var(--brand);
+  box-shadow: none !important;
 }
 
 .floor-summary {
@@ -451,6 +498,11 @@ input[type="date"] {
 .selected-desk p {
   margin: 0.36rem 0 0;
   color: var(--muted);
+}
+
+.selected-desk .availability-status {
+  color: var(--ok);
+  font-weight: 700;
 }
 
 .selected-desk.empty {
@@ -531,6 +583,38 @@ input[type="date"] {
 
 .booking-list span {
   color: var(--muted);
+}
+
+.booking-list li.booking-preferred-user {
+  background: linear-gradient(135deg, rgba(47, 125, 225, 0.08), rgba(56, 189, 248, 0.08));
+  border-color: #2f7de1;
+  border-width: 2px;
+}
+
+.booking-list li.booking-preferred-user strong {
+  color: #2f7de1;
+  font-weight: 700;
+}
+
+.booking-list li.booking-teammate {
+  background: linear-gradient(135deg, rgba(239, 95, 60, 0.08), rgba(255, 186, 94, 0.08));
+  border-color: var(--brand);
+  border-width: 2px;
+}
+
+.booking-list li.booking-teammate strong {
+  color: var(--brand);
+  font-weight: 700;
+}
+
+.preferred-indicator,
+.teammate-indicator {
+  margin-left: auto;
+  font-size: 1.1rem;
+}
+
+.teammate-indicator + .preferred-indicator {
+  margin-left: 0.35rem;
 }
 
 .muted {
