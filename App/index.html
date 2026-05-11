@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MDB</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <div id="login-screen" class="login-screen">
+    <div class="login-card">
+      <div class="login-logo">
+        <svg width="32" height="32" viewBox="0 0 32 32" fill="none"><rect width="32" height="32" rx="8" fill="#7C3AED"/><rect x="6" y="10" width="20" height="14" rx="2" fill="white" opacity="0.2"/><rect x="6" y="10" width="20" height="14" rx="2" stroke="white" stroke-width="1.5"/><rect x="10" y="14" width="12" height="2" rx="1" fill="white"/><rect x="10" y="18" width="8" height="2" rx="1" fill="white"/><rect x="13" y="24" width="6" height="2" rx="1" fill="white"/><rect x="15" y="22" width="2" height="2" fill="white"/></svg>
+        MDB
+      </div>
+      <p class="login-subtitle">My Desk Booker</p>
+      <div class="form-group">
+        <label for="user-select">Select your name to sign in</label>
+        <select id="user-select">
+          <option value="">-- Choose employee --</option>
+        </select>
+      </div>
+      <button id="login-btn" class="btn btn-primary btn-full">Sign In</button>
+    </div>
+  </div>
+
+  <div id="app" class="app hidden">
+    <aside class="sidebar">
+      <div class="sidebar-header">
+        <svg width="22" height="22" viewBox="0 0 32 32" fill="none"><rect width="32" height="32" rx="8" fill="#7C3AED"/><rect x="6" y="10" width="20" height="14" rx="2" fill="white" opacity="0.2"/><rect x="6" y="10" width="20" height="14" rx="2" stroke="white" stroke-width="1.5"/><rect x="10" y="14" width="12" height="2" rx="1" fill="white"/><rect x="10" y="18" width="8" height="2" rx="1" fill="white"/><rect x="13" y="24" width="6" height="2" rx="1" fill="white"/><rect x="15" y="22" width="2" height="2" fill="white"/></svg>
+        <span>MDB</span>
+      </div>
+      <nav class="sidebar-nav">
+        <a href="#" class="nav-item" data-view="dashboard">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg>
+          Dashboard
+        </a>
+        <a href="#" class="nav-item" data-view="book">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/><line x1="9" y1="16" x2="15" y2="16"/><line x1="12" y1="13" x2="12" y2="19"/></svg>
+          Book a Desk
+        </a>
+        <a href="#" class="nav-item" data-view="my-bookings">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/></svg>
+          My Bookings
+        </a>
+        <a href="#" class="nav-item" data-view="whos-in">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg>
+          Who's In
+        </a>
+      </nav>
+      <div class="sidebar-footer">
+        <div class="sidebar-user">
+          <div class="user-avatar" id="sidebar-avatar"></div>
+          <div class="user-meta">
+            <div class="user-name" id="sidebar-name"></div>
+            <div class="user-role" id="sidebar-role"></div>
+          </div>
+        </div>
+        <button class="btn-signout" id="logout-btn">Sign out</button>
+      </div>
+    </aside>
+
+    <main class="main">
+      <div id="view-dashboard" class="view"></div>
+      <div id="view-book" class="view hidden"></div>
+      <div id="view-my-bookings" class="view hidden"></div>
+      <div id="view-whos-in" class="view hidden"></div>
+    </main>
+  </div>
+
+  <div id="toast-container" class="toast-container"></div>
+
+  <div id="modal-overlay" class="modal-overlay hidden">
+    <div class="modal">
+      <div id="modal-body" class="modal-body"></div>
+    </div>
+  </div>
+
+  <script src="../data/users-data.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

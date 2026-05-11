@@ -1,44 +1,42 @@
-# Find My Desk Hackathon — Starting Template
+# Desk Booking — Power Apps Build Kit
 
-Welcome to the starting template for Hackathon 1. This repo contains everything you need to get your team up and running.
+A complete build guide for a tablet/desktop canvas app backed by SharePoint, with a floor-plan picker, multi-day & weekday-recurring bookings, check-in / no-show release, and an admin screen for managing desks.
 
-## Getting Started
+## What's in this folder
 
-**Fork this repository** and rename it to your team name. That will be your team's working repo for the duration of the hackathon.
+| File | Purpose |
+|------|---------|
+| [sharepoint-lists.md](sharepoint-lists.md) | Exact SharePoint list schemas (Desks, Bookings, Floors). Build these first. |
+| [screens-and-formulas.md](screens-and-formulas.md) | Every screen, control, and Power Fx formula. |
+| [power-automate-flow.md](power-automate-flow.md) | The scheduled flow that releases no-shows. |
 
-See [CLAUDE_CODE_SETUP.md](./CLAUDE_CODE_SETUP.md) for installation instructions.
+## Prerequisites
 
----
+- Microsoft 365 tenant with Power Apps and SharePoint
+- A SharePoint site you own (e.g. `https://contoso.sharepoint.com/sites/Workplace`)
+- Power Apps Studio access at `https://make.powerapps.com`
+- (Optional but recommended) A document library on the same site for floor-plan images
 
-## Helpful Docs
+## Build order
 
-We're building with **Claude Code** — Anthropic's AI coding assistant.
+1. **Create the three SharePoint lists** per [sharepoint-lists.md](sharepoint-lists.md). Seed at least 1 floor and 5–10 desks so you have something to test against. Upload your floor-plan image to a `FloorPlans` document library and copy the direct URL into the `Floors` list.
+2. **Create a blank canvas app**, tablet layout, in Power Apps Studio.
+3. **Add the three data sources**: in the Data pane, connect SharePoint → your site → add `Desks`, `Bookings`, `Floors`.
+4. **Build screens in this order**: `App.OnStart` → `scrHome` → `scrFloorPlan` → `scrBookingForm` → `scrMyBookings` → `scrAdmin`. Formulas are in [screens-and-formulas.md](screens-and-formulas.md).
+5. **Create the Power Automate flow** from [power-automate-flow.md](power-automate-flow.md). It runs on a schedule and doesn't need to be called from the app.
+6. **Test**: book a desk for today, refresh the floor plan (it should turn red), check in, then create a no-show and wait for the flow to flip it.
+7. **Share**: in Power Apps, share the app with your test users; in SharePoint, make sure those same users have at minimum **Contribute** on the three lists.
 
-- [How Claude Code Works](https://code.claude.com/docs/en/how-claude-code-works)
-- [Claude Code Best Practices](https://code.claude.com/docs/en/best-practices)
-- [Claude Code Common Workflows](https://code.claude.com/docs/en/common-workflows)
-- [Choosing a Model](https://platform.claude.com/docs/en/about-claude/models/choosing-a-model)
+## Naming conventions used throughout
 
-### Prompting Claude
+- Screens: `scrHome`, `scrFloorPlan`, `scrBookingForm`, `scrMyBookings`, `scrAdmin`
+- Galleries: `galDesks`, `galMyBookings`, `galAdminDesks`
+- Variables: `varUser`, `varSelectedStart`, `varSelectedEnd`, `varSelectedDesk`, `varCurrentFloor`, `varIsAdmin`
+- Collections: `colDesks`, `colFloors`, `colBookingsInRange`, `colDeskStatus`
+- Forms: `frmBooking`, `frmDeskAdmin`
 
-- [Prompting Guidelines](https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/overview)
+Stick to these names and the formulas copy-paste cleanly.
 
-### Tokens and Limits
+## Licensing note
 
-Tokens are the units the API uses to measure text — roughly 1 token per ~4 characters of English. Every request and response costs tokens, so prompt length, context window size, and response verbosity all add up quickly. To stay within budget: keep system prompts lean, truncate or summarize long conversation histories rather than passing them wholesale, and set `max_tokens` to the minimum needed for each call.
-
-- [Model Costs](https://platform.claude.com/docs/en/about-claude/pricing)
-
----
-
-## Provided Data
-
-Some dummy data has been provided to help foster ideas or assist in your solution design. The data contains two office floorplans and an employee directory. **You are not required to use any of it**, and using or ignoring it will not affect scoring. You are free to mutate the data in any way you wish.
-
-### Floorplans
-
-Office layout images are in the `floorplans/` directory: `ground.png` and `first.png`.
-
-### Employee Directory
-
-`data/users.json` contains 50 fictional bank employee records. Each record includes details such as name, job title, department, and contact information — enough to simulate a realistic internal directory. 
+SharePoint is a **standard connector** — no premium license needed for users. If you later swap the backend to Dataverse or SQL, each user needs a Power Apps premium license.
