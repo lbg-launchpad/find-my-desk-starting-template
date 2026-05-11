@@ -24,6 +24,11 @@ export function BookView() {
   const me = currentUser();
   if (!me) return el("div", { class: "empty", text: "Loading…" });
 
+  // Mutable refs used by closures defined later in this function. Declared up
+  // top to avoid Temporal Dead Zone errors when bookForTeamToggle() — invoked
+  // during initial render — writes to teamPanelRef.
+  let teamPanelRef;
+
   // --- Controls card ---------------------------------------------------------
   const controls = el("section", { class: "card" });
 
@@ -324,7 +329,6 @@ export function BookView() {
     return wrap;
   }
 
-  let teamPanelRef;
   function renderTeamPanel() {
     if (!teamPanelRef) return;
     teamPanelRef.replaceChildren();

@@ -1,51 +1,25 @@
-// Minimal offline-first service worker. Caches the app shell so that
-// after first visit the app can be re-opened offline (esp. on phones).
+// Self-unregistering service worker.
+//
+// Earlier versions used a cache-first strategy that pinned stale JS/CSS
+// during development. This replacement: skips waiting, clears all caches it
+// owned, unregisters itself, and reloads any controlled tabs so the next
+// page load fetches a fresh build directly from the network.
 
-const CACHE = "spaces-lbg-v1";
-const SHELL = [
-  "./",
-  "./index.html",
-  "./styles.css",
-  "./manifest.json",
-  "./js/app.js",
-  "./js/router.js",
-  "./js/data.js",
-  "./js/store.js",
-  "./js/email.js",
-  "./js/components/ui.js",
-  "./js/components/floorplan.js",
-  "./js/components/qrcode.js",
-  "./js/views/home.js",
-  "./js/views/book.js",
-  "./js/views/bookings.js",
-  "./js/views/team.js",
-  "./js/views/wayfinder.js",
-  "./js/views/profile.js",
-  "../data/users.json",
-  "../floorplans/ground.png",
-  "../floorplans/first.png",
-];
-
-self.addEventListener("install", (e) => {
-  e.waitUntil(caches.open(CACHE).then((c) => c.addAll(SHELL).catch(() => {})));
-  self.skipWaiting();
-});
+self.addEventListener("install", () => self.skipWaiting());
 
 self.addEventListener("activate", (e) => {
-  e.waitUntil(caches.keys().then((keys) => Promise.all(keys.filter((k) => k !== CACHE).map((k) => caches.delete(k)))));
-  self.clients.claim();
+  e.waitUntil((async () => {
+    try {
+      const keys = await caches.keys();
+      await Promise.all(keys.map((k) => caches.delete(k)));
+      await self.registration.unregister();
+      const clients = await self.clients.matchAll({ type: "window" });
+      for (const c of clients) c.navigate(c.url);
+    } catch (_err) { /* ignore */ }
+  })());
 });
 
 self.addEventListener("fetch", (e) => {
-  const req = e.request;
-  if (req.method !== "GET") return;
-  e.respondWith(
-    caches.match(req).then((cached) => cached || fetch(req).then((res) => {
-      if (res && res.ok && new URL(req.url).origin === location.origin) {
-        const clone = res.clone();
-        caches.open(CACHE).then((c) => c.put(req, clone));
-      }
-      return res;
-    }).catch(() => cached)),
-  );
+  // Pass-through to network only — no caching.
+  e.respondWith(fetch(e.request).catch(() => new Response("", { status: 504 })));
 });
