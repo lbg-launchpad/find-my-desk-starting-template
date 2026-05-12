@@ -41,6 +41,7 @@ const selectedPreferredUsers = document.getElementById("selectedPreferredUsers")
 const resetSettingsButton = document.getElementById("resetSettingsButton");
 const deskPreferencesGrid = document.getElementById("deskPreferencesGrid");
 const slotToggle = document.getElementById("slotToggle");
+const releaseDeskButton = document.getElementById("releaseDeskButton");
 const weatherHeadline = document.getElementById("weatherHeadline");
 const weatherSummary = document.getElementById("weatherSummary");
 const weatherDetail = document.getElementById("weatherDetail");
@@ -932,6 +933,7 @@ async function loadDesksAndBookings() {
   syncSlotToggle();
   renderSelectedDesk();
   renderBookingList();
+  syncReleaseDeskButton();
   await loadWeather();
 }
 
@@ -947,6 +949,47 @@ async function createBooking() {
         slot: state.selectedSlot,
       }),
     });
+    await loadDesksAndBookings();
+  } catch (error) {
+    window.alert(error.message);
+  }
+}
+
+function userBookingsForCurrentDate() {
+  const myEmail = (state.user?.email || "").toLowerCase();
+  if (!myEmail) return [];
+  const result = [];
+  Object.entries(state.bookings).forEach(([deskId, bookings]) => {
+    (bookings || []).forEach((booking) => {
+      if (String(booking.email || "").toLowerCase() === myEmail) {
+        result.push({ deskId, slot: booking.slot || "full" });
+      }
+    });
+  });
+  return result;
+}
+
+function syncReleaseDeskButton() {
+  if (!releaseDeskButton) return;
+  const mine = userBookingsForCurrentDate();
+  releaseDeskButton.disabled = mine.length === 0;
+  releaseDeskButton.title = mine.length === 0
+    ? "You have no bookings to release for this day"
+    : `Release ${mine.length} booking${mine.length === 1 ? "" : "s"} for ${selectedDate()}`;
+}
+
+async function releaseMyDesks() {
+  const mine = userBookingsForCurrentDate();
+  if (mine.length === 0) return;
+
+  const confirmMsg = `Release all ${mine.length} of your bookings for ${selectedDate()}?`;
+  if (!window.confirm(confirmMsg)) return;
+
+  try {
+    await fetchJSON(
+      `/api/bookings/mine?date=${encodeURIComponent(selectedDate())}`,
+      { method: "DELETE" }
+    );
     await loadDesksAndBookings();
   } catch (error) {
     window.alert(error.message);
@@ -1012,6 +1055,10 @@ function bindEvents() {
       state.selectedSlot = event.target.value;
       renderSelectedDesk();
     });
+  }
+
+  if (releaseDeskButton) {
+    releaseDeskButton.addEventListener("click", releaseMyDesks);
   }
 
   if (userSwitchSelect) {

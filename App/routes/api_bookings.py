@@ -129,6 +129,28 @@ def create_booking():
     ), 201
 
 
+@api_bookings_bp.delete("/mine")
+def release_my_bookings():
+    booking_date, error = parse_date_arg(request.args.get("date"))
+    if error:
+        return error
+
+    user = get_effective_user()
+    email = (user.get("email") or "").strip().lower()
+    if not email:
+        return jsonify({"error": "No active user"}), 400
+
+    rows = Booking.query.filter_by(date=booking_date, user_email=email).all()
+    count = len(rows)
+    for row in rows:
+        db.session.delete(row)
+    db.session.commit()
+
+    return jsonify(
+        {"ok": True, "date": booking_date.isoformat(), "released": count}
+    )
+
+
 @api_bookings_bp.delete("/<desk_id>")
 def cancel_booking(desk_id):
     booking_date, error = parse_date_arg(request.args.get("date"))

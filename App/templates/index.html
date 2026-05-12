@@ -21,6 +21,7 @@
                 <button class="nav-tab {% if initial_view == 'bookings' %}active{% endif %}" data-view="bookings" role="tab" aria-selected="{% if initial_view == 'bookings' %}true{% else %}false{% endif %}">📋 Bookings</button>
                 <button class="nav-tab {% if initial_view == 'settings' %}active{% endif %}" data-view="settings" role="tab" aria-selected="{% if initial_view == 'settings' %}true{% else %}false{% endif %}">⚙️ User Settings</button>
             </div>
+            <button id="releaseDeskButton" type="button" class="button release-desk" disabled>Release Desk</button>
         </nav>
 
         <section id="weatherPanel" class="weather-strip card" aria-live="polite">
