@@ -1,14 +1,17 @@
 import json
 import os
+import ssl
 from datetime import date
 from urllib.error import HTTPError, URLError
 from urllib.request import urlopen
 
+import certifi
 from flask import Blueprint, current_app, jsonify, request
 
 from App.services.dates import parse_date_arg
 
 api_weather_bp = Blueprint("api_weather", __name__, url_prefix="/api")
+WEATHER_SSL_CONTEXT = ssl.create_default_context(cafile=certifi.where())
 
 
 def _build_url(raw_url, booking_date):
@@ -19,7 +22,7 @@ def _build_url(raw_url, booking_date):
 
 def _fetch_weather(raw_url):
     safe_url = raw_url.replace(" ", "%20")
-    with urlopen(safe_url, timeout=10) as response:
+    with urlopen(safe_url, timeout=10, context=WEATHER_SSL_CONTEXT) as response:
         charset = response.headers.get_content_charset() or "utf-8"
         payload = response.read().decode(charset)
     return json.loads(payload)

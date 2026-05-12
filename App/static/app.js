@@ -438,7 +438,7 @@ function renderRecommendations() {
       setSelectedDesk(desk.id);
     });
 
-    const title = createElement("strong", `Desk ${deskLabel(desk.id)} (${desk.floor})`);
+    const title = createElement("strong", `Desk ${deskLabel(desk.id)}`);
     const matchSummary = hasDeskPreferences
       ? `${matched.length}/${preferences.length} preferences matched`
       : "Available";
@@ -954,7 +954,28 @@ function bindEvents() {
   }
 }
 
+function ensureRequiredElements() {
+  const required = {
+    bookingDateInput, floorImage, deskLayer, floorSummary,
+    selectedDeskCard, bookButton, cancelButton, bookingList,
+    officeBusyMeta, recommendationMeta, recommendedDeskList,
+    userBadge, pinTemplate,
+  };
+  const missing = Object.entries(required)
+    .filter(([, el]) => !el)
+    .map(([name]) => name);
+  if (missing.length > 0) {
+    console.error(
+      `Find My Desk: required DOM elements missing — ${missing.join(", ")}. UI initialization aborted.`
+    );
+    return false;
+  }
+  return true;
+}
+
 async function init() {
+  if (!ensureRequiredElements()) return;
+
   const initialView = document.body.dataset.initialView || "bookings";
   bookingDateInput.value = todayISO();
   bindEvents();

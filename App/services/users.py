@@ -1,4 +1,5 @@
 from flask import session
+from sqlalchemy.exc import IntegrityError
 
 from App.extensions import db
 from App.models import AppUser
@@ -47,5 +48,9 @@ def get_or_create_effective_db_user(active_user):
         anchor_days=[],
     )
     db.session.add(row)
-    db.session.commit()
+    try:
+        db.session.commit()
+    except IntegrityError:
+        db.session.rollback()
+        return AppUser.query.filter_by(email=email).first()
     return row

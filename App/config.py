@@ -3,6 +3,7 @@ import secrets
 from pathlib import Path
 
 DATA_ROOT = Path(__file__).resolve().parent.parent / "data"
+DATA_ROOT.mkdir(parents=True, exist_ok=True)
 
 DEFAULT_DESK_DB_URL = f"sqlite:///{(DATA_ROOT / 'desks.db').as_posix()}"
 DEFAULT_USER_DB_URL = f"sqlite:///{(DATA_ROOT / 'users.db').as_posix()}"
