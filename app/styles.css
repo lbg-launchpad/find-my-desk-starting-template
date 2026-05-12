@@ -120,7 +120,7 @@ a { color: inherit; text-decoration: none; }
   -webkit-backdrop-filter: saturate(180%) blur(14px);
   border-bottom: 1px solid var(--c-border);
 }
-.app-bar__brand { display: flex; align-items: center; gap: 10px; color: var(--c-brand); }
+.app-bar__brand { display: flex; align-items: center; gap: 10px; color: var(--c-brand); text-decoration: none; cursor: pointer; }
 .app-bar__title { font-size: 17px; color: var(--c-fg); }
 .app-bar__title .at { color: var(--c-brand); font-weight: 700; }
 .app-bar__actions { display: flex; align-items: center; gap: 6px; }
