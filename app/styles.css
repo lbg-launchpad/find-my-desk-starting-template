@@ -420,30 +420,52 @@ a { color: inherit; text-decoration: none; }
   -webkit-user-drag: none;
   pointer-events: none;
 }
+/* SVG desk dots — rendered inside the .floorplan__overlay <svg>. */
+.floorplan__overlay { overflow: visible; }
+
 .floorplan__dot {
-  position: absolute;
-  width: 18px;
-  height: 18px;
-  border-radius: 50%;
-  border: 2px solid white;
-  background: var(--desk-available);
-  transform: translate(-50%, -50%);
   cursor: pointer;
-  box-shadow: 0 1px 3px rgb(0 0 0 / 0.3);
-  transition: transform 120ms ease, box-shadow 120ms ease;
 }
-.floorplan__dot:hover { transform: translate(-50%, -50%) scale(1.25); z-index: 3; }
-.floorplan__dot.is-selected {
-  background: var(--desk-selected);
-  outline: 3px solid color-mix(in oklab, var(--desk-selected) 35%, transparent);
-  z-index: 4;
+.floorplan__dot > circle:not(.floorplan__dot-halo) {
+  fill: var(--desk-available);
+  stroke: white;
+  stroke-width: 2.5;
+  filter: drop-shadow(0 2px 3px rgb(0 0 0 / 0.45));
+  transition: fill 120ms ease, stroke-width 120ms ease;
 }
-.floorplan__dot.is-booked { background: var(--desk-booked); }
-.floorplan__dot.is-team { background: var(--desk-team); }
-.floorplan__dot.is-mine {
-  background: var(--desk-mine);
-  outline: 3px solid color-mix(in oklab, var(--desk-mine) 35%, transparent);
+.floorplan__dot-halo {
+  fill: var(--desk-available);
+  opacity: 0;
+  transition: opacity 120ms ease, fill 120ms ease;
 }
+.floorplan__dot-label {
+  fill: white;
+  font-size: 10px;
+  font-weight: 700;
+  font-family: var(--font-sans, system-ui, sans-serif);
+  pointer-events: none;
+  paint-order: stroke;
+  stroke: rgb(0 0 0 / 0.35);
+  stroke-width: 0.5;
+}
+.floorplan__dot:hover .floorplan__dot-halo { opacity: 0.4; }
+.floorplan__dot:hover > circle:not(.floorplan__dot-halo) { stroke-width: 3.5; }
+
+.floorplan__dot.is-booked > circle:not(.floorplan__dot-halo) { fill: var(--desk-booked); }
+.floorplan__dot.is-booked .floorplan__dot-halo { fill: var(--desk-booked); }
+
+.floorplan__dot.is-team > circle:not(.floorplan__dot-halo) { fill: var(--desk-team); }
+.floorplan__dot.is-team .floorplan__dot-halo { fill: var(--desk-team); }
+
+.floorplan__dot.is-mine > circle:not(.floorplan__dot-halo) { fill: var(--desk-mine); }
+.floorplan__dot.is-mine .floorplan__dot-halo { fill: var(--desk-mine); opacity: 0.32; }
+
+.floorplan__dot.is-selected > circle:not(.floorplan__dot-halo) {
+  fill: var(--desk-selected);
+  stroke-width: 3;
+}
+.floorplan__dot.is-selected .floorplan__dot-halo { fill: var(--desk-selected); opacity: 0.35; }
+
 .floorplan__dot.is-hidden { display: none; }
 
 .floorplan__controls {
