@@ -13,6 +13,7 @@ import {
   todayISO,
   deskById,
   deskIsFreeFor,
+  userBookingClashOn,
   anyDeskFreeOn,
   userOnWaitlist,
   genBookingId,
@@ -270,9 +271,25 @@ export function BookView() {
   function bookSelectedDesk(desk) {
     const slot = activeSlot();
     const d = getState().bookingDraft;
+    const me = currentUser();
+
+    // Block double-booking yourself on the same day.
+    const clash = userBookingClashOn({
+      userId: me.id, date: d.date,
+      startMin: slot.startMin, endMin: slot.endMin,
+    });
+    if (clash) {
+      const otherDesk = deskById(clash.deskId);
+      toast(
+        `You already have desk ${otherDesk?.number || "?"} booked for ${fmtDate(d.date)} (${fmtTime(clash.startMin)}–${fmtTime(clash.endMin)}). Cancel it first.`,
+        "danger", 4200,
+      );
+      return;
+    }
+
     const booking = {
       id: genBookingId(),
-      userId: currentUser().id,
+      userId: me.id,
       deskId: desk.id,
       date: d.date,
       startMin: slot.startMin,

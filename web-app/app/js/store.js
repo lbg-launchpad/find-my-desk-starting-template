@@ -273,6 +273,19 @@ export function deskIsFreeFor({ deskId, date, startMin, endMin }) {
   );
 }
 
+// Returns the existing booking that conflicts (overlaps in time) for the same
+// user on a given date, or null if none. Used to stop a teammate / yourself
+// being double-booked on the same day.
+export function userBookingClashOn({ userId, date, startMin, endMin }) {
+  return state.bookings.find(
+    (b) =>
+      b.userId === userId &&
+      b.date === date &&
+      b.status !== "cancelled" &&
+      rangesOverlap(b.startMin, b.endMin, startMin, endMin)
+  ) || null;
+}
+
 export function genBookingId() {
   return "bk-" + Math.random().toString(36).slice(2, 9);
 }
