@@ -35,8 +35,45 @@ const state = {
 };
 
 export function getState() { return state; }
+
+function deriveInitials(name) {
+  return (name || "")
+    .trim()
+    .split(/\s+/)
+    .slice(0, 2)
+    .map((p) => p[0] || "")
+    .join("")
+    .toUpperCase();
+}
+
+// Apply user-editable overrides (from state.preferences) onto the base Workday
+// user record so views read one consistent shape. Identity/HR fields (id, email,
+// team, role, manager, location) are left untouched.
+function applyProfileOverrides(base) {
+  if (!base) return base;
+  const p = state.preferences || {};
+  const display = (p.displayName || "").trim();
+  const name = display || base.name;
+  const hasAnchorOverride = Array.isArray(p.anchorDays) && p.anchorDays.length > 0;
+  const hasPatternOverride = p.workingPattern && Object.keys(p.workingPattern).length > 0;
+  return {
+    ...base,
+    name,
+    initials: display ? deriveInitials(name) : base.initials,
+    pronouns: p.pronouns || "",
+    phone: p.phone || "",
+    avatarDataUrl: p.avatarDataUrl || "",
+    anchorDays: hasAnchorOverride ? p.anchorDays : (base.workdayAnchorDays || []),
+    workingPattern: hasPatternOverride ? p.workingPattern : (base.workdayWorkingPattern || {}),
+    preferredLocation: p.preferredLocation || base.location,
+    // PA toggle only takes effect when Workday says they're a PA.
+    isPA: !!base.workdayIsPA && !!p.isPA,
+  };
+}
+
 export function currentUser() {
-  return state.users.find((u) => u.id === state.currentUserId) || state.users[0] || null;
+  const base = state.users.find((u) => u.id === state.currentUserId) || state.users[0] || null;
+  return applyProfileOverrides(base);
 }
 export function subscribe(fn) { listeners.add(fn); return () => listeners.delete(fn); }
 export function notify() { listeners.forEach((fn) => { try { fn(state); } catch (e) { console.error(e); } }); }

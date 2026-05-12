@@ -157,6 +157,9 @@ export async function bootstrapData() {
     preferences: u.deskPreferences || [],
     accessibility: u.accessibilityNeeds,
     initials: u.fullName.split(" ").map((s) => s[0]).slice(0, 2).join("").toUpperCase(),
+    workdayIsPA: !!u.isPA,
+    workdayAnchorDays: Array.isArray(u.anchorDays) ? u.anchorDays : [],
+    workdayWorkingPattern: u.defaultWorkingPattern || {},
   }));
 
   // Build desks for each (location, floor) — ~36 desks per floor.
@@ -176,19 +179,42 @@ export async function bootstrapData() {
 export function loadState() {
   try {
     const raw = localStorage.getItem(STORAGE_KEY);
-    if (raw) return JSON.parse(raw);
+    if (raw) {
+      const parsed = JSON.parse(raw);
+      // Merge defaults so old localStorage entries pick up new fields.
+      parsed.preferences = { ...defaultPreferences(), ...(parsed.preferences || {}) };
+      return parsed;
+    }
   } catch (_) { /* ignore */ }
+  return defaultState();
+}
+
+export function defaultState() {
   return {
     currentUserId: null,
     theme: "light",
     bookings: [], // { id, userId, deskId, date, startMin, endMin, label, checkedIn, status, teamFor }
-    preferences: {
-      autoCheckIn: false,
-      pushNotifications: true,
-      emailNotifications: true,
-      myDeskNeeds: [],
-    },
+    preferences: defaultPreferences(),
     lastLocation: "london",
+  };
+}
+
+export function defaultPreferences() {
+  return {
+    autoCheckIn: false,
+    pushNotifications: true,
+    emailNotifications: true,
+    myDeskNeeds: [],
+    // Editable profile fields (overlay onto the Workday user record)
+    displayName: "",
+    pronouns: "",
+    phone: "",
+    bio: "",
+    avatarDataUrl: "",
+    anchorDays: [],          // e.g. ["Monday", "Wednesday"]
+    workingPattern: {},      // e.g. { monday: "office", tuesday: "remote", ... }
+    preferredLocation: "",   // one of LOCATIONS[].id; "" = use Workday location
+    isPA: false,             // year-ahead booking horizon
   };
 }
 

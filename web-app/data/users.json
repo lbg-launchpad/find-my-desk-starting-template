@@ -28,7 +28,8 @@
       "dual-monitor"
     ],
     "bookingWindowDays": 16,
-    "accessibilityNeeds": "ergonomic-chair"
+    "accessibilityNeeds": "ergonomic-chair",
+    "isPA": true
   },
   {
     "id": "69948abc-8e02-4ab1-b0c8-c92b0513c7bc",
@@ -88,7 +89,8 @@
       "near-team"
     ],
     "bookingWindowDays": 26,
-    "accessibilityNeeds": "ergonomic-chair"
+    "accessibilityNeeds": "ergonomic-chair",
+    "isPA": true
   },
   {
     "id": "b381819e-d00b-4798-a4b5-ab4fef210bf4",
@@ -242,7 +244,8 @@
       "quiet-area"
     ],
     "bookingWindowDays": 28,
-    "accessibilityNeeds": null
+    "accessibilityNeeds": null,
+    "isPA": true
   },
   {
     "id": "ce2bbc48-63e8-4090-990a-039f0ec34a34",

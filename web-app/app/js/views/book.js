@@ -20,9 +20,19 @@ import { sendBookingConfirmation } from "../email.js";
 
 export function BookView() {
   const root = el("div", { class: "view view--book" });
-  const draft = getState().bookingDraft;
   const me = currentUser();
   if (!me) return el("div", { class: "empty", text: "Loading…" });
+
+  // If the user has a preferred office set and the booking draft is still on
+  // a different location (e.g. left over from last session or Workday default),
+  // switch to the preferred office on entry.
+  if (me.preferredLocation && getState().bookingDraft.locationId !== me.preferredLocation) {
+    update((s) => {
+      s.bookingDraft.locationId = me.preferredLocation;
+      s.bookingDraft.selectedDeskId = null;
+    });
+  }
+  const draft = getState().bookingDraft;
 
   // Mutable refs used by closures defined later in this function. Declared up
   // top to avoid Temporal Dead Zone errors when bookForTeamToggle() — invoked
@@ -50,6 +60,11 @@ export function BookView() {
 
   root.appendChild(controls);
 
+  // --- "Best match for you" suggestion banner -------------------------------
+  const suggestHost = el("div");
+  root.appendChild(suggestHost);
+  renderSuggestion();
+
   // --- Floor plan + selected desk card --------------------------------------
   const planWrap = el("section", { class: "card", style: { marginTop: "12px", padding: "14px" } });
   const plan = FloorPlan({
@@ -61,11 +76,72 @@ export function BookView() {
   planWrap.appendChild(plan);
   root.appendChild(planWrap);
 
+  function suggestBestDesk() {
+    const prefs = getState().preferences.myDeskNeeds || [];
+    if (!prefs.length) return null;
+    const d = getState().bookingDraft;
+    const slot = activeSlot();
+    const candidates = getState().desks.filter(
+      (desk) => desk.locationId === d.locationId && desk.floorId === d.floorId,
+    );
+    let best = null;
+    for (const desk of candidates) {
+      if (!deskIsFreeFor({ deskId: desk.id, date: d.date, startMin: slot.startMin, endMin: slot.endMin })) continue;
+      const score = prefs.reduce((n, key) => (desk.amenities.includes(key) ? n + 1 : n), 0);
+      if (score === 0) continue;
+      if (!best || score > best.score) best = { desk, score };
+    }
+    return best;
+  }
+
+  function renderSuggestion() {
+    suggestHost.replaceChildren();
+    const match = suggestBestDesk();
+    const selectedId = getState().bookingDraft.selectedDeskId;
+    if (!match || match.desk.id === selectedId) return;
+    const prefs = getState().preferences.myDeskNeeds || [];
+    suggestHost.appendChild(el("button", {
+      type: "button",
+      class: "card",
+      style: {
+        marginTop: "12px",
+        display: "flex",
+        alignItems: "center",
+        gap: "12px",
+        cursor: "pointer",
+        border: "1px solid color-mix(in oklab, var(--c-brand) 35%, var(--c-border))",
+        background: "color-mix(in oklab, var(--c-brand) 6%, var(--c-bg))",
+        textAlign: "left",
+        width: "100%",
+      },
+      onclick: () => selectDesk(match.desk),
+    }, [
+      el("span", {
+        style: {
+          width: "34px", height: "34px", flex: "0 0 34px",
+          borderRadius: "999px",
+          display: "inline-flex", alignItems: "center", justifyContent: "center",
+          background: "color-mix(in oklab, var(--c-brand) 22%, var(--c-bg))",
+          color: "var(--c-brand)",
+          fontWeight: 700,
+        },
+        text: "★",
+      }),
+      el("div", { style: { flex: "1 1 auto", minWidth: 0 } }, [
+        el("div", { style: { fontSize: "11px", color: "var(--c-fg-muted)", fontWeight: 700, letterSpacing: "0.04em", textTransform: "uppercase" }, text: "Best match for you" }),
+        el("div", { style: { fontSize: "14px", fontWeight: 600 }, text: `Desk ${match.desk.number} · ${match.desk.zone}` }),
+        el("div", { style: { fontSize: "12px", color: "var(--c-fg-muted)" }, text: `Matches ${match.score} of ${prefs.length} preference${prefs.length === 1 ? "" : "s"}` }),
+      ]),
+      el("span", { style: { fontSize: "13px", color: "var(--c-brand)", fontWeight: 600 }, text: "View →" }),
+    ]));
+  }
+
   const deskHost = el("section", { class: "card", style: { marginTop: "12px" } });
   root.appendChild(deskHost);
 
   function refreshFloorPlan() {
     plan.refresh && plan.refresh();
+    renderSuggestion();
   }
 
   function renderSelectedDesk() {
@@ -76,6 +152,7 @@ export function BookView() {
       date: getState().bookingDraft.date,
       actions: desk ? deskActions(desk) : null,
     }));
+    renderSuggestion();
   }
   renderSelectedDesk();
 
@@ -217,7 +294,8 @@ export function BookView() {
   function dateInput() {
     const min = todayISO();
     const maxD = new Date();
-    maxD.setDate(maxD.getDate() + 28); // 4 weeks for desks
+    // PAs can book up to a year ahead; everyone else is limited to 4 weeks.
+    maxD.setDate(maxD.getDate() + (currentUser()?.isPA ? 365 : 28));
     const max = maxD.toISOString().slice(0, 10);
     return el("input", {
       class: "input",

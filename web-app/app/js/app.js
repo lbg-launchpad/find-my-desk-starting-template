@@ -50,7 +50,19 @@ async function boot() {
   const avatarInitials = document.getElementById("avatarInitials");
   function paintAvatar() {
     const u = currentUser();
-    avatarInitials.textContent = u ? u.initials : "--";
+    if (u && u.avatarDataUrl) {
+      avatarInitials.textContent = "";
+      avatarInitials.style.backgroundImage = `url(${u.avatarDataUrl})`;
+      avatarInitials.style.backgroundSize = "cover";
+      avatarInitials.style.backgroundPosition = "center";
+      avatarInitials.style.color = "transparent";
+    } else {
+      avatarInitials.textContent = u ? u.initials : "--";
+      avatarInitials.style.backgroundImage = "";
+      avatarInitials.style.backgroundSize = "";
+      avatarInitials.style.backgroundPosition = "";
+      avatarInitials.style.color = "";
+    }
   }
   paintAvatar();
   avatarBtn.addEventListener("click", () => { location.hash = "#/profile"; });
