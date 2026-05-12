@@ -5,6 +5,7 @@ import { useAppStore } from "@/lib/app-store";
 import { useNow } from "@/lib/use-now";
 import { TodayCard } from "@/components/home/today-card";
 import { ReminderPanel } from "@/components/home/reminder-panel";
+import { QrHandoffCard } from "@/components/home/qr-handoff-card";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { getTeam } from "@/data/app";
@@ -50,6 +51,8 @@ function HomePage() {
       />
 
       <ReminderPanel booking={todays} now={now} onCheckIn={handleCheckIn} />
+
+      <QrHandoffCard />
 
       <div className="grid grid-cols-2 gap-3">
         <QuickAction
