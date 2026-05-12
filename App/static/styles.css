@@ -36,10 +36,10 @@ body {
 }
 
 .shell {
-  width: min(1200px, 100% - 2rem);
-  margin: 1.2rem auto 2rem;
+  width: min(1400px, 100% - clamp(1rem, 4vw, 2.5rem));
+  margin: clamp(0.8rem, 2vw, 1.5rem) auto clamp(1.5rem, 3vw, 2.5rem);
   display: grid;
-  gap: 1rem;
+  gap: clamp(0.75rem, 1.4vw, 1rem);
 }
 
 .top-nav {
@@ -101,10 +101,10 @@ body {
 }
 
 .hero {
-  padding: 1.3rem 1.4rem;
+  padding: clamp(0.9rem, 1.8vw, 1.4rem);
   display: grid;
   grid-template-columns: 1.5fr 1fr;
-  gap: 1rem;
+  gap: clamp(0.8rem, 1.6vw, 1.2rem);
   animation: rise-in 520ms ease;
 }
 
@@ -182,8 +182,8 @@ input[type="date"] {
 
 .layout {
   display: grid;
-  grid-template-columns: 1.55fr 1fr;
-  gap: 1rem;
+  grid-template-columns: minmax(0, 1.55fr) minmax(0, 1fr);
+  gap: clamp(0.8rem, 1.5vw, 1.2rem);
 }
 
 .layout .hero {
@@ -413,8 +413,9 @@ input[type="date"] {
 
 .floor-panel,
 .side-panel {
-  padding: 1rem;
+  padding: clamp(0.8rem, 1.4vw, 1.1rem);
   animation: rise-in 700ms ease;
+  min-width: 0;
 }
 
 .floor-head {
@@ -737,6 +738,12 @@ input[type="date"] {
   }
 }
 
+@media (max-width: 1100px) {
+  .layout {
+    grid-template-columns: minmax(0, 1.35fr) minmax(0, 1fr);
+  }
+}
+
 @media (max-width: 980px) {
   .top-nav {
     flex-direction: column;
@@ -754,9 +761,28 @@ input[type="date"] {
   }
 }
 
+@media (max-width: 768px) {
+  .hero {
+    grid-template-columns: 1fr;
+  }
+
+  .hero-meta {
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  }
+
+  .nav-links {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .prefs-grid {
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  }
+}
+
 @media (max-width: 620px) {
   .shell {
-    width: min(100% - 1rem, 1200px);
+    width: min(100% - 0.75rem, 1400px);
   }
 
   .card {
@@ -767,5 +793,39 @@ input[type="date"] {
   .floor-panel,
   .side-panel {
     padding: 0.8rem;
+  }
+
+  .nav-tab {
+    padding: 0.4rem 0.7rem;
+    font-size: 0.9rem;
+  }
+
+  .tab {
+    padding: 0.35rem 0.65rem;
+    font-size: 0.85rem;
+  }
+}
+
+@media (max-width: 400px) {
+  .shell {
+    width: calc(100% - 0.5rem);
+  }
+
+  h1 {
+    font-size: clamp(1.35rem, 6vw, 1.8rem);
+  }
+
+  .desk-pin {
+    font-size: 0.6rem;
+    min-width: 2.4rem;
+    padding: 0.22rem 0.35rem;
+  }
+
+  .meta-item {
+    padding: 0.55rem 0.65rem;
+  }
+
+  .booking-list li {
+    flex-wrap: wrap;
   }
 }
