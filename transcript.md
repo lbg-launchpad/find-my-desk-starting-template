@@ -27,7 +27,7 @@ The system we have now is a vendor product, and that gives us three problems.
 
 **Two — colleagues are flying blind on the day.** You don't know who's in, which floor is busy, or whether your team is even there until you walk through the door.
 
-**Three — leadership has no real visibility.** Reporting is whatever the vendor decides to share with us, when they decide to share it.
+**Three — leadership has no real visibility.**
 
 Those are the three problems we set out to fix.
 
@@ -55,7 +55,7 @@ And critically — **we own the data and the rules.** Licensing comes from Workd
 
 You see the whole floorplan. Every desk on every floor. **Green dot** means free. **Grey** means booked. **Blue** means a teammate is sitting there. And **yellow** is you.
 
-Tap any green dot — that's your desk. No menus, no codes, no calling facilities.
+Tap any green dot — that's your desk.
 
 And if you tap a booked desk, you can see *who's* sitting there — so you can plan around them, or go and join them.
 
@@ -87,7 +87,7 @@ If the floor's full when you try to book, you can **join the waitlist** for that
 
 And whoever's at the top of the waitlist gets a **push notification, an email, or both** — whichever they've chosen in their alert preferences.
 
-The schedule heals itself. No one has to chase facilities.
+The schedule heals itself.
 
 [Advance →]
 
@@ -113,13 +113,13 @@ And if there's already a clash — someone's already got a booking that day — 
 
 Three license tiers, all driven by the **job-title marker on Workday** — no manual provisioning, no separate access list.
 
-**Normal Users** can book multiple desks — four months ahead for desks, three months for meeting rooms.
+**Normal Users** can book multiple desks — four weeks ahead for desks, three months for meeting rooms.
 
 **Line Managers** get everything a normal user has, **plus a stats tab** showing how often their direct reports book, no-show, or cancel. So they can spot patterns early.
 
 **PAs** get normal-user functionality plus the ability to book **up to a year in advance** for both desks and meeting rooms — because that's the planning horizon they actually work to.
 
-Reporting lives where the bookings live. Leadership stops raising vendor tickets to see their own office.
+Reporting lives where the bookings live.
 
 [Advance →]
 
@@ -135,7 +135,7 @@ Amenities — sit-stand, monitor, quiet zone, step-free — are **universal**. A
 
 You set personal preferences in settings, and those shape which desks surface first for you.
 
-Every screen has a **light/dark mode toggle** and an **adjustable font size**.
+Every screen on the app has a **light/dark mode toggle** and **font size can be adjusted under Preferences**.
 
 And the two visual styles — flat for browser, glassmorphism for mobile — both meet WCAG-AA. **Accessibility isn't a separate flow. It's just the flow.**
 
