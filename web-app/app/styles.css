@@ -32,7 +32,7 @@
   /* Desk states (on floor plan) */
   --desk-available: oklch(0.55 0.13 150);
   --desk-selected: oklch(0.42 0.13 150);
-  --desk-booked: oklch(0.55 0.18 25);
+  --desk-booked: oklch(0.55 0 0);
   --desk-team: oklch(0.6 0.14 80);
   --desk-mine: oklch(0.5 0.18 250);
 
@@ -76,7 +76,7 @@
 
   --desk-available: oklch(0.72 0.14 150);
   --desk-selected: oklch(0.82 0.14 150);
-  --desk-booked: oklch(0.7 0.18 25);
+  --desk-booked: oklch(0.7 0 0);
   --desk-team: oklch(0.78 0.14 80);
   --desk-mine: oklch(0.72 0.18 250);
 
