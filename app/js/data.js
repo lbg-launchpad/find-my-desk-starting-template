@@ -48,62 +48,83 @@ function mulberry32(seed) {
 
 const ZONES = ["Window Bank", "Quiet Zone", "Collab Hub", "Sunny Side", "Central"];
 
-function buildDesks(floorId, locationId, count, seed) {
+// Explicit desk positions per floor — coordinates are fractions of the
+// floor-plan image (x: 0 = left, 1 = right; y: 0 = top, 1 = bottom). Each
+// entry should sit directly over a desk drawn on the plan.
+function gridPositions({ cols, rows, x0, x1, y0, y1, zone }) {
+  const out = [];
+  const dx = cols === 1 ? 0 : (x1 - x0) / (cols - 1);
+  const dy = rows === 1 ? 0 : (y1 - y0) / (rows - 1);
+  for (let r = 0; r < rows; r++) {
+    for (let c = 0; c < cols; c++) {
+      out.push({ x: x0 + c * dx, y: y0 + r * dy, zone });
+    }
+  }
+  return out;
+}
+
+const DESK_POSITIONS_BY_FLOOR = {
+  ground: [
+    // WINDOWS row across the top
+    ...gridPositions({ cols: 6, rows: 1, x0: 0.105, x1: 0.265, y0: 0.105, y1: 0.105, zone: "Window Bank" }),
+    // SECURITY block top-right (2 cols × 4 rows)
+    ...gridPositions({ cols: 2, rows: 4, x0: 0.745, x1: 0.835, y0: 0.080, y1: 0.205, zone: "Sunny Side" }),
+    // VIRTUALISATION column mid-left (2 cols × 3 rows)
+    ...gridPositions({ cols: 2, rows: 3, x0: 0.075, x1: 0.170, y0: 0.310, y1: 0.480, zone: "Quiet Zone" }),
+    // Bottom-left desks (2 cols × 2 rows)
+    ...gridPositions({ cols: 2, rows: 2, x0: 0.075, x1: 0.170, y0: 0.620, y1: 0.720, zone: "Collab Hub" }),
+    // SUPPORT block right (3 cols × 4 rows)
+    ...gridPositions({ cols: 3, rows: 4, x0: 0.710, x1: 0.880, y0: 0.500, y1: 0.770, zone: "Central" }),
+  ],
+  first: [
+    // Top-left desk block
+    ...gridPositions({ cols: 3, rows: 2, x0: 0.085, x1: 0.225, y0: 0.110, y1: 0.225, zone: "Window Bank" }),
+    // Top-right desk block (SECURITY-equivalent)
+    ...gridPositions({ cols: 3, rows: 2, x0: 0.745, x1: 0.890, y0: 0.110, y1: 0.225, zone: "Sunny Side" }),
+    // Mid-left desk column
+    ...gridPositions({ cols: 2, rows: 3, x0: 0.085, x1: 0.180, y0: 0.330, y1: 0.520, zone: "Quiet Zone" }),
+    // Mid-right desk column
+    ...gridPositions({ cols: 2, rows: 3, x0: 0.785, x1: 0.880, y0: 0.330, y1: 0.520, zone: "Central" }),
+    // Bottom-left desk block
+    ...gridPositions({ cols: 3, rows: 2, x0: 0.085, x1: 0.225, y0: 0.640, y1: 0.760, zone: "Collab Hub" }),
+    // Bottom-right desk block
+    ...gridPositions({ cols: 3, rows: 2, x0: 0.745, x1: 0.890, y0: 0.640, y1: 0.760, zone: "Quiet Zone" }),
+  ],
+};
+
+const ZONE_BASE_AMENITIES = {
+  "Window Bank": ["near-window", "soft-lighting", "dual-monitor"],
+  "Quiet Zone":  ["low-noise", "quiet-pod", "ergonomic-chair"],
+  "Collab Hub":  ["triple-monitor", "near-amenities", "standing-desk"],
+  "Sunny Side":  ["near-window", "warm-area", "dual-monitor"],
+  "Central":     ["dual-monitor", "ergonomic-chair", "near-amenities"],
+};
+
+function buildDesks(floorId, locationId, _count, seed) {
   const rng = mulberry32(seed);
-  const desks = [];
-  // Place dots in a few clusters across the floor (percentages of image area).
-  const clusters = [
-    { cx: 0.22, cy: 0.30, rx: 0.10, ry: 0.13, zone: "Window Bank" },
-    { cx: 0.52, cy: 0.28, rx: 0.12, ry: 0.10, zone: "Sunny Side" },
-    { cx: 0.78, cy: 0.32, rx: 0.10, ry: 0.13, zone: "Collab Hub" },
-    { cx: 0.24, cy: 0.66, rx: 0.10, ry: 0.13, zone: "Quiet Zone" },
-    { cx: 0.55, cy: 0.66, rx: 0.13, ry: 0.10, zone: "Central" },
-    { cx: 0.80, cy: 0.66, rx: 0.10, ry: 0.13, zone: "Quiet Zone" },
-  ];
+  const positions = DESK_POSITIONS_BY_FLOOR[floorId] || DESK_POSITIONS_BY_FLOOR.ground;
+  const floorPrefix = floorId === "ground" ? "G" : "1";
 
-  for (let i = 0; i < count; i++) {
-    const cluster = clusters[i % clusters.length];
-    // Lay desks out in a small grid inside each cluster.
-    const inClusterIdx = Math.floor(i / clusters.length);
-    const gridCols = 4;
-    const gx = inClusterIdx % gridCols;
-    const gy = Math.floor(inClusterIdx / gridCols);
-    const px = cluster.cx + (gx - gridCols / 2 + 0.5) * (cluster.rx * 0.45);
-    const py = cluster.cy + (gy - 0.5) * (cluster.ry * 0.55);
-
-    // Build amenity mix per zone with some randomness.
-    const baseAmenities = {
-      "Window Bank": ["near-window", "soft-lighting", "dual-monitor"],
-      "Quiet Zone":  ["low-noise", "quiet-pod", "ergonomic-chair"],
-      "Collab Hub":  ["triple-monitor", "near-amenities", "standing-desk"],
-      "Sunny Side":  ["near-window", "warm-area", "dual-monitor"],
-      "Central":     ["dual-monitor", "ergonomic-chair", "near-amenities"],
-    }[cluster.zone];
-
+  return positions.map((p, i) => {
     const extra = [];
     if (rng() < 0.18) extra.push("wheelchair-accessible");
     if (rng() < 0.25) extra.push("standing-desk");
     if (rng() < 0.2)  extra.push("privacy-screen");
     if (rng() < 0.15) extra.push("dark-surface");
     if (rng() < 0.2)  extra.push("cool-area");
-
-    const amenities = Array.from(new Set([...baseAmenities, ...extra]));
-
-    const floorPrefix = floorId === "ground" ? "G" : "1";
+    const amenities = Array.from(new Set([...ZONE_BASE_AMENITIES[p.zone], ...extra]));
     const number = `${floorPrefix}${String(i + 1).padStart(3, "0")}`;
-
-    desks.push({
+    return {
       id: `${locationId}-${floorId}-${number}`,
       number,
       floorId,
       locationId,
-      zone: cluster.zone,
-      x: px,
-      y: py,
+      zone: p.zone,
+      x: p.x,
+      y: p.y,
       amenities,
-    });
-  }
-  return desks;
+    };
+  });
 }
 
 // --- Load users + build derived data ----------------------------------------
