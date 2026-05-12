@@ -66,6 +66,7 @@ class AppUser(db.Model):
     desk_preferences = db.Column(JSON, nullable=False, default=list)
     preferred_users = db.Column(JSON, nullable=False, default=list)
     anchor_days = db.Column(JSON, nullable=False, default=list)
+    auto_checkin = db.Column(db.Boolean, nullable=False, default=False, server_default="0")
 
     def to_api(self):
         return {
@@ -78,4 +79,5 @@ class AppUser(db.Model):
             "deskPreferences": self.desk_preferences or [],
             "preferredUsers": self.preferred_users or [],
             "anchorDays": self.anchor_days or [],
+            "autoCheckin": bool(self.auto_checkin),
         }

@@ -60,7 +60,7 @@ def switch_user():
 def user_settings_get():
     db_user = get_or_create_effective_db_user(get_effective_user())
     if db_user is None:
-        return jsonify({"deskPreferences": [], "preferredUsers": [], "anchorDays": []})
+        return jsonify({"deskPreferences": [], "preferredUsers": [], "anchorDays": [], "autoCheckin": False})
 
     allowed_preferences = get_allowed_preference_options()
     normalized_prefs = [
@@ -74,6 +74,7 @@ def user_settings_get():
             "deskPreferences": normalized_prefs,
             "preferredUsers": db_user.preferred_users or [],
             "anchorDays": db_user.anchor_days or [],
+            "autoCheckin": bool(db_user.auto_checkin),
         }
     )
 
@@ -93,6 +94,7 @@ def user_settings_save():
     desk_preferences = payload.get("deskPreferences", [])
     preferred_users = payload.get("preferredUsers", [])
     anchor_days = payload.get("anchorDays", [])
+    auto_checkin = bool(payload.get("autoCheckin", False))
 
     if not isinstance(desk_preferences, list) or not isinstance(preferred_users, list) or not isinstance(anchor_days, list):
         return jsonify({"error": "deskPreferences, preferredUsers, and anchorDays must be arrays"}), 400
@@ -129,6 +131,7 @@ def user_settings_save():
     db_user.desk_preferences = normalized_prefs
     db_user.preferred_users = normalized_users
     db_user.anchor_days = normalized_anchor_days
+    db_user.auto_checkin = auto_checkin
     db.session.commit()
 
     return jsonify(
@@ -137,6 +140,7 @@ def user_settings_save():
             "deskPreferences": db_user.desk_preferences,
             "preferredUsers": db_user.preferred_users,
             "anchorDays": db_user.anchor_days,
+            "autoCheckin": bool(db_user.auto_checkin),
             "ignoredPreferences": invalid_preferences,
         }
     )
