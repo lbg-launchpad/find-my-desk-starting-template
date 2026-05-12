@@ -48,20 +48,50 @@ async function boot() {
   // 3. Avatar -> profile
   const avatarBtn = document.getElementById("avatarBtn");
   const avatarInitials = document.getElementById("avatarInitials");
+  // Ensure the avatar can host an absolutely-positioned <img> overlay.
+  avatarInitials.style.position = "relative";
+  avatarInitials.style.overflow = "hidden";
+
+  // One persistent <img> overlay. When src is set successfully, it covers the
+  // initials. On load error, we hide it and the initials show through.
+  const avatarImg = document.createElement("img");
+  Object.assign(avatarImg.style, {
+    position: "absolute", inset: "0", width: "100%", height: "100%",
+    objectFit: "cover", borderRadius: "inherit", display: "none",
+  });
+  avatarImg.alt = "";
+  avatarImg.addEventListener("error", () => { avatarImg.style.display = "none"; });
+  avatarImg.addEventListener("load",  () => { avatarImg.style.display = "block"; });
+  avatarInitials.appendChild(avatarImg);
+
+  function deriveInitials(name) {
+    return (name || "").trim().split(/\s+/).slice(0, 2).map((s) => s[0] || "").join("").toUpperCase();
+  }
+
   function paintAvatar() {
     const u = currentUser();
+    // Always set initials as the base layer — they're the fallback when no
+    // photo / a broken photo URL is set.
+    const initials = (u && u.initials) || (u && deriveInitials(u.name)) || "?";
+    // Use a text node + the img sibling, rather than textContent (which would
+    // wipe the appended <img>).
+    while (avatarInitials.firstChild && avatarInitials.firstChild !== avatarImg) {
+      avatarInitials.removeChild(avatarInitials.firstChild);
+    }
+    avatarInitials.insertBefore(document.createTextNode(initials), avatarImg);
+
+    // Clear stale background-image styles from earlier paintAvatar versions.
+    avatarInitials.style.backgroundImage = "";
+    avatarInitials.style.backgroundSize = "";
+    avatarInitials.style.backgroundPosition = "";
+    avatarInitials.style.color = "";
+
     if (u && u.avatarDataUrl) {
-      avatarInitials.textContent = "";
-      avatarInitials.style.backgroundImage = `url(${u.avatarDataUrl})`;
-      avatarInitials.style.backgroundSize = "cover";
-      avatarInitials.style.backgroundPosition = "center";
-      avatarInitials.style.color = "transparent";
+      avatarImg.src = u.avatarDataUrl;
+      // display becomes "block" only on successful load (handler above).
     } else {
-      avatarInitials.textContent = u ? u.initials : "--";
-      avatarInitials.style.backgroundImage = "";
-      avatarInitials.style.backgroundSize = "";
-      avatarInitials.style.backgroundPosition = "";
-      avatarInitials.style.color = "";
+      avatarImg.removeAttribute("src");
+      avatarImg.style.display = "none";
     }
   }
   paintAvatar();

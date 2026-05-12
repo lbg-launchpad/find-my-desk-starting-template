@@ -174,12 +174,21 @@ function buildProfileCard(me) {
       previewBox.style.backgroundPosition = "center";
       previewBox.style.color = "transparent";
     } else {
-      previewBox.textContent = me.initials || "??";
+      previewBox.textContent = currentInitials();
       previewBox.style.backgroundImage = "";
       previewBox.style.backgroundSize = "";
       previewBox.style.backgroundPosition = "";
       previewBox.style.color = "";
     }
+  }
+
+  // Derive initials from the live draft preferred name first (so typing the
+  // preferred-name field updates the avatar immediately), falling back to the
+  // Workday name. Never returns "??".
+  function currentInitials() {
+    const source = (draft.preferredName || me.name || "").trim();
+    if (!source) return "?";
+    return source.split(/\s+/).slice(0, 2).map((s) => s[0] || "").join("").toUpperCase();
   }
 
   const fileInput = el("input", {
@@ -237,14 +246,17 @@ function buildProfileCard(me) {
     ]),
   ]));
 
-  // Preferred name
+  // Preferred name — live updates the avatar initials as you type.
   card.appendChild(fieldBlock("Preferred name",
     el("input", {
       class: "input",
       type: "text",
       value: draft.preferredName,
       placeholder: me.name,
-      oninput: (e) => { draft.preferredName = e.target.value; },
+      oninput: (e) => {
+        draft.preferredName = e.target.value;
+        if (!draft.avatarDataUrl) paintPreview();
+      },
     }),
     "Leave blank to use your Workday name.",
   ));
