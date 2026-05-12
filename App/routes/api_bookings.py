@@ -129,6 +129,57 @@ def create_booking():
     ), 201
 
 
+@api_bookings_bp.post("/extend")
+def extend_my_half_bookings():
+    booking_date, error = parse_date_arg(request.args.get("date"))
+    if error:
+        return error
+
+    user = get_effective_user()
+    email = (user.get("email") or "").strip().lower()
+    if not email:
+        return jsonify({"error": "No active user"}), 400
+
+    all_for_date = Booking.query.filter_by(date=booking_date).all()
+    my_halves = [
+        b for b in all_for_date
+        if b.user_email == email and b.slot in ("am", "pm")
+    ]
+
+    other_slot = {"am": "pm", "pm": "am"}
+    occupied = {(b.desk_id, b.slot) for b in all_for_date}
+
+    extended = []
+    for booking in my_halves:
+        target_slot = other_slot[booking.slot]
+        if (booking.desk_id, target_slot) in occupied:
+            continue
+        if (booking.desk_id, "full") in occupied:
+            continue
+        new_row = Booking(
+            desk_id=booking.desk_id,
+            date=booking_date,
+            slot=target_slot,
+            user_email=email,
+            user_name=user.get("name") or booking.user_name,
+            source=user.get("source") or booking.source,
+        )
+        db.session.add(new_row)
+        occupied.add((booking.desk_id, target_slot))
+        extended.append({"deskId": booking.desk_id, "slot": target_slot})
+
+    if not extended:
+        return jsonify({"ok": True, "extended": [], "count": 0})
+
+    try:
+        db.session.commit()
+    except IntegrityError:
+        db.session.rollback()
+        return jsonify({"error": "Another booking blocked the extension"}), 409
+
+    return jsonify({"ok": True, "extended": extended, "count": len(extended)})
+
+
 @api_bookings_bp.delete("/mine")
 def release_my_bookings():
     booking_date, error = parse_date_arg(request.args.get("date"))

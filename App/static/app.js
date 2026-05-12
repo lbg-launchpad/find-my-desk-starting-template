@@ -42,6 +42,7 @@ const resetSettingsButton = document.getElementById("resetSettingsButton");
 const deskPreferencesGrid = document.getElementById("deskPreferencesGrid");
 const slotToggle = document.getElementById("slotToggle");
 const releaseDeskButton = document.getElementById("releaseDeskButton");
+const extendStayButton = document.getElementById("extendStayButton");
 const weatherHeadline = document.getElementById("weatherHeadline");
 const weatherSummary = document.getElementById("weatherSummary");
 const weatherDetail = document.getElementById("weatherDetail");
@@ -934,6 +935,7 @@ async function loadDesksAndBookings() {
   renderSelectedDesk();
   renderBookingList();
   syncReleaseDeskButton();
+  syncExtendStayButton();
   await loadWeather();
 }
 
@@ -976,6 +978,63 @@ function syncReleaseDeskButton() {
   releaseDeskButton.title = mine.length === 0
     ? "You have no bookings to release for this day"
     : `Release ${mine.length} booking${mine.length === 1 ? "" : "s"} for ${selectedDate()}`;
+}
+
+function extendableHalfBookings() {
+  const myEmail = (state.user?.email || "").toLowerCase();
+  if (!myEmail) return [];
+  const opposite = { am: "pm", pm: "am" };
+  const result = [];
+  Object.entries(state.bookings).forEach(([deskId, bookings]) => {
+    const list = bookings || [];
+    const slotMap = {};
+    list.forEach((b) => { slotMap[b.slot] = b; });
+    if (slotMap.full) return;
+    ["am", "pm"].forEach((slot) => {
+      const mine = slotMap[slot];
+      if (!mine) return;
+      if (String(mine.email || "").toLowerCase() !== myEmail) return;
+      if (slotMap[opposite[slot]]) return;
+      result.push({ deskId, fromSlot: slot, toSlot: opposite[slot] });
+    });
+  });
+  return result;
+}
+
+function syncExtendStayButton() {
+  if (!extendStayButton) return;
+  const eligible = extendableHalfBookings();
+  extendStayButton.classList.toggle("hidden", eligible.length === 0);
+  if (eligible.length > 0) {
+    extendStayButton.title = `Extend ${eligible.length} half-day booking${
+      eligible.length === 1 ? "" : "s"
+    } to full day`;
+  }
+}
+
+async function extendMyStay() {
+  const eligible = extendableHalfBookings();
+  if (eligible.length === 0) return;
+
+  const summary = eligible
+    .map((e) => `${e.deskId} (${e.fromSlot.toUpperCase()} → +${e.toSlot.toUpperCase()})`)
+    .join(", ");
+  if (!window.confirm(`Extend to full day for ${selectedDate()}: ${summary}?`)) return;
+
+  try {
+    const result = await fetchJSON(
+      `/api/bookings/extend?date=${encodeURIComponent(selectedDate())}`,
+      { method: "POST" }
+    );
+    await loadDesksAndBookings();
+    if (result && typeof result.count === "number" && result.count < eligible.length) {
+      window.alert(
+        `Extended ${result.count} of ${eligible.length} bookings. Some slots were taken before the request completed.`
+      );
+    }
+  } catch (error) {
+    window.alert(error.message);
+  }
 }
 
 async function releaseMyDesks() {
@@ -1059,6 +1118,10 @@ function bindEvents() {
 
   if (releaseDeskButton) {
     releaseDeskButton.addEventListener("click", releaseMyDesks);
+  }
+
+  if (extendStayButton) {
+    extendStayButton.addEventListener("click", extendMyStay);
   }
 
   if (userSwitchSelect) {

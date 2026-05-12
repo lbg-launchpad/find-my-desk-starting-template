@@ -111,6 +111,19 @@ body {
   cursor: not-allowed;
 }
 
+.extend-stay {
+  background: var(--ok);
+  color: #fff;
+  padding: 0.45rem 1rem;
+  border-radius: 999px;
+  font-size: 0.9rem;
+  white-space: nowrap;
+}
+
+.extend-stay:hover:not(:disabled) {
+  background: #126641;
+}
+
 .card {
   background: color-mix(in srgb, var(--surface) 90%, white 10%);
   border: 1px solid rgba(167, 127, 97, 0.2);
