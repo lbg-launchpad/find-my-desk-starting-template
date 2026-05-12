@@ -11,3 +11,5 @@ Before this solution, teams had limited visibility of desk preferences and ineff
 Our app streamlines the booking process through real-time availability and profile-based preferences, helping us find and reserve desks that suit our individual and team needs.
 
 URL: http://localhost:8000
+
+Mobile App: find-my-desk-starting-template/mobile-app/glassmorphism-prototype.html
