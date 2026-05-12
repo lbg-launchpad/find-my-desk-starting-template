@@ -3,8 +3,8 @@
 // build the email body and surface it via a modal preview + toast.
 
 import { openModal, toast, el } from "./components/ui.js";
-import { fmtDate, fmtTime, getState, userById, deskById } from "./store.js";
-import { LOCATIONS } from "./data.js";
+import { fmtDate, fmtTime, getState, update, userById, deskById, firstFreeDeskOn } from "./store.js";
+import { LOCATIONS, FLOORS } from "./data.js";
 
 function locName(locId) {
   return (LOCATIONS.find((l) => l.id === locId) || {}).name || locId;
@@ -48,6 +48,68 @@ export function sendBookingConfirmation(booking) {
     variant: "success",
     toastMessage: "Booking confirmed — confirmation email sent",
   });
+}
+
+function waitlistEmailBody(entry, desk) {
+  const user = userById(entry.userId);
+  const loc = locName(desk.locationId);
+  const floor = (FLOORS.find((f) => f.id === desk.floorId) || {}).name || desk.floorId;
+  return `Hi ${user?.name?.split(" ")[0] || "there"},
+
+Good news — a desk is now available for ${fmtDate(entry.date)} on the floor you waitlisted.
+
+Desk:     ${desk.number} (${desk.zone})
+Floor:    ${floor}
+Location: ${loc}
+
+Open Spaces@LBG and head to the Book page to grab it before someone else does — first come, first served.
+
+Cheers,
+Spaces@LBG`;
+}
+
+export function sendWaitlistAvailableEmail(entry, desk) {
+  const user = userById(entry.userId);
+  if (!getState().preferences.emailNotifications) {
+    toast(`A desk opened up for ${fmtDate(entry.date)} — email skipped (notifications off)`, "success");
+    return;
+  }
+  showEmailModal({
+    subject: `[Spaces@LBG] A desk has opened up for ${fmtDate(entry.date)}`,
+    to: user?.email || "you@thebank.com",
+    body: waitlistEmailBody(entry, desk),
+    variant: "success",
+    toastMessage: `Waitlist alert — desk available for ${fmtDate(entry.date)}`,
+  });
+}
+
+// Called after a booking is cancelled. Finds any waitlist entry whose
+// (locationId, floorId, date) now has a free desk and notifies the user.
+export function processWaitlistForBooking(cancelledBooking) {
+  const desk = deskById(cancelledBooking.deskId);
+  if (!desk) return;
+  const matches = (getState().waitlist || []).filter(
+    (w) =>
+      !w.notified &&
+      w.locationId === desk.locationId &&
+      w.floorId === desk.floorId &&
+      w.date === cancelledBooking.date,
+  );
+  for (const entry of matches) {
+    const free = firstFreeDeskOn({
+      locationId: entry.locationId,
+      floorId: entry.floorId,
+      date: entry.date,
+      startMin: entry.startMin,
+      endMin: entry.endMin,
+    });
+    if (!free) continue;
+    update((s) => {
+      const w = s.waitlist.find((x) => x.id === entry.id);
+      if (w) { w.notified = true; w.notifiedAt = new Date().toISOString(); }
+    });
+    sendWaitlistAvailableEmail(entry, free);
+  }
 }
 
 export function sendCancellationEmail(booking) {

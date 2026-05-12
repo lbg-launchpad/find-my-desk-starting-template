@@ -13,7 +13,10 @@ import {
   todayISO,
   deskById,
   deskIsFreeFor,
+  anyDeskFreeOn,
+  userOnWaitlist,
   genBookingId,
+  genWaitlistId,
 } from "../store.js";
 import { AMENITIES, AMENITY_KEYS, LOCATIONS, FLOORS } from "../data.js";
 import { sendBookingConfirmation } from "../email.js";
@@ -136,12 +139,84 @@ export function BookView() {
     ]));
   }
 
+  const waitlistHost = el("div");
+  root.appendChild(waitlistHost);
+
   const deskHost = el("section", { class: "card", style: { marginTop: "12px" } });
   root.appendChild(deskHost);
 
   function refreshFloorPlan() {
     plan.refresh && plan.refresh();
     renderSuggestion();
+    renderWaitlistBanner();
+  }
+
+  function renderWaitlistBanner() {
+    waitlistHost.replaceChildren();
+    const d = getState().bookingDraft;
+    const slot = activeSlot();
+    const free = anyDeskFreeOn({
+      locationId: d.locationId,
+      floorId: d.floorId,
+      date: d.date,
+      startMin: slot.startMin,
+      endMin: slot.endMin,
+      amenityFilters: getCurrentFilters(),
+    });
+    if (free) return;
+
+    const me = currentUser();
+    const alreadyWaiting = userOnWaitlist({
+      userId: me.id,
+      locationId: d.locationId,
+      floorId: d.floorId,
+      date: d.date,
+    });
+
+    const card = el("section", {
+      class: "card",
+      style: {
+        marginTop: "12px",
+        padding: "14px",
+        border: "1px solid color-mix(in oklab, var(--c-warning, var(--c-brand)) 35%, var(--c-border))",
+        background: "color-mix(in oklab, var(--c-warning, var(--c-brand)) 6%, var(--c-bg))",
+      },
+    });
+    card.appendChild(el("div", { style: { fontWeight: 600, fontSize: "14px", marginBottom: "4px" }, text: "No desks available for this day" }));
+    card.appendChild(el("div", {
+      style: { fontSize: "12px", color: "var(--c-fg-muted)", marginBottom: "10px" },
+      text: alreadyWaiting
+        ? `You're on the waitlist for ${fmtDate(d.date)}. We'll email you the moment a desk opens up.`
+        : `Add yourself to the waitlist for ${fmtDate(d.date)} — you'll get an email as soon as a desk frees up.`,
+    }));
+    if (!alreadyWaiting) {
+      card.appendChild(el("button", {
+        class: "btn",
+        type: "button",
+        onclick: () => addSelfToWaitlist(),
+      }, "Add me to the waitlist"));
+    }
+    waitlistHost.appendChild(card);
+  }
+
+  function addSelfToWaitlist() {
+    const d = getState().bookingDraft;
+    const slot = activeSlot();
+    const me = currentUser();
+    const entry = {
+      id: genWaitlistId(),
+      userId: me.id,
+      locationId: d.locationId,
+      floorId: d.floorId,
+      date: d.date,
+      startMin: slot.startMin,
+      endMin: slot.endMin,
+      createdAt: new Date().toISOString(),
+      notified: false,
+    };
+    update((s) => { s.waitlist.push(entry); });
+    toast("You're on the waitlist — we'll email when a desk opens", "success");
+    renderWaitlistBanner();
   }
 
   function renderSelectedDesk() {
@@ -155,6 +230,7 @@ export function BookView() {
     renderSuggestion();
   }
   renderSelectedDesk();
+  renderWaitlistBanner();
 
   // helpers shared in closures -----------------------------------------------
   function selectDesk(desk) {

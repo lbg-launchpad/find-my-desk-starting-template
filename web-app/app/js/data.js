@@ -183,6 +183,7 @@ export function loadState() {
       const parsed = JSON.parse(raw);
       // Merge defaults so old localStorage entries pick up new fields.
       parsed.preferences = { ...defaultPreferences(), ...(parsed.preferences || {}) };
+      parsed.waitlist = parsed.waitlist || [];
       return parsed;
     }
   } catch (_) { /* ignore */ }
@@ -194,6 +195,7 @@ export function defaultState() {
     currentUserId: null,
     theme: "light",
     bookings: [], // { id, userId, deskId, date, startMin, endMin, label, checkedIn, status, teamFor }
+    waitlist: [], // { id, userId, locationId, floorId, date, createdAt, notified }
     preferences: defaultPreferences(),
     lastLocation: "london",
   };

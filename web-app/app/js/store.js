@@ -124,6 +124,7 @@ export function persist() {
     currentUserId: state.currentUserId,
     theme: state.theme,
     bookings: state.bookings,
+    waitlist: state.waitlist,
     preferences: state.preferences,
     lastLocation: state.lastLocation,
   });
@@ -183,4 +184,44 @@ export function deskIsFreeFor({ deskId, date, startMin, endMin }) {
 
 export function genBookingId() {
   return "bk-" + Math.random().toString(36).slice(2, 9);
+}
+
+export function genWaitlistId() {
+  return "wl-" + Math.random().toString(36).slice(2, 9);
+}
+
+// First desk on (locationId, floorId) that is free for the given time range.
+// Returns the desk or null. Used to notify waitlisted users when a desk frees up.
+export function firstFreeDeskOn({ locationId, floorId, date, startMin, endMin }) {
+  return (
+    state.desks.find(
+      (d) =>
+        d.locationId === locationId &&
+        d.floorId === floorId &&
+        deskIsFreeFor({ deskId: d.id, date, startMin, endMin }),
+    ) || null
+  );
+}
+
+// True if at least one desk on (locationId, floorId) is free for the given
+// time range, optionally restricted to desks that include all `amenityFilters`.
+export function anyDeskFreeOn({ locationId, floorId, date, startMin, endMin, amenityFilters = [] }) {
+  return state.desks.some(
+    (d) =>
+      d.locationId === locationId &&
+      d.floorId === floorId &&
+      (!amenityFilters.length || amenityFilters.every((a) => d.amenities.includes(a))) &&
+      deskIsFreeFor({ deskId: d.id, date, startMin, endMin }),
+  );
+}
+
+export function userOnWaitlist({ userId, locationId, floorId, date }) {
+  return (state.waitlist || []).some(
+    (w) =>
+      w.userId === userId &&
+      w.locationId === locationId &&
+      w.floorId === floorId &&
+      w.date === date &&
+      !w.notified,
+  );
 }

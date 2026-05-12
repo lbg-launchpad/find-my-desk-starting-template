@@ -11,7 +11,7 @@ import {
   update,
 } from "../store.js";
 import { LOCATIONS } from "../data.js";
-import { sendCancellationEmail } from "../email.js";
+import { sendCancellationEmail, processWaitlistForBooking } from "../email.js";
 import { navigate } from "../router.js";
 
 export function BookingsView() {
@@ -91,5 +91,6 @@ function cancelBooking(id) {
   if (!booking) return;
   update((s) => { const b = s.bookings.find((x) => x.id === id); if (b) b.status = "cancelled"; });
   sendCancellationEmail(booking);
+  processWaitlistForBooking(booking);
   navigate();
 }
