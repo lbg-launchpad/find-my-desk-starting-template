@@ -22,24 +22,28 @@ def desks():
     if error:
         return error
 
-    rows = (
-        db.session.query(Desk, Booking)
-        .outerjoin(
-            Booking,
-            (Booking.desk_id == Desk.id) & (Booking.date == booking_date),
-        )
-        .order_by(Desk.id)
-        .all()
-    )
+    desk_rows = Desk.query.order_by(Desk.id).all()
+    booking_rows = Booking.query.filter(Booking.date == booking_date).all()
 
-    desk_payload = [
-        {
-            **desk.to_api(),
-            "available": booking is None,
-            "bookedBy": booking.to_api() if booking else None,
-        }
-        for desk, booking in rows
-    ]
+    slots_by_desk = {}
+    for row in booking_rows:
+        slots_by_desk.setdefault(row.desk_id, {})[row.slot] = row.to_api()
+
+    desk_payload = []
+    for desk in desk_rows:
+        slots = slots_by_desk.get(desk.id, {})
+        full = slots.get("full")
+        am = slots.get("am")
+        pm = slots.get("pm")
+        fully_booked = bool(full) or (am is not None and pm is not None)
+        desk_payload.append(
+            {
+                **desk.to_api(),
+                "available": not fully_booked,
+                "bookedBy": full or am or pm,
+                "slots": {"full": full, "am": am, "pm": pm},
+            }
+        )
 
     return jsonify({"date": booking_date.isoformat(), "desks": desk_payload})
 

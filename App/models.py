@@ -34,17 +34,23 @@ class Booking(db.Model):
     id = db.Column(db.Integer, primary_key=True, autoincrement=True)
     desk_id = db.Column(db.String(16), db.ForeignKey("desks.id"), nullable=False, index=True)
     date = db.Column(db.Date, nullable=False, index=True)
+    slot = db.Column(db.String(8), nullable=False, default="full", server_default="full", index=True)
     user_email = db.Column(db.String(255), nullable=False, index=True)
     user_name = db.Column(db.String(255), nullable=False)
     source = db.Column(db.String(32), nullable=False)
     created_at = db.Column(db.DateTime, default=datetime.utcnow, nullable=False)
 
     __table_args__ = (
-        UniqueConstraint("desk_id", "date", name="uq_booking_desk_date"),
+        UniqueConstraint("desk_id", "date", "slot", name="uq_booking_desk_date_slot"),
     )
 
     def to_api(self):
-        return {"name": self.user_name, "email": self.user_email, "source": self.source}
+        return {
+            "name": self.user_name,
+            "email": self.user_email,
+            "source": self.source,
+            "slot": self.slot,
+        }
 
 
 class AppUser(db.Model):

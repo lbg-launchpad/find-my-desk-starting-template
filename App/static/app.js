@@ -2,6 +2,7 @@ const state = {
   currentFloor: "ground",
   currentView: "bookings",
   selectedDeskId: null,
+  selectedSlot: "full",
   recommendedDeskIds: [],
   desks: [],
   bookings: {},
@@ -39,6 +40,7 @@ const preferredUserResults = document.getElementById("preferredUserResults");
 const selectedPreferredUsers = document.getElementById("selectedPreferredUsers");
 const resetSettingsButton = document.getElementById("resetSettingsButton");
 const deskPreferencesGrid = document.getElementById("deskPreferencesGrid");
+const slotToggle = document.getElementById("slotToggle");
 const weatherHeadline = document.getElementById("weatherHeadline");
 const weatherSummary = document.getElementById("weatherSummary");
 const weatherDetail = document.getElementById("weatherDetail");
@@ -131,12 +133,39 @@ function isTeammateEmail(email) {
   return Boolean(otherTeam) && otherTeam === myTeam;
 }
 
+function getDeskOccupants(desk) {
+  if (!desk) return [];
+  const slots = desk.slots || {};
+  return [slots.full, slots.am, slots.pm].filter(Boolean);
+}
+
+function getUserBookingOnDesk(desk) {
+  const myEmail = (state.user?.email || "").toLowerCase();
+  if (!myEmail) return null;
+  return getDeskOccupants(desk).find(
+    (booking) => String(booking.email || "").toLowerCase() === myEmail
+  ) || null;
+}
+
+function computeAvailableSlots(desk) {
+  const slots = desk?.slots || {};
+  if (slots.full) return new Set();
+  const amTaken = Boolean(slots.am);
+  const pmTaken = Boolean(slots.pm);
+  if (amTaken && pmTaken) return new Set();
+  const available = new Set();
+  if (!amTaken) available.add("am");
+  if (!pmTaken) available.add("pm");
+  if (!amTaken && !pmTaken) available.add("full");
+  return available;
+}
+
 function getTeammateBookedDesks() {
-  return state.desks.filter((desk) => {
-    if (desk.available) return false;
-    const bookingEmail = desk.bookedBy?.email;
-    return Boolean(bookingEmail) && isTeammateEmail(bookingEmail);
-  });
+  return state.desks.filter((desk) =>
+    getDeskOccupants(desk).some(
+      (booking) => booking.email && isTeammateEmail(booking.email)
+    )
+  );
 }
 
 function isNearTeammateBookedDesk(desk) {
@@ -160,6 +189,11 @@ function preferenceMatchesDesk(desk, pref, features) {
   }
   if (pref === "near-team") {
     return isNearTeammateBookedDesk(desk);
+  }
+  if (pref === "half-day-desks") {
+    const slots = desk.slots || {};
+    if (slots.full) return false;
+    return Boolean(slots.am) !== Boolean(slots.pm);
   }
   return features.includes(pref);
 }
@@ -283,13 +317,16 @@ function deskMatchesPreferences(desk) {
 function neighborHintForDesk(deskId) {
   if (state.settings.preferredUsers.length === 0) return "";
 
-  // Only show hint if this specific desk is booked by a preferred teammate
-  const booking = state.bookings[deskId];
-  if (!booking || !state.settings.preferredUsers.includes(booking.email)) {
-    return "";
-  }
+  const bookings = state.bookings[deskId] || [];
+  const preferredMatches = bookings.filter((booking) =>
+    state.settings.preferredUsers.includes(booking.email)
+  );
+  if (preferredMatches.length === 0) return "";
 
-  return `Preferred teammate booked: ${booking.name}`;
+  const labels = preferredMatches.map(
+    (b) => `${b.name}${b.slot && b.slot !== "full" ? ` (${b.slot.toUpperCase()})` : ""}`
+  );
+  return `Preferred teammate booked: ${labels.join(", ")}`;
 }
 
 function todayISO() {
@@ -328,7 +365,9 @@ function getProfilePreferences() {
 }
 
 function scoreDeskForPreferences(desk, preferences) {
-  if (!desk.available) return { score: -1, matched: [] };
+  const slots = desk.slots || {};
+  const fullyBooked = Boolean(slots.full) || (slots.am && slots.pm);
+  if (fullyBooked) return { score: -1, matched: [] };
 
   const features = (desk.features || []).map((feature) => String(feature).toLowerCase());
   const matched = preferences.filter((pref) => preferenceMatchesDesk(desk, pref, features));
@@ -478,8 +517,28 @@ function deskLabel(deskId) {
 
 function setSelectedDesk(deskId) {
   state.selectedDeskId = deskId;
+  const desk = getDeskById(deskId);
+  if (desk) {
+    const available = computeAvailableSlots(desk);
+    if (available.has("full")) state.selectedSlot = "full";
+    else if (available.has("am")) state.selectedSlot = "am";
+    else if (available.has("pm")) state.selectedSlot = "pm";
+  }
+  syncSlotToggle();
   renderSelectedDesk();
   renderDeskPins();
+}
+
+function syncSlotToggle() {
+  if (!slotToggle) return;
+  const desk = getDeskById(state.selectedDeskId);
+  const available = desk ? computeAvailableSlots(desk) : new Set(["full", "am", "pm"]);
+  slotToggle.querySelectorAll('input[name="slot"]').forEach((input) => {
+    const slotAvailable = available.has(input.value);
+    input.disabled = !desk || !slotAvailable;
+    input.checked = input.value === state.selectedSlot;
+    input.parentElement.classList.toggle("disabled", !slotAvailable);
+  });
 }
 
 function renderSelectedDesk() {
@@ -496,7 +555,7 @@ function renderSelectedDesk() {
   const allAttributes = [...(desk.features || [])];
   if (desk.nearWindow) allAttributes.push("window-seat");
   const features = allAttributes.join(" • ");
-  const bookedBy = desk.bookedBy;
+  const slots = desk.slots || {};
   const selectedPreferences = getProfilePreferences();
   const userHasDeskPreferences = selectedPreferences.length > 0;
   const deskFeatures = (desk.features || []).map((feature) => String(feature).toLowerCase());
@@ -509,9 +568,21 @@ function renderSelectedDesk() {
         : "Does not match any selected desk preferences")
     : "";
   const neighborHint = neighborHintForDesk(desk.id);
-  const bookedByLine = bookedBy ? `Booked by ${bookedBy.name}` : "Available now";
+  const occupants = getDeskOccupants(desk);
+  let statusText;
+  if (slots.full) {
+    statusText = `Full day booked by ${slots.full.name}`;
+  } else if (slots.am && slots.pm) {
+    statusText = `AM: ${slots.am.name} · PM: ${slots.pm.name}`;
+  } else if (slots.am) {
+    statusText = `AM booked by ${slots.am.name} · PM available`;
+  } else if (slots.pm) {
+    statusText = `PM booked by ${slots.pm.name} · AM available`;
+  } else {
+    statusText = "Available now";
+  }
   const teamName = activeUserProfile()?.team || "";
-  const teammateLine = bookedBy && isTeammateEmail(bookedBy.email)
+  const teammateLine = occupants.some((b) => isTeammateEmail(b.email))
     ? `Same team as you${teamName ? ` (${teamName})` : ""}`
     : "";
 
@@ -519,8 +590,8 @@ function renderSelectedDesk() {
     createElement("h4", `Desk ${deskLabel(desk.id)} · ${desk.zone}`),
     createElement("p", features || "No features listed"),
   ];
-  const statusLine = createElement("p", bookedByLine);
-  if (!bookedBy) {
+  const statusLine = createElement("p", statusText);
+  if (occupants.length === 0) {
     statusLine.classList.add("availability-status");
   }
   children.push(statusLine);
@@ -529,8 +600,9 @@ function renderSelectedDesk() {
   if (teammateLine) children.push(createElement("p", teammateLine));
   selectedDeskCard.replaceChildren(...children);
 
-  bookButton.disabled = !desk.available;
-  cancelButton.disabled = desk.available;
+  const available = computeAvailableSlots(desk);
+  bookButton.disabled = !available.has(state.selectedSlot);
+  cancelButton.disabled = !getUserBookingOnDesk(desk);
 }
 
 function createElement(tag, text) {
@@ -668,16 +740,25 @@ function renderFloorSummary() {
 
 function renderBookingList() {
   bookingList.innerHTML = "";
-  const entries = Object.entries(state.bookings);
 
-  if (entries.length === 0) {
+  const flat = [];
+  Object.entries(state.bookings).forEach(([deskId, bookings]) => {
+    (bookings || []).forEach((booking) => flat.push({ deskId, booking }));
+  });
+
+  if (flat.length === 0) {
     bookingList.innerHTML = "<li class='muted'>No bookings yet for this day.</li>";
     return;
   }
 
-  entries
-    .sort(([a], [b]) => a.localeCompare(b))
-    .forEach(([deskId, booking]) => {
+  const slotOrder = { full: 0, am: 1, pm: 2 };
+  flat
+    .sort((a, b) => {
+      const byDesk = a.deskId.localeCompare(b.deskId);
+      if (byDesk !== 0) return byDesk;
+      return (slotOrder[a.booking.slot] || 0) - (slotOrder[b.booking.slot] || 0);
+    })
+    .forEach(({ deskId, booking }) => {
       const li = document.createElement("li");
 
       const isPreferredUser = state.settings.preferredUsers.includes(booking.email);
@@ -686,7 +767,15 @@ function renderBookingList() {
       if (isPreferredUser) li.classList.add("booking-preferred-user");
       if (isTeammate && !isPreferredUser) li.classList.add("booking-teammate");
 
-      li.append(createElement("strong", deskLabel(deskId)), createElement("span", booking.name));
+      const slotLabel = booking.slot === "am"
+        ? " · AM"
+        : booking.slot === "pm"
+          ? " · PM"
+          : " · Full";
+      li.append(
+        createElement("strong", `${deskLabel(deskId)}${slotLabel}`),
+        createElement("span", booking.name)
+      );
 
       if (isTeammate) {
         const indicator = document.createElement("span");
@@ -727,6 +816,14 @@ function renderOfficeBusyness() {
   officeBusyMeta.textContent = `${band} expected: about ${predictedOccupancyCount}/${totalDesks} desks (${predictedOccupancyPct}%) for ${selectedDate()}. Based on ${anchorMatchedUsers} users with this anchor-day pattern and ${bookedCount} desks already booked.`;
 }
 
+function tintForBooking(booking) {
+  if (!booking) return null;
+  const email = booking.email;
+  if (email && state.settings.preferredUsers.includes(email)) return "preferred";
+  if (email && isTeammateEmail(email)) return "teammate";
+  return "booked";
+}
+
 function renderDeskPins() {
   deskLayer.innerHTML = "";
   const recommendedDeskIds = new Set(state.recommendedDeskIds);
@@ -739,22 +836,52 @@ function renderDeskPins() {
     pin.textContent = deskLabel(desk.id);
     pin.dataset.deskId = desk.id;
     const isRecommended = recommendedDeskIds.has(desk.id);
-    
-    const bookedEmail = !desk.available ? desk.bookedBy?.email : null;
-    const isBookedByPreferredUser = Boolean(bookedEmail && state.settings.preferredUsers.includes(bookedEmail));
-    const isBookedByTeammate = Boolean(bookedEmail && isTeammateEmail(bookedEmail));
 
-    pin.classList.toggle("available", desk.available);
-    pin.classList.toggle("booked", !desk.available);
+    const slots = desk.slots || {};
+    const fullTaken = Boolean(slots.full);
+    const amTaken = Boolean(slots.am);
+    const pmTaken = Boolean(slots.pm);
+    const fullyBooked = fullTaken || (amTaken && pmTaken);
+    const halfAm = amTaken && !pmTaken && !fullTaken;
+    const halfPm = pmTaken && !amTaken && !fullTaken;
+
+    const amTint = amTaken ? tintForBooking(slots.am) : null;
+    const pmTint = pmTaken ? tintForBooking(slots.pm) : null;
+    const fullTint = fullTaken ? tintForBooking(slots.full) : null;
+    const primaryTint = fullTint || amTint || pmTint;
+
+    const isBookedByPreferredUser = primaryTint === "preferred";
+    const isBookedByTeammate = primaryTint === "teammate";
+
+    pin.classList.toggle("available", !fullyBooked && !halfAm && !halfPm);
+    pin.classList.toggle("booked", fullyBooked);
+    pin.classList.toggle("half-am-booked", halfAm);
+    pin.classList.toggle("half-pm-booked", halfPm);
     pin.classList.toggle("selected", state.selectedDeskId === desk.id);
     pin.classList.toggle("recommended", isRecommended);
     pin.classList.toggle("pref-mismatch", !isRecommended && !deskMatchesPreferences(desk));
-    pin.classList.toggle("booked-by-teammate", isBookedByTeammate && !isBookedByPreferredUser);
-    pin.classList.toggle("booked-by-preferred", isBookedByPreferredUser);
+    pin.classList.toggle("booked-by-teammate", fullyBooked && isBookedByTeammate && !isBookedByPreferredUser);
+    pin.classList.toggle("booked-by-preferred", fullyBooked && isBookedByPreferredUser);
 
-    pin.title = desk.available
-      ? `Desk ${deskLabel(desk.id)} available`
-      : `Desk ${deskLabel(desk.id)} booked`;
+    if (fullTaken) {
+      pin.dataset.amTint = fullTint;
+      pin.dataset.pmTint = fullTint;
+    } else {
+      if (amTint) pin.dataset.amTint = amTint; else delete pin.dataset.amTint;
+      if (pmTint) pin.dataset.pmTint = pmTint; else delete pin.dataset.pmTint;
+    }
+
+    if (fullTaken) {
+      pin.title = `Desk ${deskLabel(desk.id)} fully booked`;
+    } else if (amTaken && pmTaken) {
+      pin.title = `Desk ${deskLabel(desk.id)} AM + PM both booked`;
+    } else if (halfAm) {
+      pin.title = `Desk ${deskLabel(desk.id)} AM booked, PM free`;
+    } else if (halfPm) {
+      pin.title = `Desk ${deskLabel(desk.id)} PM booked, AM free`;
+    } else {
+      pin.title = `Desk ${deskLabel(desk.id)} available`;
+    }
     pin.addEventListener("click", () => setSelectedDesk(desk.id));
     deskLayer.appendChild(pin);
   });
@@ -802,6 +929,7 @@ async function loadDesksAndBookings() {
   renderDeskPins();
   renderFloorSummary();
   renderOfficeBusyness();
+  syncSlotToggle();
   renderSelectedDesk();
   renderBookingList();
   await loadWeather();
@@ -816,6 +944,7 @@ async function createBooking() {
       body: JSON.stringify({
         deskId: state.selectedDeskId,
         date: selectedDate(),
+        slot: state.selectedSlot,
       }),
     });
     await loadDesksAndBookings();
@@ -826,11 +955,20 @@ async function createBooking() {
 
 async function cancelBooking() {
   if (!state.selectedDeskId) return;
+  const desk = getDeskById(state.selectedDeskId);
+  const ownBooking = desk ? getUserBookingOnDesk(desk) : null;
+  if (!ownBooking) {
+    window.alert("You don't have a booking on this desk.");
+    return;
+  }
 
   try {
-    await fetchJSON(`/api/bookings/${encodeURIComponent(state.selectedDeskId)}?date=${encodeURIComponent(selectedDate())}`, {
-      method: "DELETE",
-    });
+    await fetchJSON(
+      `/api/bookings/${encodeURIComponent(state.selectedDeskId)}` +
+        `?date=${encodeURIComponent(selectedDate())}` +
+        `&slot=${encodeURIComponent(ownBooking.slot || "full")}`,
+      { method: "DELETE" }
+    );
     await loadDesksAndBookings();
   } catch (error) {
     window.alert(error.message);
@@ -867,6 +1005,14 @@ function bindEvents() {
   bookingDateInput.addEventListener("change", loadDesksAndBookings);
   bookButton.addEventListener("click", createBooking);
   cancelButton.addEventListener("click", cancelBooking);
+
+  if (slotToggle) {
+    slotToggle.addEventListener("change", (event) => {
+      if (event.target?.name !== "slot") return;
+      state.selectedSlot = event.target.value;
+      renderSelectedDesk();
+    });
+  }
 
   if (userSwitchSelect) {
     userSwitchSelect.addEventListener("change", async (event) => {
@@ -959,7 +1105,7 @@ function ensureRequiredElements() {
     bookingDateInput, floorImage, deskLayer, floorSummary,
     selectedDeskCard, bookButton, cancelButton, bookingList,
     officeBusyMeta, recommendationMeta, recommendedDeskList,
-    userBadge, pinTemplate,
+    userBadge, pinTemplate, slotToggle,
   };
   const missing = Object.entries(required)
     .filter(([, el]) => !el)
@@ -979,6 +1125,7 @@ async function init() {
   const initialView = document.body.dataset.initialView || "bookings";
   bookingDateInput.value = todayISO();
   bindEvents();
+  syncSlotToggle();
   switchView(initialView);
 
   try {

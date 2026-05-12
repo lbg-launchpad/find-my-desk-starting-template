@@ -7,6 +7,14 @@ from App.services.dates import parse_date_arg
 from App.services.users import get_effective_user
 
 api_bookings_bp = Blueprint("api_bookings", __name__, url_prefix="/api/bookings")
+VALID_SLOTS = {"full", "am", "pm"}
+
+
+def _normalize_slot(raw):
+    value = str(raw or "full").strip().lower()
+    if value not in VALID_SLOTS:
+        return None
+    return value
 
 
 @api_bookings_bp.get("")
@@ -32,13 +40,16 @@ def _bookings_for_single_date(raw_date, email):
     if email:
         q = q.filter(Booking.user_email == email)
 
-    rows = q.order_by(Booking.desk_id).all()
+    rows = q.order_by(Booking.desk_id, Booking.slot).all()
 
     if not email:
+        grouped = {}
+        for row in rows:
+            grouped.setdefault(row.desk_id, []).append(row.to_api())
         return jsonify(
             {
                 "date": raw_date,
-                "bookings": {row.desk_id: row.to_api() for row in rows},
+                "bookings": grouped,
             }
         )
 
@@ -85,13 +96,23 @@ def create_booking():
     if error:
         return error
 
+    slot = _normalize_slot(payload.get("slot"))
+    if slot is None:
+        return jsonify({"error": "slot must be one of full, am, pm"}), 400
+
     if db.session.get(Desk, desk_id) is None:
         return jsonify({"error": "Unknown deskId"}), 404
+
+    existing = Booking.query.filter_by(desk_id=desk_id, date=booking_date).all()
+    for row in existing:
+        if row.slot == "full" or slot == "full" or row.slot == slot:
+            return jsonify({"error": "Desk already booked for that slot"}), 409
 
     user = get_effective_user()
     booking = Booking(
         desk_id=desk_id,
         date=booking_date,
+        slot=slot,
         user_email=user["email"],
         user_name=user["name"],
         source=user["source"],
@@ -101,9 +122,11 @@ def create_booking():
         db.session.commit()
     except IntegrityError:
         db.session.rollback()
-        return jsonify({"error": "Desk already booked"}), 409
+        return jsonify({"error": "Desk already booked for that slot"}), 409
 
-    return jsonify({"ok": True, "deskId": desk_id, "date": booking_date.isoformat()}), 201
+    return jsonify(
+        {"ok": True, "deskId": desk_id, "date": booking_date.isoformat(), "slot": slot}
+    ), 201
 
 
 @api_bookings_bp.delete("/<desk_id>")
@@ -112,13 +135,21 @@ def cancel_booking(desk_id):
     if error:
         return error
 
+    slot = _normalize_slot(request.args.get("slot"))
+    if slot is None:
+        return jsonify({"error": "slot must be one of full, am, pm"}), 400
+
     user = get_effective_user()
-    booking = Booking.query.filter_by(desk_id=desk_id, date=booking_date).first()
+    booking = Booking.query.filter_by(
+        desk_id=desk_id, date=booking_date, slot=slot
+    ).first()
     if booking is None:
-        return jsonify({"error": "No booking found for that desk/date"}), 404
+        return jsonify({"error": "No booking found for that desk/date/slot"}), 404
     if booking.user_email != user["email"]:
         return jsonify({"error": "You can only cancel your own booking"}), 403
 
     db.session.delete(booking)
     db.session.commit()
-    return jsonify({"ok": True, "deskId": desk_id, "date": booking_date.isoformat()})
+    return jsonify(
+        {"ok": True, "deskId": desk_id, "date": booking_date.isoformat(), "slot": slot}
+    )

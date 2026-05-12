@@ -7,6 +7,8 @@ def get_allowed_preference_options():
 
     # near-team is a dynamic preference based on active same-team bookings.
     allowed.add("near-team")
+    # half-day-desks matches desks where exactly one half is already booked.
+    allowed.add("half-day-desks")
 
     for features, near_window in Desk.query.with_entities(Desk.features, Desk.near_window).all():
         if isinstance(features, list):

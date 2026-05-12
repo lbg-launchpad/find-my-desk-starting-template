@@ -540,6 +540,88 @@ input[type="date"] {
   box-shadow: none !important;
 }
 
+.desk-pin.half-am-booked {
+  background: linear-gradient(90deg, #ff1f1f 50%, #33cc33 50%) !important;
+}
+
+.desk-pin.half-pm-booked {
+  background: linear-gradient(90deg, #33cc33 50%, #ff1f1f 50%) !important;
+}
+
+.desk-pin.half-am-booked[data-am-tint="teammate"] {
+  background: linear-gradient(90deg, #ff69b4 50%, #33cc33 50%) !important;
+}
+
+.desk-pin.half-am-booked[data-am-tint="preferred"] {
+  background: linear-gradient(90deg, #ff8c00 50%, #33cc33 50%) !important;
+}
+
+.desk-pin.half-pm-booked[data-pm-tint="teammate"] {
+  background: linear-gradient(90deg, #33cc33 50%, #ff69b4 50%) !important;
+}
+
+.desk-pin.half-pm-booked[data-pm-tint="preferred"] {
+  background: linear-gradient(90deg, #33cc33 50%, #ff8c00 50%) !important;
+}
+
+.desk-pin.booked[data-am-tint="teammate"][data-pm-tint="teammate"] {
+  background: #ff69b4 !important;
+}
+
+.desk-pin.booked[data-am-tint="preferred"][data-pm-tint="preferred"] {
+  background: #ff8c00 !important;
+}
+
+.desk-pin.booked[data-am-tint="teammate"][data-pm-tint="preferred"] {
+  background: linear-gradient(90deg, #ff69b4 50%, #ff8c00 50%) !important;
+}
+
+.desk-pin.booked[data-am-tint="preferred"][data-pm-tint="teammate"] {
+  background: linear-gradient(90deg, #ff8c00 50%, #ff69b4 50%) !important;
+}
+
+.desk-pin.booked[data-am-tint="booked"][data-pm-tint="teammate"] {
+  background: linear-gradient(90deg, #ff1f1f 50%, #ff69b4 50%) !important;
+}
+
+.desk-pin.booked[data-am-tint="teammate"][data-pm-tint="booked"] {
+  background: linear-gradient(90deg, #ff69b4 50%, #ff1f1f 50%) !important;
+}
+
+.desk-pin.booked[data-am-tint="booked"][data-pm-tint="preferred"] {
+  background: linear-gradient(90deg, #ff1f1f 50%, #ff8c00 50%) !important;
+}
+
+.desk-pin.booked[data-am-tint="preferred"][data-pm-tint="booked"] {
+  background: linear-gradient(90deg, #ff8c00 50%, #ff1f1f 50%) !important;
+}
+
+.slot-toggle {
+  display: flex;
+  gap: 0.75rem;
+  margin: 0.6rem 0 0.4rem;
+  flex-wrap: wrap;
+}
+
+.slot-toggle label {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.slot-toggle input[type="radio"] {
+  cursor: pointer;
+}
+
+.slot-toggle label.disabled,
+.slot-toggle input:disabled + * {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
 .floor-summary {
   margin: 0.75rem 0 0;
   color: var(--muted);
