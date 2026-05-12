@@ -364,7 +364,6 @@ function renderRecommendations() {
 
   recommendedDeskList.innerHTML = "";
   state.recommendedDeskIds = [];
-  const MAX_RECOMMENDED_DESKS = 5;
   const preferences = getProfilePreferences();
   const hasPreferredUsers = state.settings.preferredUsers.length > 0;
 
@@ -384,7 +383,7 @@ function renderRecommendations() {
   const ranked = state.desks
     .map((desk) => ({ desk, ...scoreDeskForPreferences(desk, preferences) }))
     .filter((entry) => entry.score >= 0)
-    .filter((entry) => !hasDeskPreferences || entry.matched.length > 0)
+    .filter((entry) => !hasDeskPreferences || entry.matched.length === preferences.length)
     .sort((a, b) => {
       if (b.score !== a.score) return b.score - a.score;
       if (a.desk.floor !== b.desk.floor) {
@@ -394,7 +393,7 @@ function renderRecommendations() {
       return a.desk.id.localeCompare(b.desk.id);
     });
 
-  const visibleRecommendations = ranked.slice(0, MAX_RECOMMENDED_DESKS);
+  const visibleRecommendations = ranked.filter(({ desk }) => desk.floor === state.currentFloor);
   state.recommendedDeskIds = visibleRecommendations
     .filter(({ matched }) => matched.length > 0)
     .map(({ desk }) => desk.id);
@@ -414,7 +413,19 @@ function renderRecommendations() {
   if (preferences.length === 0) {
     recommendationMeta.textContent = "No profile desk preferences found, showing all available desks.";
   } else {
-    recommendationMeta.textContent = `Showing ${ranked.length} available desks matching at least one selected preference (${preferences.map(formatPreference).join(", ")}).`;
+    const floors = [...new Set(visibleRecommendations.map(({ desk }) => desk.floor))];
+    const floorSummary = floors
+      .map((floor) => {
+        const floorCount = visibleRecommendations.filter(({ desk }) => desk.floor === floor).length;
+        return `${formatPreference(floor)}: ${floorCount}`;
+      })
+      .join(" • ");
+    recommendationMeta.textContent = `There are ${ranked.length} available desks matching all selected preferences (${preferences.map(formatPreference).join(", ")}). Showing ${visibleRecommendations.length} on ${formatPreference(state.currentFloor)} floor${floorSummary ? ` (${floorSummary})` : ""}.`;
+  }
+
+  if (visibleRecommendations.length === 0) {
+    recommendedDeskList.innerHTML = `<li class='muted'>No matching desks on ${formatPreference(state.currentFloor)} floor.</li>`;
+    return;
   }
 
   visibleRecommendations.forEach(({ desk, matched }) => {
@@ -486,11 +497,16 @@ function renderSelectedDesk() {
   if (desk.nearWindow) allAttributes.push("window-seat");
   const features = allAttributes.join(" • ");
   const bookedBy = desk.bookedBy;
-  const userHasDeskPreferences = (state.settings.deskPreferences || []).length > 0;
+  const selectedPreferences = getProfilePreferences();
+  const userHasDeskPreferences = selectedPreferences.length > 0;
+  const deskFeatures = (desk.features || []).map((feature) => String(feature).toLowerCase());
+  const matchedPreferences = selectedPreferences.filter((pref) => preferenceMatchesDesk(desk, pref, deskFeatures));
   const prefMatch = userHasDeskPreferences
-    ? (deskMatchesPreferences(desk)
-      ? "Matches your desk preferences"
-      : "Does not fully match your desk preferences")
+    ? (matchedPreferences.length === selectedPreferences.length
+      ? "Matches all selected desk preferences"
+      : matchedPreferences.length > 0
+        ? "Matches some selected desk preferences"
+        : "Does not match any selected desk preferences")
     : "";
   const neighborHint = neighborHintForDesk(desk.id);
   const bookedByLine = bookedBy ? `Booked by ${bookedBy.name}` : "Available now";

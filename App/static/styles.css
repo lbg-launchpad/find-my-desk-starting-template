@@ -619,6 +619,49 @@ input[type="date"] {
   cursor: not-allowed;
 }
 
+.recommendation-list {
+  list-style: none;
+  margin: 0.55rem 0 0;
+  padding: 0;
+  display: grid;
+  gap: 0.5rem;
+}
+
+.recommendation-list li {
+  margin: 0;
+}
+
+.recommendation-item {
+  width: 100%;
+  border: 1px solid rgba(167, 127, 97, 0.2);
+  border-radius: 12px;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.96), rgba(252, 244, 236, 0.9));
+  padding: 0.58rem 0.68rem;
+  text-align: left;
+  color: var(--ink);
+  cursor: pointer;
+  transition: transform 150ms ease, border-color 150ms ease, box-shadow 150ms ease;
+}
+
+.recommendation-item:hover {
+  transform: translateY(-1px);
+  border-color: rgba(167, 127, 97, 0.38);
+  box-shadow: 0 6px 16px rgba(84, 56, 44, 0.1);
+}
+
+.recommendation-item strong {
+  display: block;
+  font-family: "Syne", "Avenir Next", sans-serif;
+  font-size: 1.03rem;
+}
+
+.recommendation-item span {
+  display: block;
+  margin-top: 0.18rem;
+  color: var(--muted);
+  line-height: 1.3;
+}
+
 .divider {
   height: 1px;
   background: rgba(167, 127, 97, 0.28);
