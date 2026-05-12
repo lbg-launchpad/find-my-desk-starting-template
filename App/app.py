@@ -22,6 +22,7 @@ from App.config import build_config
 from App.extensions import db
 from App.routes.api_bookings import api_bookings_bp
 from App.routes.api_desks import api_desks_bp
+from App.routes.api_weather import api_weather_bp
 from App.routes.api_users import api_users_bp
 from App.routes.auth import auth_bp
 from App.routes.pages import pages_bp
@@ -39,7 +40,7 @@ def create_app():
 
     _init_azure_auth(app)
 
-    for bp in (pages_bp, auth_bp, api_users_bp, api_desks_bp, api_bookings_bp):
+    for bp in (pages_bp, auth_bp, api_users_bp, api_desks_bp, api_bookings_bp, api_weather_bp):
         app.register_blueprint(bp)
 
     return app

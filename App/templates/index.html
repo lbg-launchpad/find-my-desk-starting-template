@@ -23,6 +23,20 @@
             </div>
         </nav>
 
+        <section id="weatherPanel" class="weather-strip card" aria-live="polite">
+            <div class="weather-copy">
+                <p class="weather-kicker">Office Weather</p>
+                <h2 id="weatherHeadline">Loading weather...</h2>
+                <p id="weatherSummary" class="weather-summary muted">Fetching the latest office conditions.</p>
+                <p id="weatherDetail" class="weather-detail muted">Please wait while we load the forecast.</p>
+            </div>
+            <div class="weather-badge">
+                <img id="weatherIcon" alt="" class="weather-icon hidden" />
+                <strong id="weatherTemperature">--</strong>
+                <span id="weatherSource">Loading</span>
+            </div>
+        </section>
+
         <section class="layout" data-view-panel="bookings">
             <header class="hero card">
                 <div>

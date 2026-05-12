@@ -14,6 +14,7 @@ const state = {
   },
   validDeskPreferences: [],
   busyness: null,
+  weather: null,
 };
 
 const bookingDateInput = document.getElementById("bookingDate");
@@ -38,6 +39,13 @@ const preferredUserResults = document.getElementById("preferredUserResults");
 const selectedPreferredUsers = document.getElementById("selectedPreferredUsers");
 const resetSettingsButton = document.getElementById("resetSettingsButton");
 const deskPreferencesGrid = document.getElementById("deskPreferencesGrid");
+const weatherHeadline = document.getElementById("weatherHeadline");
+const weatherSummary = document.getElementById("weatherSummary");
+const weatherDetail = document.getElementById("weatherDetail");
+const weatherTemperature = document.getElementById("weatherTemperature");
+const weatherSource = document.getElementById("weatherSource");
+const weatherIcon = document.getElementById("weatherIcon");
+const weatherPanel = document.getElementById("weatherPanel");
 const TEAM_NEARBY_DISTANCE = 18;
 
 async function loadDeskPreferenceOptions() {
@@ -256,6 +264,7 @@ function switchView(viewName) {
   document.querySelectorAll("[data-view-panel]").forEach((panel) => {
     panel.classList.toggle("hidden", panel.dataset.viewPanel !== viewName);
   });
+  weatherPanel?.classList.toggle("hidden", viewName !== "bookings");
 }
 
 async function refreshSettingsFromDb() {
@@ -285,6 +294,10 @@ function neighborHintForDesk(deskId) {
 
 function todayISO() {
   return new Date().toISOString().slice(0, 10);
+}
+
+function isFutureDate(isoDate) {
+  return isoDate > todayISO();
 }
 
 function selectedDate() {
@@ -510,6 +523,90 @@ function createElement(tag, text) {
   return el;
 }
 
+function renderWeatherPanel() {
+  if (!weatherHeadline || !weatherSummary || !weatherDetail || !weatherTemperature || !weatherSource) {
+    return;
+  }
+
+  const weather = state.weather;
+  if (!weather) {
+    weatherHeadline.textContent = `Weather unavailable for ${selectedDate()}`;
+    weatherSummary.textContent = "We could not load the office forecast right now.";
+    weatherDetail.textContent = "Try again after the page finishes loading.";
+    weatherTemperature.textContent = "--";
+    weatherSource.textContent = "Unavailable";
+    weatherIcon?.classList.add("hidden");
+    return;
+  }
+
+  const temperature = Number(weather.temperature);
+  const hasTemperature = Number.isFinite(temperature);
+  const formattedTemperature = hasTemperature ? `${Math.round(temperature)}°C` : "--";
+  const headline = weather.mode === "future"
+    ? `Forecast for ${weather.date}`
+    : weather.mode === "forecast"
+      ? `Short-range forecast for ${weather.date}`
+      : `Current weather for ${weather.date}`;
+
+  weatherHeadline.textContent = headline;
+  weatherSummary.textContent = `${weather.location} · ${weather.condition}`;
+
+  if (weather.mode === "future" || weather.mode === "forecast") {
+    const high = Number.isFinite(Number(weather.highTemperature)) ? `${Math.round(Number(weather.highTemperature))}°C` : "--";
+    const low = Number.isFinite(Number(weather.lowTemperature)) ? `${Math.round(Number(weather.lowTemperature))}°C` : "--";
+    const humidity = weather.humidity === null || weather.humidity === undefined ? "" : ` · Humidity ${weather.humidity}%`;
+    const rainChance = weather.chanceOfRain === null || weather.chanceOfRain === undefined || weather.chanceOfRain === ""
+      ? ""
+      : ` · ${weather.chanceOfRain}% chance of rain`;
+    weatherDetail.textContent = `Average ${formattedTemperature} · High ${high} · Low ${low}${humidity}${rainChance}`;
+    weatherSource.textContent = weather.mode === "forecast" ? "Short-range forecast" : "Future forecast";
+  } else {
+    const feelsLike = Number.isFinite(Number(weather.feelsLike)) ? `${Math.round(Number(weather.feelsLike))}°C` : "--";
+    const humidity = weather.humidity === null || weather.humidity === undefined ? "--" : `${weather.humidity}%`;
+    const windKph = weather.windKph === null || weather.windKph === undefined ? "--" : `${weather.windKph} kph`;
+    weatherDetail.textContent = `Feels like ${feelsLike} · Humidity ${humidity} · Wind ${windKph}`;
+    weatherSource.textContent = "Current conditions";
+  }
+
+  weatherTemperature.textContent = formattedTemperature;
+  if (weatherIcon) {
+    if (weather.icon) {
+      weatherIcon.src = weather.icon.startsWith("//") ? `https:${weather.icon}` : weather.icon;
+      weatherIcon.alt = weather.condition || "Weather icon";
+      weatherIcon.classList.remove("hidden");
+    } else {
+      weatherIcon.classList.add("hidden");
+    }
+  }
+}
+
+async function loadWeather() {
+  if (!weatherHeadline) return;
+
+  const date = selectedDate();
+  weatherHeadline.textContent = isFutureDate(date) ? `Loading forecast for ${date}...` : `Loading weather for ${date}...`;
+  weatherSummary.textContent = "Fetching the latest office conditions.";
+  weatherDetail.textContent = "Please wait while we load the forecast.";
+  weatherTemperature.textContent = "--";
+  weatherSource.textContent = "Loading";
+  weatherIcon?.classList.add("hidden");
+
+  try {
+    state.weather = await fetchJSON(`/api/weather?date=${encodeURIComponent(date)}`);
+  } catch (error) {
+    state.weather = null;
+    weatherHeadline.textContent = `Weather unavailable for ${date}`;
+    weatherSummary.textContent = error.message;
+    weatherDetail.textContent = "The office weather service could not be reached.";
+    weatherTemperature.textContent = "--";
+    weatherSource.textContent = "Unavailable";
+    weatherIcon?.classList.add("hidden");
+    return;
+  }
+
+  renderWeatherPanel();
+}
+
 function renderUserSwitchOptions() {
   if (!userSwitchSelect) return;
 
@@ -691,6 +788,7 @@ async function loadDesksAndBookings() {
   renderOfficeBusyness();
   renderSelectedDesk();
   renderBookingList();
+  await loadWeather();
 }
 
 async function createBooking() {
@@ -796,9 +894,7 @@ function bindEvents() {
       return;
     }
 
-    renderDeskPins();
-    renderSelectedDesk();
-    renderRecommendations();
+    await loadDesksAndBookings();
     const ignoredPreferences = Array.isArray(savePayload?.ignoredPreferences)
       ? savePayload.ignoredPreferences
       : [];
@@ -837,9 +933,7 @@ function bindEvents() {
       }
 
       hydrateSettingsForm();
-      renderDeskPins();
-      renderSelectedDesk();
-      renderRecommendations();
+      await loadDesksAndBookings();
     });
   }
 }
